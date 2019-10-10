@@ -17,6 +17,12 @@ namespace EasyWiFi.ServerControls
         GyroControllerType[] gyro = new GyroControllerType[EasyWiFiConstants.MAX_CONTROLLERS];
         int currentNumberControllers = 0;
         Quaternion orientation;
+        Vector3 neutralOrientation;
+        Vector3 rotationCorrections;
+        bool firstInput = true;
+        public GameObject gunsight;
+        public float gunsightZStart;
+        public Quaternion gunsightStartRotation;
 
         void OnEnable()
         {
@@ -35,6 +41,14 @@ namespace EasyWiFi.ServerControls
             EasyWiFiController.On_ConnectionsChanged -= checkForNewConnections;
         }
 
+        void Awake()
+        {
+            Quaternion startOrientation = transform.rotation;
+            Vector3 neutralOrientation = new Vector3(startOrientation.eulerAngles.x, startOrientation.eulerAngles.y, startOrientation.eulerAngles.z);
+            Debug.Log(neutralOrientation);
+            gunsightZStart = gunsight.transform.position.z;
+            gunsightStartRotation = gunsight.transform.rotation;
+        }
         // Update is called once per frame
         void Update()
         {
@@ -46,8 +60,26 @@ namespace EasyWiFi.ServerControls
                     mapDataStructureToAction(i);
                 }
             }
+            //Debug.Log(rotationCorrections);
         }
 
+        public void CalculateCorrection(int index)
+        {
+            orientation.w = gyro[index].GYRO_W;
+            orientation.x = gyro[index].GYRO_X;
+            orientation.y = gyro[index].GYRO_Y;
+            orientation.z = gyro[index].GYRO_Z;
+            Debug.Log(gyro[index].GYRO_Z);
+            Quaternion newRot = new Quaternion(orientation.x, orientation.y, orientation.z, orientation.w);
+            Debug.Log(newRot);
+            Vector3 conversion = new Vector3(newRot.eulerAngles.x, newRot.eulerAngles.y, newRot.eulerAngles.z);
+            Debug.Log(conversion);
+            float Xcorrection = neutralOrientation.x - conversion.x;
+            float Ycorrection = neutralOrientation.y - conversion.y;
+            float Zcorrection = neutralOrientation.z - conversion.z;
+            rotationCorrections = new Vector3(Xcorrection, Ycorrection, Zcorrection);
+            Debug.Log(rotationCorrections);
+        }
 
         public void mapDataStructureToAction(int index)
         {
@@ -56,7 +88,22 @@ namespace EasyWiFi.ServerControls
             orientation.y = gyro[index].GYRO_Y;
             orientation.z = gyro[index].GYRO_Z;
 
-            transform.localRotation = orientation;
+            if (firstInput && gyro[index].GYRO_Z!=0)
+            {
+                CalculateCorrection(index);
+                firstInput = false;
+            }
+
+            Quaternion newRot = new Quaternion(orientation.x, orientation.y, orientation.z, orientation.w);
+            Vector3 conversion = new Vector3(newRot.eulerAngles.x + rotationCorrections.x, -(newRot.eulerAngles.z + rotationCorrections.z), 0f);
+            //Vector3 conversion = new Vector3(newRot.eulerAngles.x , -newRot.eulerAngles.z , 0f);
+            transform.localRotation = Quaternion.Euler(conversion);
+
+            //Gunsight freeze on Z axis
+            Vector3 gunsightNewLocalPosition = new Vector3(0, 0, gunsightZStart);
+            gunsight.transform.localPosition = gunsightNewLocalPosition;
+            gunsight.transform.position = new Vector3(gunsight.transform.position.x, gunsight.transform.position.y, gunsightZStart);
+            gunsight.transform.rotation = gunsightStartRotation;
         }
 
         public void checkForNewConnections(bool isConnect, int playerNumber)

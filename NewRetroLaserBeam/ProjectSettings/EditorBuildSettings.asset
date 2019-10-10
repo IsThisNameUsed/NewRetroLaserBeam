@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Easy WiFi Controller/Scenes/Client/ControlsKitchenSinkClientScene.unity
-    guid: c9f788cd1ed835b41b6d811f282cecd4
+    path: Assets/Scenes/KOM_CLIENT.unity
+    guid: e19c16ff347219447a00c0892a6246a9
   m_configObjects: {}
