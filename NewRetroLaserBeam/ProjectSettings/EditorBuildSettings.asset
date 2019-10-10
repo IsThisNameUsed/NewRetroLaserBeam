@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Easy WiFi Controller/Scenes/Client/ControlsKitchenSinkClientScene.unity
+    guid: c9f788cd1ed835b41b6d811f282cecd4
   m_configObjects: {}
