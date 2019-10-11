@@ -100,8 +100,6 @@ namespace EasyWiFi.ServerControls
             transform.localRotation = Quaternion.Euler(conversion);
 
             //Gunsight freeze on Z axis
-            Vector3 gunsightNewLocalPosition = new Vector3(0, 0, gunsightZStart);
-            gunsight.transform.localPosition = gunsightNewLocalPosition;
             gunsight.transform.position = new Vector3(gunsight.transform.position.x, gunsight.transform.position.y, gunsightZStart);
             gunsight.transform.rotation = gunsightStartRotation;
         }
