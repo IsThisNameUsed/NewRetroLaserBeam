@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EasyWiFi.Core;
 
 public class LaserBehaviour : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class LaserBehaviour : MonoBehaviour
     public Ray ray;
     public RaycastHit hit;
     public static LaserManager laserManager;
-    public bool isShooting;
+    public bool isShooting = false;
     [Range(0, 3)] public int playerId;
     void Awake()
     {
@@ -18,7 +19,7 @@ public class LaserBehaviour : MonoBehaviour
     }
     private void Start()
     {
-        SetLaserActive(false);
+        //SetLaserActive();
     }
     // Update is called once per frame
     void Update()
@@ -26,7 +27,7 @@ public class LaserBehaviour : MonoBehaviour
         UpdateLaserRootPosition();
         UpdateLaserPositions();
 #if UNITY_EDITOR
-        if (playerId == 0)
+        /*if (playerId == 0)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -35,7 +36,7 @@ public class LaserBehaviour : MonoBehaviour
             Vector3 vector = laserManager.mainCamera.ScreenPointToRay(Input.mousePosition).direction;
 
             scopeImage.transform.position = laserManager.mainCamera.transform.position + vector.normalized;
-        }
+        } */
 #endif
     }
 
@@ -57,10 +58,21 @@ public class LaserBehaviour : MonoBehaviour
             laser.SetPosition(1, scopeImage.transform.position);
         }
     }
-    public bool SetLaserActive(bool _state)
+
+    public void SetLaser(ButtonControllerType shootButton)
     {
-        isShooting = _state;
-        return laser.enabled = _state;
+        if (shootButton.BUTTON_STATE_IS_PRESSED)
+        {
+            Debug.Log("IS PRESSED");
+            isShooting = true;
+            laser.enabled = true;
+        }  
+        else 
+        {
+            Debug.Log("IS NOT PRESSED");
+            isShooting = false;
+            laser.enabled = false;
+        }
     }
 }
 
