@@ -5,7 +5,8 @@ using EasyWiFi.Core;
 
 public class LaserBehaviour : MonoBehaviour
 {
-
+    public enum mode { targeting, damageDealer};
+    public mode laserMode;
     public GameObject scopeImage;
     LineRenderer laser;
     public Ray ray;
@@ -40,7 +41,7 @@ public class LaserBehaviour : MonoBehaviour
             scopeImage.transform.position = laserManager.mainCamera.transform.position + vector.normalized;
         }*/
 #endif
-        if (laserHit)
+        if (laserHit && laserMode == mode.damageDealer)
         {
             if (isShooting && hit.transform.GetComponent<EnemyBehaviour>())
             {
@@ -79,6 +80,9 @@ public class LaserBehaviour : MonoBehaviour
 
     public void SetLaser(ButtonControllerType shootButton)
     {
+        if (laserMode == mode.targeting)
+            return;
+
         if (shootButton.BUTTON_STATE_IS_PRESSED)
         {
             //Debug.Log("Switch IS PRESSED");
