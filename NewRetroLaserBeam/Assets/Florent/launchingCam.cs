@@ -19,6 +19,8 @@ public class launchingCam : MonoBehaviour
 
     public int waypointNb = 1;
 
+    public int currentWayPoint;
+
 
 
 
@@ -50,17 +52,11 @@ public class launchingCam : MonoBehaviour
 
         }
 
-        if (dollyOne.m_Position >= 2 && enemyToDie > 0)
-        {
-            camDir.Pause();
-            dollyOne.m_Speed = 0;
-        }
 
 
 
 
-
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKey(KeyCode.A))
         {
             enemyToDie -= 1;
         }
