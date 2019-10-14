@@ -9,10 +9,8 @@ namespace EasyWiFi.ServerControls
     [AddComponentMenu("EasyWiFiController/Server/UserControls/Match Orientation Gyro")]
     public class MatchOrientationGyroServerController : MonoBehaviour, IServerController
     {
-
         public string control = "Gyro";
         public EasyWiFiConstants.PLAYER_NUMBER player = EasyWiFiConstants.PLAYER_NUMBER.Player1;
-
         //runtime variables
         GyroControllerType[] gyro = new GyroControllerType[EasyWiFiConstants.MAX_CONTROLLERS];
         int currentNumberControllers = 0;

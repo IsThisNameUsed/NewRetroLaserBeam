@@ -29,7 +29,7 @@ public class LaserBehaviour : MonoBehaviour
         UpdateLaserRootPosition();
         UpdateLaserPositions();
 #if UNITY_EDITOR
-        if (playerId == 0)
+       /*if (playerId == 0 && EasyWiFiUtilities.getHighestPlayerNumber() == 0)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -38,7 +38,7 @@ public class LaserBehaviour : MonoBehaviour
             Vector3 vector = laserManager.mainCamera.ScreenPointToRay(Input.mousePosition).direction;
 
             scopeImage.transform.position = laserManager.mainCamera.transform.position + vector.normalized;
-        }
+        }*/
 #endif
         if (laserHit)
         {
@@ -70,22 +70,24 @@ public class LaserBehaviour : MonoBehaviour
             laser.SetPosition(1, scopeImage.transform.position);
         }
     }
+
     public bool SetFalseLaser(bool _state)
     {
         isShooting = _state;
         return laser.enabled = _state;
     }
+
     public void SetLaser(ButtonControllerType shootButton)
     {
         if (shootButton.BUTTON_STATE_IS_PRESSED)
         {
-            Debug.Log("IS PRESSED");
+            //Debug.Log("Switch IS PRESSED");
             isShooting = true;
             laser.enabled = true;
         }  
         else 
         {
-            Debug.Log("IS NOT PRESSED");
+            //Debug.Log("switch IS NOT PRESSED");
             isShooting = false;
             laser.enabled = false;
         }
