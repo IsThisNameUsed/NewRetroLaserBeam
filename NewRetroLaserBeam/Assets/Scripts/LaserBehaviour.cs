@@ -16,9 +16,12 @@ public class LaserBehaviour : MonoBehaviour
     public bool isShooting = false;
     public float laserDamage = 0.1f;
     [Range(0, 3)] public int playerId;
+    private AudioSource laserSound;
+
     void Awake()
     {
         laser = GetComponent<LineRenderer>();
+        laserSound = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -83,15 +86,17 @@ public class LaserBehaviour : MonoBehaviour
         if (laserMode == mode.targeting)
             return;
 
-        if (shootButton.BUTTON_STATE_IS_PRESSED)
+        if (shootButton.BUTTON_STATE_IS_PRESSED && isShooting==false)
         {
             //Debug.Log("Switch IS PRESSED");
+            laserSound.Play();
             isShooting = true;
             laser.enabled = true;
         }  
-        else 
+        else if(!shootButton.BUTTON_STATE_IS_PRESSED && isShooting == true) 
         {
             //Debug.Log("switch IS NOT PRESSED");
+            laserSound.Stop();
             isShooting = false;
             laser.enabled = false;
         }
