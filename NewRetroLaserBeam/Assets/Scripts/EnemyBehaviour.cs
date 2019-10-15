@@ -18,13 +18,15 @@ public class EnemyBehaviour : MonoBehaviour {
     public float hitCooldown = 0;
     public int[] playersHit = { 0, 0, 0, 0 };
     public ParticleSystem particleSystem;
+    public bool isMoving = true;
+
     void Start () {
         mainCamera = Camera.main;
         animator = GetComponent<Animator>();
         particleSystem = GetComponent<ParticleSystem>();
         headCollider = transform.GetChild(0).GetComponent<Collider>();
         bodyCollider = transform.GetChild(1).GetComponent<Collider>();
-        EnemyIsActive(true);
+        EnemyIsActive(isMoving);
         hitCooldown = hitTime;
     }
 	
@@ -37,17 +39,21 @@ public class EnemyBehaviour : MonoBehaviour {
         CheckHealth();
 
 	}
+
     public void GoToLocation()
     {
         transform.position += (mainCamera.transform.position - transform.position).normalized * Time.deltaTime * moveSpeed; 
     }
+
     void CheckHealth()
     {
         if (healthPoint <= 0)
         {
             Destroy(gameObject);
+            GameManager.instance.deleteAttackingEnemy(this);
         }
     }
+
     public float DealDamage(float _damage,Collider _col, int _playerId)
     {
         //Check if hit on head.
@@ -79,6 +85,7 @@ public class EnemyBehaviour : MonoBehaviour {
         }
 
     }
+
     private void ResetPlayersHit()
     {
         for(int i = 0; i < playersHit.Length; i++)
@@ -86,11 +93,13 @@ public class EnemyBehaviour : MonoBehaviour {
             playersHit[i] = 0;
         }
     }
+
     public bool EnemyIsActive(bool _state)
     {
         animator.SetBool("isActive", _state);
         return _state;
     }
+
     public bool EnemyIsClose(bool _state)
     {
         animator.SetBool("isClose", _state);

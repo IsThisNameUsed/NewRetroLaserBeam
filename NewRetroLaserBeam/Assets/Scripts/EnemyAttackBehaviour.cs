@@ -5,10 +5,16 @@ using UnityEngine;
 public class EnemyAttackBehaviour : StateMachineBehaviour {
 
     EnemyBehaviour enemyBehaviour;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemyBehaviour = animator.gameObject.GetComponent<EnemyBehaviour>();
+        if (enemyBehaviour == null)
+            Debug.Log("NULL");
+        Debug.Log(animator.gameObject.name);
+       
+        GameManager.instance.addAttackingEnemy(enemyBehaviour);
 
     }
 

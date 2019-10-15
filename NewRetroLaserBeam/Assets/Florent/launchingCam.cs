@@ -8,18 +8,16 @@ using Cinemachine;
 public class launchingCam : MonoBehaviour
 {
 
-
     PlayableDirector camDir;
     public CinemachinePathBase m_Path;
     public CinemachineDollyCart dollyOne;
     
 
-
     public int enemyToDie = 5;
-
     public int waypointNb = 1;
-
     public int currentWayPoint;
+
+    public GameObject camChild;
 
 
 
@@ -28,12 +26,14 @@ public class launchingCam : MonoBehaviour
     void Start()
     {
         camDir = GetComponent<PlayableDirector>();
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(enemyToDie);
+        //Debug.Log(enemyToDie);
         //Debug.Log(dollyOne.m_Position);
 
         if (dollyOne.m_Position >= waypointNb && enemyToDie > 0)
