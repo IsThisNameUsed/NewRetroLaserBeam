@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19887,7 +19887,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 466795833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.15, y: -2.54, z: 72.259995}
+  m_LocalPosition: {x: 11.15, y: -2.54, z: 88}
   m_LocalScale: {x: 20.772257, y: 5.7842813, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -35087,7 +35087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1027926108
 Transform:
   m_ObjectHideFlags: 0
@@ -35095,7 +35095,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1027926107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.0977964, y: 9.182033, z: 15.718927}
+  m_LocalPosition: {x: 5.0977964, y: 9.182033, z: 33.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2122107912}
@@ -40295,7 +40295,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1284814126}
-  m_LocalRotation: {x: 0.00084722275, y: -0.029286902, z: 0.000024823186, w: 0.9995707}
+  m_LocalRotation: {x: 0.010925241, y: -0.07785697, z: 0.0008532475, w: 0.9969043}
   m_LocalPosition: {x: 23.871378, y: -21.422474, z: -47.2}
   m_LocalScale: {x: 0.9999999, y: 1, z: 1}
   m_Children:
@@ -40629,6 +40629,7 @@ MonoBehaviour:
   enemyToDie: 5
   waypointNb: 1
   currentWayPoint: 0
+  numberOfenemiesPerWayPoint: 
   camChild: {fileID: 0}
 --- !u!1001 &1395546335
 Prefab:
@@ -46112,8 +46113,11 @@ MonoBehaviour:
   - position: {x: 3, y: 7.491786, z: 68.71059}
     tangent: {x: 1, y: 0.60774994, z: 8.988907}
     roll: 0
-  - position: {x: 4, y: 3.7493439, z: 116.44907}
-    tangent: {x: 1, y: -5.6159897, z: 11.572563}
+  - position: {x: 4, y: 8.099536, z: 79.5569}
+    tangent: {x: 1, y: 0.60774994, z: 7.3541183}
+    roll: 0
+  - position: {x: 4.5, y: 8.707286, z: 119.000984}
+    tangent: {x: 1, y: -2.2813435, z: 7.3541183}
     roll: 0
 --- !u!4 &1753405791
 Transform:
