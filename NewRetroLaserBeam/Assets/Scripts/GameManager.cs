@@ -15,7 +15,7 @@ public  class GameManager : MonoBehaviour {
     CinemachineBrain cinemachineBrain;
     // Use this for initialization
 
-    IEnumerator cameraShakerCoroutine()
+    /*IEnumerator cameraShakerCoroutine()
     {
         cameraShakerIsRunning = true;
        
@@ -29,7 +29,7 @@ public  class GameManager : MonoBehaviour {
             yield return new WaitForSeconds(0.8f);
         }
         
-    }
+    }*/
 
     void Start () {
         if (instance != null)
@@ -49,8 +49,8 @@ public  class GameManager : MonoBehaviour {
 
     public void addAttackingEnemy(EnemyBehaviour enemy)
     {
-        if (cameraShakerIsRunning == false)
-            StartCoroutine("cameraShakerCoroutine");
+        /*if (cameraShakerIsRunning == false)
+            StartCoroutine("cameraShakerCoroutine");*/
 
         attackingEnemy.Add(enemy);
         Debug.Log("add " + enemy.gameObject.name);

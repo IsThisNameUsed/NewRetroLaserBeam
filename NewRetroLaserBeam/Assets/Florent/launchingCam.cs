@@ -11,12 +11,12 @@ public class launchingCam : MonoBehaviour
     PlayableDirector camDir;
     public CinemachinePathBase m_Path;
     public CinemachineDollyCart dollyOne;
-    
+   
+    public int enemyToDie;
 
-    public int enemyToDie = 5;
-    public int waypointNb = 1;
-    public int currentWayPoint;
-
+    public int waypointNb = 4;
+    public int currentWayPoint = 1;
+    public int[] numberOfenemiesPerWayPoint;
     public GameObject camChild;
 
 
@@ -26,8 +26,7 @@ public class launchingCam : MonoBehaviour
     void Start()
     {
         camDir = GetComponent<PlayableDirector>();
-
-
+        enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint];
     }
 
     // Update is called once per frame
@@ -36,7 +35,7 @@ public class launchingCam : MonoBehaviour
         //Debug.Log(enemyToDie);
         //Debug.Log(dollyOne.m_Position);
 
-        if (dollyOne.m_Position >= waypointNb && enemyToDie > 0)
+        if (dollyOne.m_Position >= currentWayPoint && enemyToDie > 0)
         {
 
             camDir.Pause();
@@ -46,25 +45,26 @@ public class launchingCam : MonoBehaviour
 
 
         if (enemyToDie <= 0)
-        {
-            camDir.Play();
-            dollyOne.m_Speed = 1;
-
+        {   
+            if(currentWayPoint+1<waypointNb)
+            {
+                camDir.Play();
+                currentWayPoint += 1;
+                enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint];
+                dollyOne.m_Speed = 1;
+            }
         }
-
-
-
-
 
         if (Input.GetKey(KeyCode.A))
         {
             enemyToDie -= 1;
         }
-
-
     }
 
-
+    public void DestroyEnemy()
+    {
+        enemyToDie -= 1;
+    }
 
     /*private void OnTriggerEnter(Collider other)
     {

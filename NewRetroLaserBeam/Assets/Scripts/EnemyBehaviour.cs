@@ -21,12 +21,18 @@ public class EnemyBehaviour : MonoBehaviour {
     public bool isMoving = true;
     [Range(0,20)]public float stopDistance = 1;
 
+    public launchingCam camManager;
+
     void Start () {
         mainCamera = Camera.main;
+        camManager = mainCamera.GetComponent<launchingCam>();
+
         animator = GetComponent<Animator>();
         particleSystem = GetComponent<ParticleSystem>();
+
         headCollider = transform.GetChild(0).GetComponent<Collider>();
         bodyCollider = transform.GetChild(1).GetComponent<Collider>();
+
         EnemyIsActive(isMoving);
         hitCooldown = hitTime;
     }
@@ -51,6 +57,7 @@ public class EnemyBehaviour : MonoBehaviour {
         if (healthPoint <= 0)
         {
             Destroy(gameObject);
+
             GameManager.instance.deleteAttackingEnemy(this);
         }
     }
