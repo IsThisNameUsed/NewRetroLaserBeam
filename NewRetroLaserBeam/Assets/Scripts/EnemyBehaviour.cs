@@ -19,6 +19,7 @@ public class EnemyBehaviour : MonoBehaviour {
     public int[] playersHit = { 0, 0, 0, 0 };
     public ParticleSystem particleSystem;
     public bool isMoving = true;
+    [Range(0,20)]public float stopDistance = 1;
 
     void Start () {
         mainCamera = Camera.main;

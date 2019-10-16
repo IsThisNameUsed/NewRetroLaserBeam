@@ -17,7 +17,7 @@ public class EnemyGetCloseBehaviour : StateMachineBehaviour {
     {
         //gameObject.GetComponent<EnemyBehaviour>().GoToLocation();
         animator.transform.position += (enemyBehaviour.mainCamera.transform.position - animator.transform.position).normalized * Time.deltaTime * enemyBehaviour.moveSpeed;
-        if (Vector3.Distance(gameObject.transform.position, enemyBehaviour.mainCamera.transform.position) < 2.5f)
+        if (Vector3.Distance(gameObject.transform.position, enemyBehaviour.mainCamera.transform.position) < 10 * enemyBehaviour.stopDistance)
         {
             enemyBehaviour.EnemyIsClose(true);
         }
