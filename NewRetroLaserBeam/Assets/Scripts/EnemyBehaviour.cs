@@ -64,22 +64,27 @@ public class EnemyBehaviour : MonoBehaviour {
 
     public float DealDamage(float _damage,Collider _col, int _playerId)
     {
+        print(_damage);
         //Check if hit on head.
         if (_col == headCollider)
         {
             playersHit[_playerId] = 2;
+            Debug.Log("HIT HEAD");
         }
         else
         {
             playersHit[_playerId] = 1;
+            Debug.Log("HIT BODY");
         }
         //Check if we can hit
         if (hitCooldown <= 0)
         {
             float totalDamage = 0;
+            
             for(int i = 0; i < playersHit.Length; i++)
             {
                 totalDamage += (_damage * playersHit[i]);
+                Debug.Log(totalDamage);
             }
             ResetPlayersHit();
             hitCooldown = hitTime;

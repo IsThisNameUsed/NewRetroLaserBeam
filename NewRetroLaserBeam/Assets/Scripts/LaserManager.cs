@@ -36,10 +36,12 @@ public class LaserManager : MonoBehaviour
             lasers[i] = laserGameObjects[i].GetComponent<LaserBehaviour>();
             lasers[i].UpdateLaserRootPosition();
         }
-        for(int i = playingPlayers; i < 4; i++)
+
+        //TODO WHEN 4 PLAYERS
+        /*for(int i = playingPlayers; i < 4; i++)
         {
             laserGameObjects[i].SetActive(false);
-        }
+        }*/
 
     }
 

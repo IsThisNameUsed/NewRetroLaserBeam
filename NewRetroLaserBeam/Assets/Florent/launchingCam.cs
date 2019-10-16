@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class launchingCam : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class launchingCam : MonoBehaviour
    
     public int enemyToDie;
 
-    public int waypointNb = 4;
+    public int waypointNb = 3;
     public int currentWayPoint = 1;
     public int[] numberOfenemiesPerWayPoint;
     public float[] times;
@@ -47,8 +48,9 @@ public class launchingCam : MonoBehaviour
 
         if (enemyToDie <= 0)
         {
-            if(currentWayPoint < waypointNb)
+            if (currentWayPoint < waypointNb)
                 currentWayPoint += 1;
+            else SceneManager.LoadScene("KOM_SERVER");
             if (playableDirector.time < times[currentWayPoint])
             {
                 camDir.Play();
@@ -63,11 +65,14 @@ public class launchingCam : MonoBehaviour
             dollyOne.m_Speed = 0;
         }
 
-        
-
         if (Input.GetKeyDown(KeyCode.A))
         {
             enemyToDie -= 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("KOM_SERVER");
         }
     }
 

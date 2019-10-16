@@ -14,14 +14,22 @@ public class LaserBehaviour : MonoBehaviour
     public bool laserHit = false;
     public static LaserManager laserManager;
     public bool isShooting = false;
-    public float laserDamage = 0.1f;
+    public float laserDamage = 0.2f;
     [Range(0, 3)] public int playerId;
+    private Component[] audioSources;
     private AudioSource laserSound;
-
+    public AudioSource laserHitSound;
+    public GameObject emitter;
+    
     void Awake()
     {
         laser = GetComponent<LineRenderer>();
-        laserSound = GetComponent<AudioSource>();
+        if(laserMode == mode.damageDealer)
+        {
+            audioSources = GetComponents(typeof(AudioSource));
+            laserSound = audioSources[0] as AudioSource;
+            laserHitSound = audioSources[1] as AudioSource;
+        } 
     }
     private void Start()
     {
@@ -46,33 +54,53 @@ public class LaserBehaviour : MonoBehaviour
 #endif
         if (laserHit && laserMode == mode.damageDealer)
         {
-            if (isShooting && hit.transform.GetComponent<EnemyBehaviour>())
+            if (isShooting && hit.transform.gameObject.tag == "Enemy")
             {
                 hit.transform.GetComponent<EnemyBehaviour>().DealDamage(laserDamage, hit.collider, playerId);
+                
             }
         }
-
     }
 
     public void UpdateLaserRootPosition()
     {
-        ray = laserManager.mainCamera.ScreenPointToRay(new Vector3((laserManager.mainCamera.pixelWidth / (LaserManager.playingPlayers + 1)) * (playerId + 1), 0, -2));
-        laser.SetPosition(0, ray.origin);
+        //ray = laserManager.mainCamera.ScreenPointToRay(new Vector3((laserManager.mainCamera.pixelWidth / (LaserManager.playingPlayers + 1)) * (playerId + 1), 0, -2));
+        //laser.SetPosition(0, ray.origin);
+        ray = new Ray(emitter.transform.position, emitter.transform.forward);
+        laser.SetPosition(0, emitter.transform.position);
         //transform.GetChild(_laserArray).position = ray.origin;
     }
     public void UpdateLaserPositions()
     {
-        ray = laserManager.mainCamera.ScreenPointToRay(laserManager.mainCamera.WorldToScreenPoint(scopeImage.transform.position));
+        
+        laser.SetPosition(1, emitter.transform.forward * 50 + transform.position);
+
+        // ray = laserManager.mainCamera.ScreenPointToRay(laserManager.mainCamera.WorldToScreenPoint(scopeImage.transform.position));
         if (Physics.Raycast(ray, out hit))
         {
-            laserHit = true;
+            if (hit.transform.gameObject.tag == "Enemy" && isShooting)
+            {
+                laserHit = true;
+                if (!laserHitSound.isPlaying && laserMode == mode.damageDealer)
+                {
+                    laserHitSound.Play();
+                    laserHitSound.pitch = Random.Range(0.7f, 3);
+                }
+            }
+            else
+            {
+                laserHit = false;
+                if(laserMode == mode.damageDealer)
+                    laserHitSound.Stop();
+            }
             laser.SetPosition(1, hit.point);
         }
-        else
+        else laserHit = false;
+        /*else
         {
             laserHit = false;
             laser.SetPosition(1, scopeImage.transform.position);
-        }
+        }*/
     }
 
     public bool SetFalseLaser(bool _state)

@@ -39,15 +39,15 @@ GameObject:
   - component: {fileID: 54018835491131140}
   - component: {fileID: 114996207040029114}
   - component: {fileID: 95122203809565978}
-  - component: {fileID: 198955670181807302}
-  - component: {fileID: 199438447907632962}
+  - component: {fileID: 199435701397484426}
+  - component: {fileID: 198196156935835522}
   m_Layer: 0
   m_Name: enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1864118065334908
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,9 +71,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1652524005722346}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.79, y: 0, z: 24.72}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.924017, y: -3.709333, z: 14.62}
+  m_LocalScale: {x: 2.476222, y: 2.7223587, z: 2.476222}
   m_Children:
   - {fileID: 4710000445633748}
   - {fileID: 4875167848665160}
@@ -87,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1864118065334908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.488, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 4044495963330954}
@@ -131,8 +131,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.9, z: 0.9}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9000001, y: 0.7475183, z: 0.9000001}
+  m_Center: {x: 0, y: -0.076241024, z: 0}
 --- !u!65 &65848864436963134
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -143,8 +143,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.9, z: 0.9}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.89999986, y: 0.66295636, z: 0.89999986}
+  m_Center: {x: 0, y: 0.064357206, z: 0}
 --- !u!95 &95122203809565978
 Animator:
   serializedVersion: 3
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPoint: 1
-  moveSpeed: 1
+  moveSpeed: 4
   damagePoint: 1
   isCloseToPlayers: 0
   mainCamera: {fileID: 0}
@@ -183,7 +183,10 @@ MonoBehaviour:
   hitCooldown: 0
   playersHit: 00000000000000000000000000000000
   particleSystem: {fileID: 0}
---- !u!198 &198955670181807302
+  isMoving: 1
+  stopDistance: 4
+  camManager: {fileID: 0}
+--- !u!198 &198196156935835522
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4773,7 +4776,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &199438447907632962
+--- !u!199 &199435701397484426
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 1
