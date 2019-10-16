@@ -21,7 +21,8 @@ namespace EasyWiFi.ServerControls
         public GameObject gunsight;
         public float gunsightZStart;
         public Quaternion gunsightStartRotation;
-
+        private float camZStart;
+      
         void OnEnable()
         {
             EasyWiFiController.On_ConnectionsChanged += checkForNewConnections;
@@ -45,6 +46,7 @@ namespace EasyWiFi.ServerControls
             Vector3 neutralOrientation = new Vector3(startOrientation.eulerAngles.x, startOrientation.eulerAngles.y, startOrientation.eulerAngles.z);
 
             gunsightZStart = gunsight.transform.position.z;
+            camZStart = Camera.main.transform.position.z;
             gunsightStartRotation = gunsight.transform.rotation;
         }
         // Update is called once per frame
@@ -98,7 +100,8 @@ namespace EasyWiFi.ServerControls
             transform.localRotation = Quaternion.Euler(conversion);
 
             //Gunsight freeze on Z axis
-            gunsight.transform.position = new Vector3(gunsight.transform.position.x, gunsight.transform.position.y, gunsightZStart);
+            float camZ = Camera.main.transform.position.z;
+            gunsight.transform.position = new Vector3(gunsight.transform.position.x, gunsight.transform.position.y, gunsightZStart -(camZStart-camZ));
             gunsight.transform.rotation = gunsightStartRotation;
         }
 
