@@ -43,7 +43,7 @@ namespace EasyWiFi.ServerControls
         {
             Quaternion startOrientation = transform.rotation;
             Vector3 neutralOrientation = new Vector3(startOrientation.eulerAngles.x, startOrientation.eulerAngles.y, startOrientation.eulerAngles.z);
-            Debug.Log(neutralOrientation);
+
             gunsightZStart = gunsight.transform.position.z;
             gunsightStartRotation = gunsight.transform.rotation;
         }

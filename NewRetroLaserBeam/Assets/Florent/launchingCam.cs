@@ -17,9 +17,10 @@ public class launchingCam : MonoBehaviour
     public int waypointNb = 4;
     public int currentWayPoint = 1;
     public int[] numberOfenemiesPerWayPoint;
+    public float[] times;
     public GameObject camChild;
 
-
+    public PlayableDirector playableDirector;
 
 
     // Start is called before the first frame update
@@ -27,35 +28,44 @@ public class launchingCam : MonoBehaviour
     {
         camDir = GetComponent<PlayableDirector>();
         enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint];
+        //playableDirector = GetComponent<PlayableDirector>();
+        times = new float[5];
+        times[1] = 1.40f;
+        times[2] = 2.25f;
+        times[3] = 7f;
+        times[4] = 8.30f;
+        Debug.Log(playableDirector.time);
+        Debug.Log(times[4]);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(playableDirector.time);
         //Debug.Log(enemyToDie);
         //Debug.Log(dollyOne.m_Position);
 
-        if (dollyOne.m_Position >= currentWayPoint && enemyToDie > 0)
-        {
-
-            camDir.Pause();
-            dollyOne.m_Speed = 0;
-
-        }
-
-
         if (enemyToDie <= 0)
-        {   
-            if(currentWayPoint+1<waypointNb)
+        {
+            if(currentWayPoint < waypointNb)
+                currentWayPoint += 1;
+            if (playableDirector.time < times[currentWayPoint])
             {
                 camDir.Play();
-                currentWayPoint += 1;
                 enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint];
                 dollyOne.m_Speed = 1;
             }
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (playableDirector.time >= times[currentWayPoint] && enemyToDie > 0)
+        {
+            camDir.Pause();
+            dollyOne.m_Speed = 0;
+        }
+
+        
+
+        if (Input.GetKeyDown(KeyCode.A))
         {
             enemyToDie -= 1;
         }

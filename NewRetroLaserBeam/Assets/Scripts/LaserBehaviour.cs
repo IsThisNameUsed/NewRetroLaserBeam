@@ -56,7 +56,7 @@ public class LaserBehaviour : MonoBehaviour
 
     public void UpdateLaserRootPosition()
     {
-        ray = laserManager.mainCamera.ScreenPointToRay(new Vector3((laserManager.mainCamera.pixelWidth / (LaserManager.playingPlayers + 1)) * (playerId + 1), 0, 0));
+        ray = laserManager.mainCamera.ScreenPointToRay(new Vector3((laserManager.mainCamera.pixelWidth / (LaserManager.playingPlayers + 1)) * (playerId + 1), 0, -2));
         laser.SetPosition(0, ray.origin);
         //transform.GetChild(_laserArray).position = ray.origin;
     }

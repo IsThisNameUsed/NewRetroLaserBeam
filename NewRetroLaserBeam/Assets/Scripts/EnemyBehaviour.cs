@@ -19,13 +19,13 @@ public class EnemyBehaviour : MonoBehaviour {
     public int[] playersHit = { 0, 0, 0, 0 };
     public ParticleSystem particleSystem;
     public bool isMoving = true;
-    [Range(0,20)]public float stopDistance = 1;
+    [Range(0,20)]public float stopDistance = 2;
 
     public launchingCam camManager;
 
     void Start () {
         mainCamera = Camera.main;
-        camManager = mainCamera.GetComponent<launchingCam>();
+        camManager = GameObject.Find("camManager").GetComponent<launchingCam>();
 
         animator = GetComponent<Animator>();
         particleSystem = GetComponent<ParticleSystem>();
@@ -57,7 +57,7 @@ public class EnemyBehaviour : MonoBehaviour {
         if (healthPoint <= 0)
         {
             Destroy(gameObject);
-
+            camManager.DestroyEnemy();
             GameManager.instance.deleteAttackingEnemy(this);
         }
     }
