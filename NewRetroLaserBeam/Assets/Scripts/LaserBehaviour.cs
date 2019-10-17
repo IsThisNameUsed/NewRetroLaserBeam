@@ -20,7 +20,8 @@ public class LaserBehaviour : MonoBehaviour
     private AudioSource laserSound;
     public AudioSource laserHitSound;
     public GameObject emitter;
-    
+    public GameObject burnParticle;
+
     void Awake()
     {
         laser = GetComponent<LineRenderer>();
@@ -57,7 +58,8 @@ public class LaserBehaviour : MonoBehaviour
             if (isShooting && hit.transform.gameObject.tag == "Enemy")
             {
                 hit.transform.GetComponent<EnemyBehaviour>().DealDamage(laserDamage, hit.collider, playerId);
-                
+                burnParticle.SetActive(true);
+                burnParticle.transform.position = hit.point;
             }
         }
     }
@@ -90,8 +92,11 @@ public class LaserBehaviour : MonoBehaviour
             else
             {
                 laserHit = false;
-                if(laserMode == mode.damageDealer)
+                if (laserMode == mode.damageDealer)
+                {
+                    burnParticle.SetActive(true);
                     laserHitSound.Stop();
+                }
             }
             laser.SetPosition(1, hit.point);
         }
