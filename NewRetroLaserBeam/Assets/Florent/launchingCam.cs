@@ -33,8 +33,8 @@ public class launchingCam : MonoBehaviour
         times = new float[5];
         times[1] = 1.40f;
         times[2] = 2.25f;
-        times[3] = 7f;
-        times[4] = 8.30f;
+        times[3] = 10f;
+        times[4] = 18f;
         Debug.Log(playableDirector.time);
         Debug.Log(times[4]);
     }

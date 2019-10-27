@@ -95,7 +95,7 @@ namespace EasyWiFi.ServerControls
             }
 
             Quaternion newRot = new Quaternion(orientation.x, orientation.y, orientation.z, orientation.w);
-            Vector3 conversion = new Vector3(newRot.eulerAngles.x + rotationCorrections.x, -(newRot.eulerAngles.z + rotationCorrections.z), 0f);
+            Vector3 conversion = new Vector3(-(newRot.eulerAngles.x + rotationCorrections.x), -(newRot.eulerAngles.z + rotationCorrections.z), 0f);
             //Vector3 conversion = new Vector3(newRot.eulerAngles.x , -newRot.eulerAngles.z , 0f);
             transform.localRotation = Quaternion.Euler(conversion);
 

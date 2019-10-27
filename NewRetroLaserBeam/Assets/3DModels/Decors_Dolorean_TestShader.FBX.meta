@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: caaebe5f37f114741abf14556fd0753c
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Arch_Full
+    100002: Arch_left
+    100004: Arch_Right
+    100006: Barrel_001
+    100008: Barrel_002
+    100010: Big_Herbes_001
+    100012: Big_Herbes_002
+    100014: Big_Herbes_003
+    100016: Big_Herbes_004
+    100018: Big_Herbes_005
+    100020: Big_Herbes_006
+    100022: //RootNode
+    100024: Ground
+    100026: tree_V01_001
+    100028: tree_V01_002
+    100030: tree_V01_003
+    100032: tree_V02_001
+    100034: tree_V02_002
+    100036: tree_V02_003
+    100038: tree_V02_004
+    100040: Wall_Left
+    100042: Wall_Right
+    400000: Arch_Full
+    400002: Arch_left
+    400004: Arch_Right
+    400006: Barrel_001
+    400008: Barrel_002
+    400010: Big_Herbes_001
+    400012: Big_Herbes_002
+    400014: Big_Herbes_003
+    400016: Big_Herbes_004
+    400018: Big_Herbes_005
+    400020: Big_Herbes_006
+    400022: //RootNode
+    400024: Ground
+    400026: tree_V01_001
+    400028: tree_V01_002
+    400030: tree_V01_003
+    400032: tree_V02_001
+    400034: tree_V02_002
+    400036: tree_V02_003
+    400038: tree_V02_004
+    400040: Wall_Left
+    400042: Wall_Right
+    2100000: No Name
+    2100002: Branches
+    2100004: Feuilles
+    2300000: Arch_Full
+    2300002: Arch_left
+    2300004: Arch_Right
+    2300006: Barrel_001
+    2300008: Barrel_002
+    2300010: Big_Herbes_001
+    2300012: Big_Herbes_002
+    2300014: Big_Herbes_003
+    2300016: Big_Herbes_004
+    2300018: Big_Herbes_005
+    2300020: Big_Herbes_006
+    2300022: Ground
+    2300024: tree_V01_001
+    2300026: tree_V01_002
+    2300028: tree_V01_003
+    2300030: tree_V02_001
+    2300032: tree_V02_002
+    2300034: tree_V02_003
+    2300036: tree_V02_004
+    2300038: Wall_Left
+    2300040: Wall_Right
+    3300000: Arch_Full
+    3300002: Arch_left
+    3300004: Arch_Right
+    3300006: Barrel_001
+    3300008: Barrel_002
+    3300010: Big_Herbes_001
+    3300012: Big_Herbes_002
+    3300014: Big_Herbes_003
+    3300016: Big_Herbes_004
+    3300018: Big_Herbes_005
+    3300020: Big_Herbes_006
+    3300022: Ground
+    3300024: tree_V01_001
+    3300026: tree_V01_002
+    3300028: tree_V01_003
+    3300030: tree_V02_001
+    3300032: tree_V02_002
+    3300034: tree_V02_003
+    3300036: tree_V02_004
+    3300038: Wall_Left
+    3300040: Wall_Right
+    4300000: Ground
+    4300002: Wall_Right
+    4300004: Wall_Left
+    4300006: Barrel_002
+    4300008: Barrel_001
+    4300010: Arch_left
+    4300012: Arch_Right
+    4300014: Arch_Full
+    4300016: tree_V01_001
+    4300018: tree_V02_001
+    4300020: Big_Herbes_001
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
