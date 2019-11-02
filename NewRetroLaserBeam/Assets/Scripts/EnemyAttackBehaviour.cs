@@ -14,7 +14,7 @@ public class EnemyAttackBehaviour : StateMachineBehaviour {
             Debug.Log("NULL");
         Debug.Log(animator.gameObject.name);
        
-        GameManager.instance.addAttackingEnemy(enemyBehaviour);
+        DamageOnPlayerManager.instance.addAttackingEnemy(enemyBehaviour);
 
     }
 

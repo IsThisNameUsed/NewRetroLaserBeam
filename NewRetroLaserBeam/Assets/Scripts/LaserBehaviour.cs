@@ -58,19 +58,16 @@ public class LaserBehaviour : MonoBehaviour
             if (isShooting && hit.transform.gameObject.tag == "Enemy")
             {
                 hit.transform.GetComponent<EnemyBehaviour>().DealDamage(laserDamage, hit.collider, playerId);
-                burnParticle.SetActive(true);
-                burnParticle.transform.position = hit.point;
+                //burnParticle.SetActive(true);
+                //burnParticle.transform.position = hit.point;
             }
         }
     }
 
     public void UpdateLaserRootPosition()
     {
-        //ray = laserManager.mainCamera.ScreenPointToRay(new Vector3((laserManager.mainCamera.pixelWidth / (LaserManager.playingPlayers + 1)) * (playerId + 1), 0, -2));
-        //laser.SetPosition(0, ray.origin);
         ray = new Ray(emitter.transform.position, emitter.transform.forward);
         laser.SetPosition(0, emitter.transform.position);
-        //transform.GetChild(_laserArray).position = ray.origin;
     }
     public void UpdateLaserPositions()
     {
@@ -94,7 +91,7 @@ public class LaserBehaviour : MonoBehaviour
                 laserHit = false;
                 if (laserMode == mode.damageDealer)
                 {
-                    burnParticle.SetActive(true);
+                    //burnParticle.SetActive(true);
                     laserHitSound.Stop();
                 }
             }

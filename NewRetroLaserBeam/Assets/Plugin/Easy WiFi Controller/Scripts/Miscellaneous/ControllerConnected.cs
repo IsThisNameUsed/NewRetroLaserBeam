@@ -4,6 +4,7 @@ using EasyWiFi.ServerControls;
 using EasyWiFi.Core;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [AddComponentMenu("EasyWiFiController/Miscellaneous/ControllerConnected")]
 public class ControllerConnected : MonoBehaviour {
@@ -154,7 +155,8 @@ public class ControllerConnected : MonoBehaviour {
             }
         }
         //start the game scene
-        Application.LoadLevel("ControllerSelectServerScenePart2");
+        //Application.LoadLevel("ControllerSelectServerScenePart2");
+        SceneManager.LoadScene("ControllerSelectServerScenePart2");
     }
 
     //apparently because the callback is being called from the listener thread we can't instantiate the prefab from within

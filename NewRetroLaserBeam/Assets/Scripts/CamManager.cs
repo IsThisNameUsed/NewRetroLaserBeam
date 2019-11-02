@@ -6,10 +6,10 @@ using UnityEngine.Timeline;
 using Cinemachine;
 using UnityEngine.SceneManagement;
 
-public class launchingCam : MonoBehaviour
+public class CamManager : MonoBehaviour
 {
+    public static CamManager instance;
 
-    PlayableDirector camDir;
     public CinemachinePathBase m_Path;
     public CinemachineDollyCart dollyOne;
    
@@ -23,11 +23,17 @@ public class launchingCam : MonoBehaviour
 
     public PlayableDirector playableDirector;
 
+    private bool GameIsActiv; //If we need to pause the the game use this
 
     // Start is called before the first frame update
     void Start()
     {
-        camDir = GetComponent<PlayableDirector>();
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else instance = this;
+
         enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint];
         //playableDirector = GetComponent<PlayableDirector>();
         times = new float[5];
@@ -37,14 +43,16 @@ public class launchingCam : MonoBehaviour
         times[4] = 18f;
         Debug.Log(playableDirector.time);
         Debug.Log(times[4]);
+        GameIsActiv = true;
+        playableDirector.Pause();
     }
 
     // Update is called once per frame
     void Update()
-    {
-        //Debug.Log(playableDirector.time);
-        //Debug.Log(enemyToDie);
-        //Debug.Log(dollyOne.m_Position);
+    { 
+        if (!GameIsActiv)
+            return;
+        else playableDirector.Play();
 
         if (enemyToDie <= 0)
         {
@@ -53,7 +61,7 @@ public class launchingCam : MonoBehaviour
             else SceneManager.LoadScene("KOM_SERVER");
             if (playableDirector.time < times[currentWayPoint])
             {
-                camDir.Play();
+                playableDirector.Play();
                 enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint];
                 dollyOne.m_Speed = 1;
             }
@@ -61,7 +69,7 @@ public class launchingCam : MonoBehaviour
 
         if (playableDirector.time >= times[currentWayPoint] && enemyToDie > 0)
         {
-            camDir.Pause();
+            playableDirector.Pause();
             dollyOne.m_Speed = 0;
         }
 
@@ -81,6 +89,10 @@ public class launchingCam : MonoBehaviour
         enemyToDie -= 1;
     }
 
+    public void SetGameActiv(bool isActiv)
+    {
+        GameIsActiv = isActiv;
+    }
     /*private void OnTriggerEnter(Collider other)
     {
         if(other.transform.tag == "cameraStop")
@@ -89,6 +101,4 @@ public class launchingCam : MonoBehaviour
             Debug.Log("test cam");
         }
     }*/
-
-
 }
