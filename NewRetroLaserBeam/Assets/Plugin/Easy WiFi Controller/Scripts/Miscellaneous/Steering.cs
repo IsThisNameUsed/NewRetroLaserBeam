@@ -24,7 +24,6 @@ public class Steering : MonoBehaviour {
 
     void Update()
     {
-        floatBackchannel.setValue(myRigidbody.velocity.magnitude);
     }
 
     //human example scene methods (gaspedal, brakepedal, and steerball)

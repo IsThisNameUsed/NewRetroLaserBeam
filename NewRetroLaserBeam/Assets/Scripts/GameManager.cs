@@ -1,4 +1,5 @@
 ﻿using EasyWiFi.Core;
+using EasyWiFi.ServerBackchannels;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public float TimeForSpendCoins;
+
+    public FloatServerBackchannel Time;
+
     IEnumerator startGameCoroutine()
     {
         yield return new WaitForSeconds(TimeForSpendCoins);
@@ -21,6 +25,8 @@ public class GameManager : MonoBehaviour
         }
         else instance = this;
         StartCoroutine("startGameCoroutine");
+
+        Time.setValue(TimeForSpendCoins);
     }
 
     void Update()
