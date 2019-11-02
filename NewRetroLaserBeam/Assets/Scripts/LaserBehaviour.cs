@@ -53,7 +53,7 @@ public class LaserBehaviour : MonoBehaviour
 
 //Commande de debug à la souris DEBUG MODE
 #if UNITY_EDITOR
-        if (playerId == 0 && EasyWiFiUtilities.getHighestPlayerNumber() == 0)
+        if (LaserManager.instance.DEBUGMODE)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -67,14 +67,12 @@ public class LaserBehaviour : MonoBehaviour
 
     public void UpdateLaserRootPosition()
     {
-        ray = new Ray(emitter.transform.position, emitter.transform.forward);
         laser.SetPosition(0, emitter.transform.position);
     }
 
     public void UpdateLaserPositions()
     {
-        
-        laser.SetPosition(1, emitter.transform.forward * 50 + transform.position);
+        ray = new Ray(emitter.transform.position, emitter.transform.forward);
 
         // ray = laserManager.mainCamera.ScreenPointToRay(laserManager.mainCamera.WorldToScreenPoint(scopeImage.transform.position));
         if (Physics.Raycast(ray, out hit))
@@ -99,7 +97,12 @@ public class LaserBehaviour : MonoBehaviour
             }
             laser.SetPosition(1, hit.point);
         }
-        else laserHit = false;
+        else
+        {
+            laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 50);
+            laserHit = false;
+
+        }
         /*else
         {
             laserHit = false;

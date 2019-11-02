@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EasyWiFi.Core;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,10 +23,21 @@ public class GameManager : MonoBehaviour
         StartCoroutine("startGameCoroutine");
     }
 
-
     void Update()
     {
-        
+
+    }
+
+    public void test(ButtonControllerType shootButton)
+    {
+        if (shootButton.BUTTON_STATE_IS_PRESSED)
+        {
+            Debug.Log("INCREASE");
+        }
+        else if (!shootButton.BUTTON_STATE_IS_PRESSED)
+        {
+
+        }
     }
 }
 
