@@ -29,8 +29,18 @@ public class LaserManager : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
+
         if (DEBUGMODE)
+        {
             playingPlayers = 1;
+        }
+            
+
+        for (int laserNumber = 1; laserNumber <= 4; laserNumber++)
+        {
+            if (laserNumber > playingPlayers)
+                laserGameObjects[laserNumber-1].SetActive(false);
+        }
 
         lasers = new LaserBehaviour[playingPlayers];
         for (int i = 0; i < playingPlayers; i++)
@@ -38,6 +48,8 @@ public class LaserManager : MonoBehaviour
             lasers[i] = laserGameObjects[i].GetComponent<LaserBehaviour>();
             lasers[i].UpdateLaserRootPosition();
         }
+
+        
 
         //TODO WHEN 4 PLAYERS
         /*for(int i = playingPlayers; i < 4; i++)
@@ -55,6 +67,8 @@ public class LaserManager : MonoBehaviour
         lasers[_laserArray].SetPosition(0, ray.origin); 
         //transform.GetChild(_laserArray).position = ray.origin;
     }*/
+
+
     void OnDestroy()
     {
         if(instance == this)

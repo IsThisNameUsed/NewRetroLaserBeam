@@ -7,7 +7,6 @@ public class LaserBehaviour : MonoBehaviour
 {
     public enum mode { targeting, damageDealer};
     public mode laserMode;
-    public GameObject scopeImage;
     LineRenderer laser;
     public Ray ray;
     public RaycastHit hit;
@@ -41,18 +40,7 @@ public class LaserBehaviour : MonoBehaviour
     {
         UpdateLaserRootPosition();
         UpdateLaserPositions();
-#if UNITY_EDITOR
-       /*if (playerId == 0 && EasyWiFiUtilities.getHighestPlayerNumber() == 0)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                SetFalseLaser(!isShooting);
-            }
-            Vector3 vector = laserManager.mainCamera.ScreenPointToRay(Input.mousePosition).direction;
 
-            scopeImage.transform.position = laserManager.mainCamera.transform.position + vector.normalized;
-        }*/
-#endif
         if (laserHit && laserMode == mode.damageDealer)
         {
             if (isShooting && hit.transform.gameObject.tag == "Enemy")
@@ -62,6 +50,19 @@ public class LaserBehaviour : MonoBehaviour
                 //burnParticle.transform.position = hit.point;
             }
         }
+
+//Commande de debug à la souris DEBUG MODE
+#if UNITY_EDITOR
+        if (playerId == 0 && EasyWiFiUtilities.getHighestPlayerNumber() == 0)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (laserMode == mode.targeting)
+                    return;
+                SetLaserDebugMode(!isShooting);
+            }
+        }
+#endif
     }
 
     public void UpdateLaserRootPosition()
@@ -69,6 +70,7 @@ public class LaserBehaviour : MonoBehaviour
         ray = new Ray(emitter.transform.position, emitter.transform.forward);
         laser.SetPosition(0, emitter.transform.position);
     }
+
     public void UpdateLaserPositions()
     {
         
@@ -105,7 +107,7 @@ public class LaserBehaviour : MonoBehaviour
         }*/
     }
 
-    public bool SetFalseLaser(bool _state)
+    public bool SetLaserDebugMode(bool _state)
     {
         isShooting = _state;
         return laser.enabled = _state;
