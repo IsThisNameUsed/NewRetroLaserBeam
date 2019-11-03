@@ -150,7 +150,7 @@ MonoBehaviour:
   - {fileID: 1338361723}
   - {fileID: 2052557285}
   lasers: []
-  playingPlayers: 1
+  playingPlayers: 0
 --- !u!1 &24206584
 GameObject:
   m_ObjectHideFlags: 0
@@ -14638,7 +14638,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1815431587}
+  - {fileID: 228642390}
+  - {fileID: 1509127832}
   m_Father: {fileID: 686813693}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15131,8 +15134,8 @@ Transform:
   m_LocalPosition: {x: 1.1500008, y: -0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 686813693}
-  m_RootOrder: 2
+  m_Father: {fileID: 195942013}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &228642391
 MonoBehaviour:
@@ -25319,7 +25322,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 492491489}
-  m_LocalRotation: {x: -0.034594987, y: 0.7477143, z: 0.20247981, w: 0.6314495}
+  m_LocalRotation: {x: -0.034594957, y: 0.74771434, z: 0.20247981, w: 0.63144946}
   m_LocalPosition: {x: 23.871378, y: -21.422474, z: -47.2}
   m_LocalScale: {x: 1, y: 0.9999998, z: 1}
   m_Children:
@@ -25425,7 +25428,7 @@ MonoBehaviour:
   clientSocketPort: 2016
   peerType: 0
   clientTimeout: 0
-  serverSendBackchannel: 0
+  serverSendBackchannel: 1
   serverSendHeartbeatRate: 0
   clientConnectAutomatically: 1
   clientMaxSendRate: 0
@@ -25656,7 +25659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeForSpendCoins: 5
-  Time: {fileID: 0}
+  playingPlayers: 1
 --- !u!82 &580352023
 AudioSource:
   m_ObjectHideFlags: 0
@@ -26113,7 +26116,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 666759390}
-  m_LocalRotation: {x: 0.0076589156, y: 0.6945813, z: -0.0073953513, w: 0.71933556}
+  m_LocalRotation: {x: 0.00765892, y: 0.6945812, z: -0.0073953546, w: 0.7193356}
   m_LocalPosition: {x: -136.39557, y: 692.0633, z: 32.18914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -26259,9 +26262,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 195942013}
-  - {fileID: 1815431587}
-  - {fileID: 228642390}
-  - {fileID: 1509127832}
   - {fileID: 1688159938}
   - {fileID: 1338361724}
   - {fileID: 2052557286}
@@ -41787,7 +41787,7 @@ Transform:
   m_Children:
   - {fileID: 161181453}
   m_Father: {fileID: 686813693}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1338361725
 AudioSource:
@@ -42575,8 +42575,8 @@ Transform:
   m_LocalPosition: {x: 1.1500008, y: -0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 686813693}
-  m_RootOrder: 3
+  m_Father: {fileID: 195942013}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1509127833
 MonoBehaviour:
@@ -47774,7 +47774,7 @@ Transform:
   m_Children:
   - {fileID: 1866832957}
   m_Father: {fileID: 686813693}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1688159939
 AudioSource:
@@ -48336,7 +48336,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1737222686}
-  m_LocalRotation: {x: 0.11470905, y: -0.004964202, z: -0.0030776146, w: 0.993382}
+  m_LocalRotation: {x: 0.11470905, y: -0.0049642916, z: -0.0030776258, w: 0.993382}
   m_LocalPosition: {x: 23.871378, y: -21.422474, z: -47.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -48807,11 +48807,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1815431585}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.1499996, y: -0.000012596545, z: 40.00001}
+  m_LocalPosition: {x: 1.1499996, y: -0.000012238917, z: 40.000027}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 686813693}
-  m_RootOrder: 1
+  m_Father: {fileID: 195942013}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1815822795
 GameObject:
@@ -58938,7 +58938,7 @@ Transform:
   m_Children:
   - {fileID: 587809135}
   m_Father: {fileID: 686813693}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2052557287
 AudioSource:

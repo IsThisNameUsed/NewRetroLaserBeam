@@ -25,14 +25,17 @@ public class CamManager : MonoBehaviour
 
     private bool GameIsActiv; //If we need to pause the the game use this
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         if (instance != null)
         {
             Destroy(gameObject);
         }
         else instance = this;
+    }
+
+    void Start()
+    {
 
         enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint];
         //playableDirector = GetComponent<PlayableDirector>();
@@ -43,7 +46,7 @@ public class CamManager : MonoBehaviour
         times[4] = 18f;
         Debug.Log(playableDirector.time);
         Debug.Log(times[4]);
-        GameIsActiv = true;
+        GameIsActiv = false;
         playableDirector.Pause();
     }
 

@@ -7,9 +7,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public float TimeForSpendCoins;
 
-    public FloatServerBackchannel Time;
+    public float TimeForSpendCoins;
+    [Range(1, 4)] public int playingPlayers = 4;
+
+    private bool allPlayersConnected = false;
 
     IEnumerator startGameCoroutine()
     {
@@ -17,21 +19,24 @@ public class GameManager : MonoBehaviour
         CamManager.instance.SetGameActiv(true);
     }
 
-    void Start()
+    private void Awake()
     {
         if (instance != null)
         {
             Destroy(gameObject);
         }
         else instance = this;
-        StartCoroutine("startGameCoroutine");
-
-        Time.setValue(TimeForSpendCoins);
     }
 
     void Update()
     {
-
+        int numberOfConnectedPlayer = EasyWiFiUtilities.getHighestPlayerNumber()+1;
+        if(numberOfConnectedPlayer == playingPlayers && allPlayersConnected == false)
+        {
+            allPlayersConnected = true;
+            this.gameObject.GetComponent<Steering>().time(TimeForSpendCoins);
+            StartCoroutine("startGameCoroutine");
+        }
     }
 
     public void test(ButtonControllerType shootButton)

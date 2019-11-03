@@ -12,7 +12,7 @@ public class LaserManager : MonoBehaviour
     public GameObject[] laserGameObjects;
     [SerializeField] LaserBehaviour[] lasers;
 
-    [Range(1,4)]public  int playingPlayers = 4;
+    public int playingPlayers;
  
     void Awake()
     {
@@ -34,7 +34,9 @@ public class LaserManager : MonoBehaviour
         {
             playingPlayers = 1;
         }
-            
+        else playingPlayers = GameManager.instance.playingPlayers;
+
+
 
         for (int laserNumber = 1; laserNumber <= 4; laserNumber++)
         {

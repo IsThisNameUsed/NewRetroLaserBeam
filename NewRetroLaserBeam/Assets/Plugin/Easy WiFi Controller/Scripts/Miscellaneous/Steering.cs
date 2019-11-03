@@ -26,6 +26,11 @@ public class Steering : MonoBehaviour {
     {
     }
 
+    public void time(float time)
+    {
+        floatBackchannel.setValue(time);
+    }
+
     //human example scene methods (gaspedal, brakepedal, and steerball)
     public void gasPedal(ButtonControllerType gasButton)
     {

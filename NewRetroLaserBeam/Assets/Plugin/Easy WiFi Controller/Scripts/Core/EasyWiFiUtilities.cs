@@ -150,7 +150,7 @@ namespace EasyWiFi.Core
         public static int getHighestPlayerNumber()
         {
             BaseControllerType control;
-            int highestPlayer = 0;
+            int highestPlayer = -1;
 
             if (EasyWiFiController.controllerDataDictionary != null)
             {

@@ -1,12 +1,13 @@
-﻿using System.Collections;
+﻿using EasyWiFi.ClientBackchannels;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ClientManager : MonoBehaviour {
 
     public GameObject coinButton;
-
-    IEnumerator displayCoinPanel(float time)
+    float time;
+    IEnumerator displayCoinPanel()
     {
         yield return new WaitForSeconds(time);
         coinButton.SetActive(false);
@@ -22,8 +23,9 @@ public class ClientManager : MonoBehaviour {
 		
 	}
 
-    void SpendCoins(float time)
+    void SpendCoins(FloatClientBackchannel time)
     {
+        coinButton.SetActive(false);
         StartCoroutine("displayCoinPanel");
     }
 }
