@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Wireframe
+  m_Name: Wireframe 2
   m_Shader: {fileID: 4800000, guid: a7de4bf0f370ca243b4604b8cd314ffc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -62,7 +62,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _MaxTriSize: 165.8
+    - _MaxTriSize: 57.7
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -71,11 +71,11 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WireSmoothness: 6.47
-    - _WireThickness: 561
+    - _WireSmoothness: 6.75
+    - _WireThickness: 103
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _WireColor: {r: 0, g: 1, b: 0, a: 1}
+    - _WireColor: {r: 0.19607843, g: 1, b: 0.9098039, a: 0.8666667}
