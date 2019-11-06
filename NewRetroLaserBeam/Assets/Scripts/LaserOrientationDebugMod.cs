@@ -10,9 +10,12 @@ public class LaserOrientationDebugMod : MonoBehaviour {
     public float rotationSpeed = 8;
     // Use this for initialization
     void Start () {
-        if (!LaserManager.instance.DEBUGMODE)
+        if (!LaserManager.instance.debugMode)
+        {
+            scopeImage.SetActive(false);
             this.enabled = false;
-
+        }
+       
         cam = Camera.main;
 	}
 	

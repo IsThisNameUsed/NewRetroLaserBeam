@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class LaserManager : MonoBehaviour
 {
-    [Tooltip ("Contrôl d'un laser à la souris")]
-    public bool DEBUGMODE;
     public static LaserManager instance;
     public Camera mainCamera;
     public GameObject[] laserGameObjects;
     [SerializeField] LaserBehaviour[] lasers;
 
+    [HideInInspector]
     public int playingPlayers;
- 
+    
+    public bool debugMode;
+
     void Awake()
     {
         if(instance != null)
@@ -30,7 +31,7 @@ public class LaserManager : MonoBehaviour
     {
         mainCamera = Camera.main;
 
-        if (DEBUGMODE)
+        if (debugMode)
         {
             playingPlayers = 1;
         }

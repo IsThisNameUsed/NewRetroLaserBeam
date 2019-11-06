@@ -53,7 +53,7 @@ public class LaserBehaviour : MonoBehaviour
 
 //Commande de debug à la souris DEBUG MODE
 #if UNITY_EDITOR
-        if (LaserManager.instance.DEBUGMODE)
+        if (LaserManager.instance.debugMode)
         {
             if (Input.GetMouseButtonDown(0))
             {
