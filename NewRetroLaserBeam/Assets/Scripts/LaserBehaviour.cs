@@ -21,6 +21,9 @@ public class LaserBehaviour : MonoBehaviour
     public GameObject emitter;
     public GameObject burnParticle;
 
+    public GameObject scope;
+    public LayerMask layerMask;
+
     void Awake()
     {
         laser = GetComponent<LineRenderer>();
@@ -103,11 +106,21 @@ public class LaserBehaviour : MonoBehaviour
             laserHit = false;
 
         }
-        /*else
+        
+        if(laserMode == mode.targeting)
         {
-            laserHit = false;
-            laser.SetPosition(1, scopeImage.transform.position);
-        }*/
+            Ray scopeRay = new Ray(emitter.transform.position, emitter.transform.forward);
+            if (Physics.Raycast(ray, out hit))
+            {
+               
+              
+                Vector3 pos = hit.point;
+                scope.transform.position = pos;
+                
+            }
+           
+        }
+        
     }
 
     public bool SetLaserDebugMode(bool _state)

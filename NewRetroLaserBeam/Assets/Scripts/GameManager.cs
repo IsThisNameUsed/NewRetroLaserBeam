@@ -16,12 +16,6 @@ public class GameManager : MonoBehaviour
     [Range(0, 4)] public int playingPlayers = 4;
     private bool allPlayersConnected = false;
 
-    IEnumerator startGameCoroutine()
-    {
-        yield return new WaitForSeconds(TimeForSpendCoins);
-        CamManager.instance.SetGameActiv(true);
-    }
-
     private void Awake()
     {
         if (instance != null)
@@ -29,17 +23,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         else instance = this;
-    }
 
-    private void Start()
-    {
         if (debugMode)
         {
             LaserManager.instance.debugMode = true;
+            CamManager.instance.SetGameActiv(true);
             playingPlayers = 0;
         }
-            
     }
+ 
     void Update()
     {
         int numberOfConnectedPlayer = EasyWiFiUtilities.getHighestPlayerNumber()+1;
@@ -47,20 +39,25 @@ public class GameManager : MonoBehaviour
         {
             allPlayersConnected = true;
             this.gameObject.GetComponent<Steering>().time(TimeForSpendCoins);
-            StartCoroutine("startGameCoroutine");
         }
     }
 
-    public void test(ButtonControllerType shootButton)
+    public void test(ButtonControllerType button)
     {
-        if (shootButton.BUTTON_STATE_IS_PRESSED)
+        if (button.BUTTON_STATE_IS_PRESSED)
         {
             Debug.Log("INCREASE");
         }
-        else if (!shootButton.BUTTON_STATE_IS_PRESSED)
+        else if (!button.BUTTON_STATE_IS_PRESSED)
         {
 
         }
+    }
+
+    public void stopSpendingCoins(BoolBackchannelType value)
+    {
+        CamManager.instance.SetGameActiv(value.BOOL_VALUE);
+        Debug.Log("GOGOGOGOGO");
     }
 }
 

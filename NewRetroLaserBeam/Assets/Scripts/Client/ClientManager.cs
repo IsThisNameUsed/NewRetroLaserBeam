@@ -1,4 +1,5 @@
 ﻿using EasyWiFi.ClientBackchannels;
+using EasyWiFi.ClientControls;
 using EasyWiFi.Core;
 using EasyWiFi.ServerBackchannels;
 using System.Collections;
@@ -15,6 +16,7 @@ public class ClientManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(time);
         coinButton.SetActive(false);
+        gameObject.GetComponent<BoolDataClientController>().setValue(true);
     }
 
 	// Use this for initialization

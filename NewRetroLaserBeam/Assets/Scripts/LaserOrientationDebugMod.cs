@@ -12,7 +12,7 @@ public class LaserOrientationDebugMod : MonoBehaviour {
     void Start () {
         if (!LaserManager.instance.debugMode)
         {
-            scopeImage.SetActive(false);
+            //scopeImage.SetActive(false);
             this.enabled = false;
         }
        

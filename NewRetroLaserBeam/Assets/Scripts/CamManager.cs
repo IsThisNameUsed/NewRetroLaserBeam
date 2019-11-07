@@ -23,7 +23,7 @@ public class CamManager : MonoBehaviour
 
     public PlayableDirector playableDirector;
 
-    private bool GameIsActiv; //If we need to pause the the game use this
+    private bool GameIsActiv = false; //If we need to pause the the game use this
 
     private void Awake()
     {
@@ -34,9 +34,9 @@ public class CamManager : MonoBehaviour
         else instance = this;
     }
 
-    void Start()
-    {
 
+    void Start()
+    {    
         enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint];
         //playableDirector = GetComponent<PlayableDirector>();
         times = new float[5];
@@ -46,11 +46,11 @@ public class CamManager : MonoBehaviour
         times[4] = 18f;
         Debug.Log(playableDirector.time);
         Debug.Log(times[4]);
-        GameIsActiv = false;
         playableDirector.Pause();
     }
 
     // Update is called once per frame
+ 
     void Update()
     { 
         if (!GameIsActiv)
