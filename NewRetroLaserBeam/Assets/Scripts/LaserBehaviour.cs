@@ -25,6 +25,46 @@ public class LaserBehaviour : MonoBehaviour
     public LayerMask layerMask;
     public LayerMask layerMask2;
 
+    [Header("Players Health")]//on peut vérifier la vie à chaque fois que celle ci est changé.
+    [ReadOnly][SerializeField] public int _playerCurrentHealth;
+    public int playerCurrentHealth
+    {
+        get { return _playerCurrentHealth; }
+        set
+        {
+            _playerCurrentHealth = value;
+            switch (playerIsAlive)
+            {
+                case true:
+                    if (_playerCurrentHealth <= 0)//le joueur est mort
+                    {
+                        playerIsAlive = false;
+                    }
+                    break;
+                case false:
+                    if (_playerCurrentHealth > 0)// le joueur vient de start / revive.
+                    {
+                        playerIsAlive = true;
+                    }
+                    break;
+            }
+
+        }
+    }
+    [ReadOnly] [SerializeField] bool _playerIsAlive = true;
+    public bool playerIsAlive
+    {
+        get { return _playerIsAlive; }
+        set
+        {
+            _playerIsAlive = value;
+            laserManager.CheckPlayerState();
+        }
+    }
+    //la vie qu'il a avec les coins? Servira pour les revives.
+    public int playerCurrentMaxHealth;
+
+
     void Awake()
     {
         laser = GetComponent<LineRenderer>();
@@ -33,11 +73,12 @@ public class LaserBehaviour : MonoBehaviour
             audioSources = GetComponents(typeof(AudioSource));
             laserSound = audioSources[0] as AudioSource;
             laserHitSound = audioSources[1] as AudioSource;
-        } 
+        }
     }
     private void Start()
     {
         //SetLaserActive();
+        playerCurrentHealth = laserManager.playersBaseHealth/* +  coinOnHealth*/;//a changer surement
     }
     // Update is called once per frame
     void Update()
@@ -106,19 +147,19 @@ public class LaserBehaviour : MonoBehaviour
         {
             laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 100);
             laserHit = false;
-        }       
+        }
         if(laserMode == mode.targeting)
         {
             Ray scopeRay = new Ray(emitter.transform.position, emitter.transform.forward);
             if (Physics.Raycast(ray, out hit, layerMask2))
-            {            
+            {
                 Vector3 pos = hit.point;
                 pos = Camera.main.WorldToScreenPoint(pos);
                 pos = new Vector3(pos.x, pos.y, pos.z);
                 scope.transform.position = pos;
-            }         
+            }
         }
-        
+
     }
 
     public bool SetLaserDebugMode(bool _state)
@@ -138,8 +179,8 @@ public class LaserBehaviour : MonoBehaviour
             laserSound.Play();
             isShooting = true;
             laser.enabled = true;
-        }  
-        else if(!shootButton.BUTTON_STATE_IS_PRESSED && isShooting == true) 
+        }
+        else if(!shootButton.BUTTON_STATE_IS_PRESSED && isShooting == true)
         {
             //Debug.Log("switch IS NOT PRESSED");
             laserSound.Stop();
@@ -147,5 +188,13 @@ public class LaserBehaviour : MonoBehaviour
             laser.enabled = false;
         }
     }
+    public void DebugTakeDamage()
+    {
+        int damage = 1;
+        TakeDamage(ref damage);
+    }
+    public int TakeDamage(ref int _damage)
+    {
+        return playerCurrentHealth -= _damage;
+    }
 }
-
