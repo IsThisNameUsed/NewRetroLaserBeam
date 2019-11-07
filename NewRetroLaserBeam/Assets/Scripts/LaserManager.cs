@@ -7,12 +7,16 @@ public class LaserManager : MonoBehaviour
 {
     public static LaserManager instance;
     public Camera mainCamera;
+
     public GameObject[] laserGameObjects;
+    /// <summary>
+    /// On passe par lasers pour communiquer avec chaque joueurs
+    /// </summary>
     [SerializeField] LaserBehaviour[] lasers;
 
     [HideInInspector]
     public int playingPlayers;
-    
+    public int playersBaseHealth = 3;
     public bool debugMode;
 
     void Awake()
@@ -37,22 +41,18 @@ public class LaserManager : MonoBehaviour
         }
         else playingPlayers = GameManager.instance.playingPlayers;
 
-
-
         for (int laserNumber = 1; laserNumber <= 4; laserNumber++)
         {
             if (laserNumber > playingPlayers)
                 laserGameObjects[laserNumber-1].SetActive(false);
         }
-
         lasers = new LaserBehaviour[playingPlayers];
-        for (int i = 0; i < playingPlayers; i++)
+        for (int i = 0; i < playingPlayers; ++i)
         {   
             lasers[i] = laserGameObjects[i].GetComponent<LaserBehaviour>();
             lasers[i].UpdateLaserRootPosition();
+            print("oo");
         }
-
-        
 
         //TODO WHEN 4 PLAYERS
         /*for(int i = playingPlayers; i < 4; i++)
@@ -70,8 +70,21 @@ public class LaserManager : MonoBehaviour
         lasers[_laserArray].SetPosition(0, ray.origin); 
         //transform.GetChild(_laserArray).position = ray.origin;
     }*/
-
-
+    public void CheckPlayerState()
+    {
+        int playerRemaining = 0;
+        for (int i = 0; i < playingPlayers; ++i)
+        {
+            if(lasers[i].playerIsAlive == true)
+            {
+                ++playerRemaining;
+            }
+        }
+        if (playerRemaining == 0)
+        {
+            Debug.Log("Game Over");
+        }
+    }
     void OnDestroy()
     {
         if(instance == this)
@@ -81,4 +94,3 @@ public class LaserManager : MonoBehaviour
         }
     }
 }
-

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public float TimeForSpendCoins;
 
     [Range(0, 4)] public int playingPlayers = 4;
+    [ReadOnly] public int currentPlayingPlayers = 4;
     private bool allPlayersConnected = false;
 
     private void Awake()
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
             LaserManager.instance.debugMode = true;
             CamManager.instance.SetGameActiv(true);
             playingPlayers = 0;
+            currentPlayingPlayers = playingPlayers;
         }
     }
  
@@ -54,7 +56,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void stopSpendingCoins(BoolBackchannelType value)
+
+public void stopSpendingCoins(BoolBackchannelType value)
     {
         CamManager.instance.SetGameActiv(value.BOOL_VALUE);
         Debug.Log("GOGOGOGOGO");

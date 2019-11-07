@@ -24,6 +24,46 @@ public class LaserBehaviour : MonoBehaviour
     public GameObject scope;
     public LayerMask layerMask;
 
+    [Header("Players Health")]//on peut vérifier la vie à chaque fois que celle ci est changé.                      
+    [ReadOnly][SerializeField] public int _playerCurrentHealth;
+    public int playerCurrentHealth
+    {
+        get { return _playerCurrentHealth; }
+        set
+        {
+            _playerCurrentHealth = value;
+            switch (playerIsAlive)
+            {
+                case true:
+                    if (_playerCurrentHealth <= 0)//le joueur est mort
+                    {
+                        playerIsAlive = false;
+                    }
+                    break;
+                case false:
+                    if (_playerCurrentHealth > 0)// le joueur vient de start / revive.
+                    {
+                        playerIsAlive = true;
+                    }
+                    break;
+            }
+            
+        }
+    }
+    [ReadOnly] [SerializeField] bool _playerIsAlive = true;
+    public bool playerIsAlive
+    {
+        get { return _playerIsAlive; }
+        set
+        {
+            _playerIsAlive = value;
+            laserManager.CheckPlayerState();
+        }
+    }
+    //la vie qu'il a avec les coins? Servira pour les revives.
+    public int playerCurrentMaxHealth;
+
+
     void Awake()
     {
         laser = GetComponent<LineRenderer>();
@@ -32,11 +72,12 @@ public class LaserBehaviour : MonoBehaviour
             audioSources = GetComponents(typeof(AudioSource));
             laserSound = audioSources[0] as AudioSource;
             laserHitSound = audioSources[1] as AudioSource;
-        } 
+        }
     }
     private void Start()
     {
         //SetLaserActive();
+        playerCurrentHealth = laserManager.playersBaseHealth/* +  coinOnHealth*/;//a changer surement
     }
     // Update is called once per frame
     void Update()
@@ -115,7 +156,7 @@ public class LaserBehaviour : MonoBehaviour
                
               
                 Vector3 pos = hit.point;
-                scope.transform.position = pos;
+                //scope.transform.position = pos;
                 
             }
            
@@ -148,6 +189,15 @@ public class LaserBehaviour : MonoBehaviour
             isShooting = false;
             laser.enabled = false;
         }
+    }
+    public void DebugTakeDamage()
+    {
+        int damage = 1;
+        TakeDamage(ref damage);
+    }
+    public int TakeDamage(ref int _damage)
+    {
+        return playerCurrentHealth -= _damage;
     }
 }
 
