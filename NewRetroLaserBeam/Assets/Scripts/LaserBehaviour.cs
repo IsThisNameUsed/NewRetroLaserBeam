@@ -23,6 +23,7 @@ public class LaserBehaviour : MonoBehaviour
 
     public GameObject scope;
     public LayerMask layerMask;
+    public LayerMask layerMask2;
 
     void Awake()
     {
@@ -83,6 +84,7 @@ public class LaserBehaviour : MonoBehaviour
             if (hit.transform.gameObject.tag == "Enemy" && isShooting)
             {
                 laserHit = true;
+                Debug.Log("HITHIT");
                 if (!laserHitSound.isPlaying && laserMode == mode.damageDealer)
                 {
                     laserHitSound.Play();
@@ -102,23 +104,19 @@ public class LaserBehaviour : MonoBehaviour
         }
         else
         {
-            laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 50);
+            laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 100);
             laserHit = false;
-
-        }
-        
+        }       
         if(laserMode == mode.targeting)
         {
             Ray scopeRay = new Ray(emitter.transform.position, emitter.transform.forward);
             if (Physics.Raycast(ray, out hit))
-            {
-               
-              
+            {            
                 Vector3 pos = hit.point;
+                pos = Camera.main.WorldToScreenPoint(pos);
+                pos = new Vector3(pos.x, pos.y, pos.z);
                 scope.transform.position = pos;
-                
-            }
-           
+            }         
         }
         
     }
