@@ -79,7 +79,7 @@ public class LaserBehaviour : MonoBehaviour
         ray = new Ray(emitter.transform.position, emitter.transform.forward);
 
         // ray = laserManager.mainCamera.ScreenPointToRay(laserManager.mainCamera.WorldToScreenPoint(scopeImage.transform.position));
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.RaycastAll(ray, out hit, layerMask))
         {
             if (hit.transform.gameObject.tag == "Enemy" && isShooting)
             {
@@ -110,7 +110,7 @@ public class LaserBehaviour : MonoBehaviour
         if(laserMode == mode.targeting)
         {
             Ray scopeRay = new Ray(emitter.transform.position, emitter.transform.forward);
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, layerMask2))
             {            
                 Vector3 pos = hit.point;
                 pos = Camera.main.WorldToScreenPoint(pos);
