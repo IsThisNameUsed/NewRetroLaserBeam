@@ -11,8 +11,8 @@ public class EnemyAttackBehaviour : StateMachineBehaviour {
     {
         enemyBehaviour = animator.gameObject.GetComponent<EnemyBehaviour>();
         if (enemyBehaviour == null)
-            Debug.Log("NULL");
-        Debug.Log(animator.gameObject.name);
+            Debug.Log("enemyBehaviour NULL");
+
        
         DamageOnPlayerManager.instance.addAttackingEnemy(enemyBehaviour);
 

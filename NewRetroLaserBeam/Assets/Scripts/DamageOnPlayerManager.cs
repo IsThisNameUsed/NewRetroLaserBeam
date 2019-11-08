@@ -47,7 +47,6 @@ public class DamageOnPlayerManager : MonoBehaviour {
             StartCoroutine("cameraShakerCoroutine");*/
 
         attackingEnemy.Add(enemy);
-        Debug.Log("add " + enemy.gameObject.name);
     }
 
     public void deleteAttackingEnemy(EnemyBehaviour enemy)

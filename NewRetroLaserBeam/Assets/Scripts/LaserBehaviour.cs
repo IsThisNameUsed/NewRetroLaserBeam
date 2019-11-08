@@ -5,11 +5,10 @@ using EasyWiFi.Core;
 
 public class LaserBehaviour : MonoBehaviour
 {
-    public enum mode { targeting, damageDealer};
+    public enum mode { targeting, damageDealer };
     public mode laserMode;
     LineRenderer laser;
-    public Ray ray;
-    public RaycastHit hit;
+    public GameObject enemyHit;
     public bool laserHit = false;
     public static LaserManager laserManager;
     public bool isShooting = false;
@@ -21,12 +20,62 @@ public class LaserBehaviour : MonoBehaviour
     public GameObject emitter;
     public GameObject burnParticle;
 
-    public GameObject scope;
     public LayerMask layerMask;
-    public LayerMask layerMask2;
+    public GameObject scope;
 
     [Header("Players Health")]//on peut vérifier la vie à chaque fois que celle ci est changé.
-    [ReadOnly][SerializeField] public int _playerCurrentHealth;
+    [ReadOnly] [SerializeField] public int _playerCurrentHealth;
+    [ReadOnly] [SerializeField] bool _playerIsAlive = true;
+    //la vie qu'il a avec les coins? Servira pour les revives.
+    public int playerCurrentMaxHealth;
+
+
+    void Awake()
+    {
+        laser = GetComponent<LineRenderer>();
+        if (laserMode == mode.damageDealer)
+        {
+            audioSources = GetComponents(typeof(AudioSource));
+            laserSound = audioSources[0] as AudioSource;
+            laserHitSound = audioSources[1] as AudioSource;
+        }
+    }
+
+    private void Start()
+    {
+        //SetLaserActive();
+        playerCurrentHealth = laserManager.playersBaseHealth/* +  coinOnHealth*/;//a changer surement
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        UpdateLaserRootPosition();
+        UpdateLaserPositions();
+
+        if (laserHit && laserMode == mode.damageDealer)
+        {
+            if (enemyHit != null && isShooting && enemyHit.transform.gameObject.tag == "Enemy")
+            {
+                enemyHit.transform.GetComponent<EnemyBehaviour>().DealDamage(laserDamage, enemyHit.GetComponent<Collider>(), playerId);
+                //burnParticle.SetActive(true);
+                //burnParticle.transform.position = hit.point;
+            }
+        }
+
+        //Commande de debug à la souris DEBUG MODE
+#if UNITY_EDITOR
+        if (LaserManager.instance.debugMode)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (laserMode == mode.targeting)
+                    return;
+                SetLaserDebugMode(!isShooting);
+            }
+        }
+#endif
+    }
     public int playerCurrentHealth
     {
         get { return _playerCurrentHealth; }
@@ -48,10 +97,9 @@ public class LaserBehaviour : MonoBehaviour
                     }
                     break;
             }
-
         }
     }
-    [ReadOnly] [SerializeField] bool _playerIsAlive = true;
+
     public bool playerIsAlive
     {
         get { return _playerIsAlive; }
@@ -61,54 +109,6 @@ public class LaserBehaviour : MonoBehaviour
             laserManager.CheckPlayerState();
         }
     }
-    //la vie qu'il a avec les coins? Servira pour les revives.
-    public int playerCurrentMaxHealth;
-
-
-    void Awake()
-    {
-        laser = GetComponent<LineRenderer>();
-        if(laserMode == mode.damageDealer)
-        {
-            audioSources = GetComponents(typeof(AudioSource));
-            laserSound = audioSources[0] as AudioSource;
-            laserHitSound = audioSources[1] as AudioSource;
-        }
-    }
-    private void Start()
-    {
-        //SetLaserActive();
-        playerCurrentHealth = laserManager.playersBaseHealth/* +  coinOnHealth*/;//a changer surement
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateLaserRootPosition();
-        UpdateLaserPositions();
-
-        if (laserHit && laserMode == mode.damageDealer)
-        {
-            if (isShooting && hit.transform.gameObject.tag == "Enemy")
-            {
-                hit.transform.GetComponent<EnemyBehaviour>().DealDamage(laserDamage, hit.collider, playerId);
-                //burnParticle.SetActive(true);
-                //burnParticle.transform.position = hit.point;
-            }
-        }
-
-//Commande de debug à la souris DEBUG MODE
-#if UNITY_EDITOR
-        if (LaserManager.instance.debugMode)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (laserMode == mode.targeting)
-                    return;
-                SetLaserDebugMode(!isShooting);
-            }
-        }
-#endif
-    }
 
     public void UpdateLaserRootPosition()
     {
@@ -117,49 +117,54 @@ public class LaserBehaviour : MonoBehaviour
 
     public void UpdateLaserPositions()
     {
-        ray = new Ray(emitter.transform.position, emitter.transform.forward);
+        //ray = new Ray(emitter.transform.position, emitter.transform.forward);
 
-        // ray = laserManager.mainCamera.ScreenPointToRay(laserManager.mainCamera.WorldToScreenPoint(scopeImage.transform.position));
-        if (Physics.Raycast(ray, out hit, layerMask))
+        RaycastHit[] hits = Physics.RaycastAll(emitter.transform.position, emitter.transform.forward, 500.0f);
+        GameObject GameObjectHit;
+        Vector3 hitPosition = new Vector3(0, 0, 0);
+        if (laserMode == mode.damageDealer)
         {
-            if (hit.transform.gameObject.tag == "Enemy" && isShooting)
+            if (hits.Length == 0)
             {
-                laserHit = true;
-                Debug.Log("HITHIT");
-                if (!laserHitSound.isPlaying && laserMode == mode.damageDealer)
-                {
-                    laserHitSound.Play();
-                    laserHitSound.pitch = Random.Range(0.7f, 3);
-                }
+                laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 100);
+                return;
             }
             else
             {
-                laserHit = false;
-                if (laserMode == mode.damageDealer)
+                for (int i = 0; i < hits.Length; i++)
                 {
-                    //burnParticle.SetActive(true);
-                    laserHitSound.Stop();
+                    
+                    GameObjectHit = hits[i].transform.gameObject;
+                    Debug.Log(GameObjectHit.name);
+                    if (GameObjectHit.name == "TargetingCollider" && isShooting)
+                    {
+                        Debug.Log("hit Collider");
+                        Vector3 pos =hits[i].point;
+                        pos = Camera.main.WorldToScreenPoint(pos);
+                        pos = new Vector3(pos.x, pos.y, pos.z);
+                        scope.transform.position = pos;
+                        laser.SetPosition(1, hits[i].point);
+                        break;
+                    }
+                    else if (i == hits.Length - 1)
+                    {
+                        laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 100);
+                    }
+                } 
+            }
+
+            Ray ray = Camera.main.ScreenPointToRay(scope.transform.position);
+            Debug.DrawRay(ray.origin, ray.direction*100, Color.yellow,0.5f);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit,500f,layerMask))
+            {
+                if(hit.transform.gameObject.tag=="Enemy")
+                {
+                    laserHit = true;
+                    enemyHit = hit.transform.gameObject;
                 }
             }
-            laser.SetPosition(1, hit.point);
         }
-        else
-        {
-            laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 100);
-            laserHit = false;
-        }
-        if(laserMode == mode.targeting)
-        {
-            Ray scopeRay = new Ray(emitter.transform.position, emitter.transform.forward);
-            if (Physics.Raycast(ray, out hit, layerMask2))
-            {
-                Vector3 pos = hit.point;
-                pos = Camera.main.WorldToScreenPoint(pos);
-                pos = new Vector3(pos.x, pos.y, pos.z);
-                scope.transform.position = pos;
-            }
-        }
-
     }
 
     public bool SetLaserDebugMode(bool _state)
@@ -173,14 +178,14 @@ public class LaserBehaviour : MonoBehaviour
         if (laserMode == mode.targeting)
             return;
 
-        if (shootButton.BUTTON_STATE_IS_PRESSED && isShooting==false)
+        if (shootButton.BUTTON_STATE_IS_PRESSED && isShooting == false)
         {
             //Debug.Log("Switch IS PRESSED");
             laserSound.Play();
             isShooting = true;
             laser.enabled = true;
         }
-        else if(!shootButton.BUTTON_STATE_IS_PRESSED && isShooting == true)
+        else if (!shootButton.BUTTON_STATE_IS_PRESSED && isShooting == true)
         {
             //Debug.Log("switch IS NOT PRESSED");
             laserSound.Stop();
