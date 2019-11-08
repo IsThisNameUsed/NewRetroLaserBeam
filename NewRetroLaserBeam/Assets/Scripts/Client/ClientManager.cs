@@ -11,7 +11,8 @@ public class ClientManager : MonoBehaviour {
 
     public GameObject coinButton;
     float time;
-    public Text text;
+    public Text debugText;
+
     IEnumerator displayCoinPanel()
     {
         yield return new WaitForSeconds(time);
@@ -19,14 +20,18 @@ public class ClientManager : MonoBehaviour {
         gameObject.GetComponent<BoolDataClientController>().setValue(true);
     }
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        gameObject.GetComponent<BoolDataClientController>().setValue(false);
+    }
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        text.text = time.ToString();
+        debugText.text = time.ToString();
 
     }
 

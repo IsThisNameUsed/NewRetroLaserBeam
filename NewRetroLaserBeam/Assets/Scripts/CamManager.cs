@@ -55,7 +55,6 @@ public class CamManager : MonoBehaviour
     { 
         if (!GameIsActiv)
             return;
-        else playableDirector.Play();
 
         if (enemyToDie <= 0)
         {
@@ -95,6 +94,9 @@ public class CamManager : MonoBehaviour
     public void SetGameActiv(bool isActiv)
     {
         GameIsActiv = isActiv;
+        if (isActiv)
+            playableDirector.Play();
+        else playableDirector.Pause();
     }
     /*private void OnTriggerEnter(Collider other)
     {

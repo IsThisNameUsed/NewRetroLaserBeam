@@ -5,8 +5,6 @@ using EasyWiFi.Core;
 
 public class LaserBehaviour : MonoBehaviour
 {
-    public enum mode { targeting, damageDealer };
-    public mode laserMode;
     LineRenderer laser;
     public GameObject enemyHit;
     public bool laserHit = false;
@@ -33,12 +31,10 @@ public class LaserBehaviour : MonoBehaviour
     void Awake()
     {
         laser = GetComponent<LineRenderer>();
-        if (laserMode == mode.damageDealer)
-        {
-            audioSources = GetComponents(typeof(AudioSource));
-            laserSound = audioSources[0] as AudioSource;
-            laserHitSound = audioSources[1] as AudioSource;
-        }
+        audioSources = GetComponents(typeof(AudioSource));
+        laserSound = audioSources[0] as AudioSource;
+        laserHitSound = audioSources[1] as AudioSource;
+        
     }
 
     private void Start()
@@ -53,7 +49,7 @@ public class LaserBehaviour : MonoBehaviour
         UpdateLaserRootPosition();
         UpdateLaserPositions();
 
-        if (laserHit && laserMode == mode.damageDealer)
+        if (laserHit)
         {
             if (enemyHit != null && isShooting && enemyHit.transform.gameObject.tag == "Enemy")
             {
@@ -69,8 +65,6 @@ public class LaserBehaviour : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (laserMode == mode.targeting)
-                    return;
                 SetLaserDebugMode(!isShooting);
             }
         }
@@ -117,51 +111,50 @@ public class LaserBehaviour : MonoBehaviour
 
     public void UpdateLaserPositions()
     {
-        //ray = new Ray(emitter.transform.position, emitter.transform.forward);
-
+        //On projette un sprite sur un collider avec un ray emis de l'emitter controlé par le gyro
         RaycastHit[] hits = Physics.RaycastAll(emitter.transform.position, emitter.transform.forward, 500.0f);
         GameObject GameObjectHit;
         Vector3 hitPosition = new Vector3(0, 0, 0);
-        if (laserMode == mode.damageDealer)
+        //ce cas ne devrait pas se présenter le raycast devrait toujours toucher le targetingCollider
+        if (hits.Length == 0)
         {
-            if (hits.Length == 0)
-            {
-                laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 100);
-                return;
-            }
-            else
-            {
-                for (int i = 0; i < hits.Length; i++)
+            laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 100);
+            return;
+        }
+        else
+        {
+            //On cherche le point d'impact sur le targetingCollider et on translate en coordonnée écran pour positionner le viseur sur le canvas
+            for (int i = 0; i < hits.Length; i++)
+            {      
+                GameObjectHit = hits[i].transform.gameObject;
+                if (GameObjectHit.name == "TargetingCollider")
                 {
-                    
-                    GameObjectHit = hits[i].transform.gameObject;
-                    if (GameObjectHit.name == "TargetingCollider" && isShooting)
-                    {
-                        Debug.Log("hit Collider");
-                        Vector3 pos =hits[i].point;
-                        pos = Camera.main.WorldToScreenPoint(pos);
-                        pos = new Vector3(pos.x, pos.y, pos.z);
-                        scope.transform.position = pos;
-                        laser.SetPosition(1, hits[i].point);
-                        break;
-                    }
-                    else if (i == hits.Length - 1)
-                    {
-                        laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 100);
-                    }
-                } 
-            }
-
+                    Vector3 pos =hits[i].point;
+                    pos = Camera.main.WorldToScreenPoint(pos);
+                    pos = new Vector3(pos.x, pos.y, pos.z);
+                    scope.transform.position = pos;
+                    laser.SetPosition(1, hits[i].point);
+                    break;
+                }
+                // TargetingCollider non trouvé -> ce cas ne doit pas arriver
+                else if (i == hits.Length - 1)
+                {
+                    laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 100);
+                }
+            } 
+            
+            //On cast un ray depuis la camera vers le viseur pour détecter si un enemi est dans la ligne de tir
             Ray ray = Camera.main.ScreenPointToRay(scope.transform.position);
             Debug.DrawRay(ray.origin, ray.direction*100, Color.yellow,0.5f);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit,500f,layerMask))
             {
-                if(hit.transform.gameObject.tag=="Enemy")
+                if (hit.transform.gameObject.tag == "Enemy")
                 {
                     laserHit = true;
                     enemyHit = hit.transform.gameObject;
                 }
+                else laserHit = false;
             }
         }
     }
@@ -174,9 +167,6 @@ public class LaserBehaviour : MonoBehaviour
 
     public void SetLaser(ButtonControllerType shootButton)
     {
-        if (laserMode == mode.targeting)
-            return;
-
         if (shootButton.BUTTON_STATE_IS_PRESSED && isShooting == false)
         {
             //Debug.Log("Switch IS PRESSED");

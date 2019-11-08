@@ -56,11 +56,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-public void stopSpendingCoins(BoolBackchannelType value)
+    public void stopSpendingCoins(BoolBackchannelType value)
     {
         CamManager.instance.SetGameActiv(value.BOOL_VALUE);
-        Debug.Log("GOGOGOGOGO");
+        Debug.Log("GOGOGOGOGO:" +value.BOOL_VALUE);
     }
 }
 

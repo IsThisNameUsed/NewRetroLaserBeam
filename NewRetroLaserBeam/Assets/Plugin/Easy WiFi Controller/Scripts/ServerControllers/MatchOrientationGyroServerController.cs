@@ -61,9 +61,7 @@ namespace EasyWiFi.ServerControls
             orientation.x = gyro[index].GYRO_X;
             orientation.y = gyro[index].GYRO_Y;
             orientation.z = gyro[index].GYRO_Z;
-            Debug.Log(gyro[index].GYRO_Z);
             Quaternion newRot = new Quaternion(orientation.x, orientation.y, orientation.z, orientation.w);
-            Debug.Log(newRot);
             Vector3 conversion = new Vector3(newRot.eulerAngles.x, newRot.eulerAngles.y, newRot.eulerAngles.z);
             Debug.Log(conversion);
             float Xcorrection = neutralOrientation.x - conversion.x;
@@ -87,7 +85,7 @@ namespace EasyWiFi.ServerControls
             }
 
             Quaternion newRot = new Quaternion(orientation.x, orientation.y, orientation.z, orientation.w);
-            Vector3 conversion = new Vector3(-(newRot.eulerAngles.x + rotationCorrections.x), -(newRot.eulerAngles.z + rotationCorrections.z), 0f);
+            Vector3 conversion = new Vector3((newRot.eulerAngles.x + rotationCorrections.x),-(newRot.eulerAngles.z + rotationCorrections.z), 0f);
             //Vector3 conversion = new Vector3(newRot.eulerAngles.x , -newRot.eulerAngles.z , 0f);
             transform.localRotation = Quaternion.Euler(conversion);        
         }
