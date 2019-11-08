@@ -150,6 +150,7 @@ MonoBehaviour:
   - {fileID: 2052557285}
   lasers: []
   playingPlayers: 0
+  playersBaseHealth: 3
   debugMode: 0
 --- !u!1 &24206584
 GameObject:
@@ -5397,6 +5398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserMode: 1
+  enemyHit: {fileID: 0}
   laserHit: 0
   isShooting: 0
   laserDamage: 0.2
@@ -5404,13 +5406,13 @@ MonoBehaviour:
   laserHitSound: {fileID: 0}
   emitter: {fileID: 1509127831}
   burnParticle: {fileID: 0}
-  scope: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 1
-  layerMask2:
-    serializedVersion: 2
-    m_Bits: 0
+  scope: {fileID: 971025606}
+  _playerCurrentHealth: 0
+  _playerIsAlive: 1
+  playerCurrentMaxHealth: 0
 --- !u!82 &195942018
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5731,6 +5733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserMode: 0
+  enemyHit: {fileID: 0}
   laserHit: 0
   isShooting: 0
   laserDamage: 0.1
@@ -5738,13 +5741,13 @@ MonoBehaviour:
   laserHitSound: {fileID: 0}
   emitter: {fileID: 1509127831}
   burnParticle: {fileID: 0}
-  scope: {fileID: 971025606}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  layerMask2:
-    serializedVersion: 2
-    m_Bits: 1024
+  scope: {fileID: 971025606}
+  _playerCurrentHealth: 0
+  _playerIsAlive: 1
+  playerCurrentMaxHealth: 0
 --- !u!1001 &280053183
 Prefab:
   m_ObjectHideFlags: 0
@@ -6234,6 +6237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserMode: 0
+  enemyHit: {fileID: 0}
   laserHit: 0
   isShooting: 0
   laserDamage: 0.1
@@ -6241,13 +6245,13 @@ MonoBehaviour:
   laserHitSound: {fileID: 0}
   emitter: {fileID: 587809134}
   burnParticle: {fileID: 0}
-  scope: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  layerMask2:
-    serializedVersion: 2
-    m_Bits: 0
+  scope: {fileID: 0}
+  _playerCurrentHealth: 0
+  _playerIsAlive: 1
+  playerCurrentMaxHealth: 0
 --- !u!1 &466795833
 GameObject:
   m_ObjectHideFlags: 0
@@ -6356,7 +6360,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 492491489}
-  m_LocalRotation: {x: -0.03459499, y: 0.74771434, z: 0.20247984, w: 0.63144946}
+  m_LocalRotation: {x: -0.034594964, y: 0.7477143, z: 0.20247981, w: 0.6314495}
   m_LocalPosition: {x: 23.871378, y: -21.422474, z: -47.2}
   m_LocalScale: {x: 1, y: 0.9999998, z: 1}
   m_Children:
@@ -6610,9 +6614,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2dc55910113e04ebca844376fcd71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
+  debugMode: 1
   TimeForSpendCoins: 2
-  playingPlayers: 1
+  playingPlayers: 0
+  currentPlayingPlayers: 4
 --- !u!82 &580352023
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7584,7 +7589,7 @@ RectTransform:
   m_GameObject: {fileID: 971025606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 1407593658}
   m_RootOrder: 0
@@ -8241,6 +8246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserMode: 0
+  enemyHit: {fileID: 0}
   laserHit: 0
   isShooting: 0
   laserDamage: 0.1
@@ -8248,13 +8254,13 @@ MonoBehaviour:
   laserHitSound: {fileID: 0}
   emitter: {fileID: 1866832956}
   burnParticle: {fileID: 0}
-  scope: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  layerMask2:
-    serializedVersion: 2
-    m_Bits: 0
+  scope: {fileID: 0}
+  _playerCurrentHealth: 0
+  _playerIsAlive: 1
+  playerCurrentMaxHealth: 0
 --- !u!1 &1181394191
 GameObject:
   m_ObjectHideFlags: 0
@@ -8265,7 +8271,7 @@ GameObject:
   - component: {fileID: 1181394192}
   - component: {fileID: 1181394193}
   m_Layer: 10
-  m_Name: GameObject
+  m_Name: TargetingCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8278,7 +8284,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1181394191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 10}
+  m_LocalPosition: {x: 1.9, y: 1.6, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 666759393}
@@ -8455,7 +8461,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1284814126}
-  m_LocalRotation: {x: 0.0011049509, y: -0.029277623, z: -0.008818634, w: 0.99953187}
+  m_LocalRotation: {x: 0.0011049397, y: -0.029277623, z: -0.008818634, w: 0.99953187}
   m_LocalPosition: {x: 23.871378, y: -21.422474, z: -47.2}
   m_LocalScale: {x: 0.9999999, y: 1, z: 1}
   m_Children:
@@ -8835,6 +8841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserMode: 1
+  enemyHit: {fileID: 0}
   laserHit: 0
   isShooting: 0
   laserDamage: 0.2
@@ -8842,13 +8849,13 @@ MonoBehaviour:
   laserHitSound: {fileID: 0}
   emitter: {fileID: 161181452}
   burnParticle: {fileID: 0}
-  scope: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  layerMask2:
-    serializedVersion: 2
-    m_Bits: 0
+  scope: {fileID: 0}
+  _playerCurrentHealth: 0
+  _playerIsAlive: 1
+  playerCurrentMaxHealth: 0
 --- !u!1 &1354645260
 GameObject:
   m_ObjectHideFlags: 0
@@ -10003,6 +10010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserMode: 1
+  enemyHit: {fileID: 0}
   laserHit: 0
   isShooting: 0
   laserDamage: 0.2
@@ -10010,13 +10018,13 @@ MonoBehaviour:
   laserHitSound: {fileID: 0}
   emitter: {fileID: 1866832956}
   burnParticle: {fileID: 0}
-  scope: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  layerMask2:
-    serializedVersion: 2
-    m_Bits: 0
+  scope: {fileID: 0}
+  _playerCurrentHealth: 0
+  _playerIsAlive: 1
+  playerCurrentMaxHealth: 0
 --- !u!1001 &1733966302
 Prefab:
   m_ObjectHideFlags: 0
@@ -10482,7 +10490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1815431586
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11135,6 +11143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserMode: 0
+  enemyHit: {fileID: 0}
   laserHit: 0
   isShooting: 0
   laserDamage: 0.1
@@ -11142,13 +11151,13 @@ MonoBehaviour:
   laserHitSound: {fileID: 0}
   emitter: {fileID: 161181452}
   burnParticle: {fileID: 0}
-  scope: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  layerMask2:
-    serializedVersion: 2
-    m_Bits: 0
+  scope: {fileID: 0}
+  _playerCurrentHealth: 0
+  _playerIsAlive: 1
+  playerCurrentMaxHealth: 0
 --- !u!4 &1972933846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4044495963330954, guid: 30eb6d7628864de4d9625f43f965515a,
@@ -11563,6 +11572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserMode: 1
+  enemyHit: {fileID: 0}
   laserHit: 0
   isShooting: 0
   laserDamage: 0.2
@@ -11570,13 +11580,13 @@ MonoBehaviour:
   laserHitSound: {fileID: 0}
   emitter: {fileID: 587809134}
   burnParticle: {fileID: 0}
-  scope: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  layerMask2:
-    serializedVersion: 2
-    m_Bits: 0
+  scope: {fileID: 0}
+  _playerCurrentHealth: 0
+  _playerIsAlive: 1
+  playerCurrentMaxHealth: 0
 --- !u!1001 &2054425673
 Prefab:
   m_ObjectHideFlags: 0

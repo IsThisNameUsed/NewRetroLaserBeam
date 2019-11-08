@@ -135,7 +135,6 @@ public class LaserBehaviour : MonoBehaviour
                 {
                     
                     GameObjectHit = hits[i].transform.gameObject;
-                    Debug.Log(GameObjectHit.name);
                     if (GameObjectHit.name == "TargetingCollider" && isShooting)
                     {
                         Debug.Log("hit Collider");
