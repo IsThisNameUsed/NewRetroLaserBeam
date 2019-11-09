@@ -292,7 +292,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 440040152}
   - component: {fileID: 440040154}
   - component: {fileID: 440040153}
+  - component: {fileID: 440040155}
   m_Layer: 0
   m_Name: ClientControlCanvas
   m_TagString: Untagged
@@ -428,6 +429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinButton: {fileID: 769078238}
   debugText: {fileID: 493064581}
+  spendCoinsPanel: {fileID: 728126785}
+  gameInterfacePanel: {fileID: 1481259465}
 --- !u!114 &440040153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,8 +454,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d36f3d94615d44fae1bab3532ebdec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlName: Float1
+  controlName: TimeToSpendCoins
   notifyMethod: SpendCoins
+--- !u!114 &440040155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 440040147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39b463a54c37b9040a00b64b7d31e9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlName: allPlayerReady
+  notifyMethod: switchToGameInterface
+  callType: 1
 --- !u!1 &489464809
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,9 +695,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.536, y: 0.37333333}
-  m_AnchorMax: {x: 0.61766386, y: 0.565}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.536, y: 0.37333333}
+  m_AnchoredPosition: {x: 0.000015258789, y: 78}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &693184940
 MonoBehaviour:
@@ -788,7 +805,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -914,9 +931,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.40171513, y: 0.37333333}
-  m_AnchorMax: {x: 0.485, y: 0.565}
-  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.40171513, y: 0.37333333}
+  m_AnchoredPosition: {x: 0, y: 79}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &769078240
 MonoBehaviour:
@@ -1152,7 +1169,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1198,17 +1215,17 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1459933391}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000068, y: 1.0000068, z: 1.0000068}
+  m_LocalPosition: {x: 0, y: 0, z: -28.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1235631992}
   m_Father: {fileID: 728126786}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.44082338, y: 0.21000001}
-  m_AnchorMax: {x: 0.5793362, y: 0.27833334}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.40171513, y: 0.17833334}
+  m_AnchorMax: {x: 0.469, y: 0.2916667}
+  m_AnchoredPosition: {x: -1, y: 10.400002}
+  m_SizeDelta: {x: -7, y: -4}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1459933393
 MonoBehaviour:
@@ -1218,12 +1235,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1459933391}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d043ae6611b3f240b3ad4a1ab3b79e2, type: 3}
+  m_Script: {fileID: 11500000, guid: f07a9911f663f4449853025b9c711ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controlName: readyButton
   buttonPressedSprite: {fileID: 21300000, guid: c63c830e66cd4d145b6a7cff606b8d28,
     type: 3}
+  fastestPressRate: 1
 --- !u!114 &1459933394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,7 +1264,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: ee2d3d25cfb09194b9268d8b9281bcb1, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

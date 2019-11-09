@@ -8,7 +8,7 @@ using EasyWiFi.ServerBackchannels;
 public class Steering : MonoBehaviour {
 
     public FloatServerBackchannel floatBackchannel;
-
+    public BoolServerBackchannel allPlayerReady;
     Rigidbody myRigidbody;
     Vector3 accel;
     float horizontal, vertical;
@@ -31,6 +31,10 @@ public class Steering : MonoBehaviour {
         floatBackchannel.setValue(time);
     }
 
+    public void sendAllPlayerReady()
+    {
+        allPlayerReady.setValue(true);
+    }
     //human example scene methods (gaspedal, brakepedal, and steerball)
     public void gasPedal(ButtonControllerType gasButton)
     {

@@ -1,5 +1,5 @@
 ﻿// Name this script "ColorSpacerExample"
-
+#if UNITY_EDITOR
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
@@ -60,3 +60,4 @@ public class ColorSpacerDrawer : DecoratorDrawer
         GUI.color = oldGuiColor;
     }
 }
+#endif

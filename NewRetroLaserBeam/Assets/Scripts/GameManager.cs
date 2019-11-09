@@ -14,9 +14,9 @@ public class GameManager : MonoBehaviour
     public float TimeForSpendCoins;
 
     [Range(0, 4)] public int playingPlayers = 4;
-    [ReadOnly] public int currentPlayingPlayers = 4;
+    [ReadOnly] public int numberOfConnectedPlayer = 4;
     private bool allPlayersConnected = false;
-
+    private float numberOfReadyPlayers = 0;
     private void Awake()
     {
         if (instance != null)
@@ -30,37 +30,55 @@ public class GameManager : MonoBehaviour
             LaserManager.instance.debugMode = true;
             CamManager.instance.SetGameActiv(true);
             playingPlayers = 0;
-            currentPlayingPlayers = playingPlayers;
+            numberOfConnectedPlayer = playingPlayers;
         }
     }
  
     void Update()
     {
-        int numberOfConnectedPlayer = EasyWiFiUtilities.getHighestPlayerNumber()+1;
-        if(numberOfConnectedPlayer == playingPlayers && allPlayersConnected == false)
+        if(!debugMode)
         {
-            allPlayersConnected = true;
-            this.gameObject.GetComponent<Steering>().time(TimeForSpendCoins);
-        }
+            int numberOfConnectedPlayer = EasyWiFiUtilities.getHighestPlayerNumber() + 1;
+            if (numberOfConnectedPlayer == playingPlayers && allPlayersConnected == false)
+            {
+                allPlayersConnected = true;
+            }
+        } 
     }
 
-    public void test(ButtonControllerType button)
+    public void playerIsReady(ButtonControllerType button)
     {
         if (button.BUTTON_STATE_IS_PRESSED)
         {
-            Debug.Log("INCREASE");
+            Debug.Log("one player is ready");
+            numberOfReadyPlayers += 1;
         }
         else if (!button.BUTTON_STATE_IS_PRESSED)
         {
+            numberOfReadyPlayers -= 1;
+        }
 
+        if (numberOfReadyPlayers == playingPlayers)
+        {
+            CamManager.instance.SetGameActiv(true);
+            this.gameObject.GetComponent<Steering>().sendAllPlayerReady();
+            Debug.Log("GOGOGOGOGO:" + true);
         }
     }
 
-    public void stopSpendingCoins(BoolBackchannelType value)
+    //Forward channel example
+    /*public void stopSpendingCoins(BoolBackchannelType value)
     {
-        CamManager.instance.SetGameActiv(value.BOOL_VALUE);
-        Debug.Log("GOGOGOGOGO:" +value.BOOL_VALUE);
-    }
+        if (value.BOOL_VALUE == true)
+            numberOfReadyPlayers += 1;
+
+        if (numberOfReadyPlayers == playingPlayers)
+        {
+            CamManager.instance.SetGameActiv(value.BOOL_VALUE);
+            Debug.Log("GOGOGOGOGO:" + value.BOOL_VALUE);
+        }
+
+    }*/
 }
 
 

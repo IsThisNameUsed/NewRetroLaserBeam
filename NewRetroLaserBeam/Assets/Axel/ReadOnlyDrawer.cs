@@ -1,11 +1,10 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
 using UnityEditor;
+using UnityEngine;
 
 [CustomPropertyDrawer(typeof(ReadOnly))]
 public class ReadOnlyDrawer : PropertyDrawer
 {
-
-
     /// <summary>
     /// Display attribute and his value in inspector depending on the type
     /// Fill attribute needed
@@ -60,3 +59,4 @@ public class ReadOnlyDrawer : PropertyDrawer
         }
     }
 }
+#endif
