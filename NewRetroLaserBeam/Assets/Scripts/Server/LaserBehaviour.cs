@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using EasyWiFi.Core;
 
 public class LaserBehaviour : MonoBehaviour
@@ -17,7 +18,7 @@ public class LaserBehaviour : MonoBehaviour
     public AudioSource laserHitSound;
     public GameObject emitter;
     public GameObject burnParticle;
-
+    public Slider slider;
     public LayerMask layerMask;
     public GameObject scope;
 
@@ -34,12 +35,13 @@ public class LaserBehaviour : MonoBehaviour
         audioSources = GetComponents(typeof(AudioSource));
         laserSound = audioSources[0] as AudioSource;
         laserHitSound = audioSources[1] as AudioSource;
-        
+
     }
 
     private void Start()
     {
-        //SetLaserActive();
+        //SetLaserActive();        
+        
         playerCurrentHealth = laserManager.playersBaseHealth/* +  coinOnHealth*/;//a changer surement
     }
 
@@ -76,6 +78,8 @@ public class LaserBehaviour : MonoBehaviour
         set
         {
             _playerCurrentHealth = value;
+            slider.value = (float)value / playerCurrentMaxHealth;
+
             switch (playerIsAlive)
             {
                 case true:
@@ -189,6 +193,15 @@ public class LaserBehaviour : MonoBehaviour
     }
     public int TakeDamage(ref int _damage)
     {
+        Debug.Log(_damage);
         return playerCurrentHealth -= _damage;
+    }
+    private void OnEnable()
+    {
+        slider.gameObject.SetActive(true);
+    }
+    private void OnDisable()
+    {
+        slider.gameObject.SetActive(false);
     }
 }
