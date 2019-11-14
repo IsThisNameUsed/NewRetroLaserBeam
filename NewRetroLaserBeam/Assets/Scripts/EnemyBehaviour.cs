@@ -8,7 +8,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
     [SerializeField]float healthPoint = 1;
     public float moveSpeed = 0.25f;
-    public float damagePoint = 1;
+    public int damagePoint = 1;
     public bool isCloseToPlayers;
     Collider headCollider;
     Collider bodyCollider;
@@ -20,7 +20,8 @@ public class EnemyBehaviour : MonoBehaviour {
     public ParticleSystem particleSystem;
     public bool isMoving = true;
     [Range(0,20)]public float stopDistance = 2;
-
+    public LaserManager laserManager;
+    public LaserBehaviour laser;
     void Start () {
         mainCamera = Camera.main;
   
@@ -32,6 +33,9 @@ public class EnemyBehaviour : MonoBehaviour {
 
         EnemyIsActive(isMoving);
         hitCooldown = hitTime;
+
+        laserManager = mainCamera.transform.GetChild(0).GetComponent<LaserManager>();
+        laser = laserManager.laserGameObjects[Random.Range(0, laserManager.playingPlayers - 1)].GetComponent<LaserBehaviour>();
     }
 	
 	// Update is called once per frame
