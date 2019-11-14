@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [ReadOnly] public int numberOfConnectedPlayer = 4;
     private bool allPlayersConnected = false;
     private float numberOfReadyPlayers = 0;
+
     private void Awake()
     {
         if (instance != null)

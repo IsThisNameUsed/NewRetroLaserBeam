@@ -23,7 +23,7 @@ public class CamManager : MonoBehaviour
 
     public PlayableDirector playableDirector;
 
-    private bool GameIsActiv = false; //If we need to pause the the game use this
+    public bool GameIsActiv = false; //If we need to pause the the game use this
 
     private void Awake()
     {
@@ -32,6 +32,8 @@ public class CamManager : MonoBehaviour
             Destroy(gameObject);
         }
         else instance = this;
+        //Attention!! Doit être appelé avant le awake du game manager -> régler la priorité d'exécution des scripts
+        playableDirector.Pause();
     }
 
 
@@ -46,7 +48,7 @@ public class CamManager : MonoBehaviour
         times[4] = 18f;
         Debug.Log(playableDirector.time);
         Debug.Log(times[4]);
-        playableDirector.Pause();
+        
     }
 
     // Update is called once per frame
@@ -95,7 +97,11 @@ public class CamManager : MonoBehaviour
     {
         GameIsActiv = isActiv;
         if (isActiv)
+        {
+            Debug.Log("Play");
             playableDirector.Play();
+        }
+            
         else playableDirector.Pause();
     }
     /*private void OnTriggerEnter(Collider other)
