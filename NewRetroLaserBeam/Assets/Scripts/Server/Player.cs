@@ -71,4 +71,14 @@ public class Player : MonoBehaviour {
             laser.gameObject.SetActive(false);
         }
     }
+    public Pickable possessedObject;
+    {
+       if(type == itemType.GroupeHeal )
+        {
+            //possessedObject = GetComponent()
+        }
+       
+    }
+    void AddPickableToPlayer(itemType type)
 }
+// GroupeHeal, PersonnalHeal, BurstDamage };

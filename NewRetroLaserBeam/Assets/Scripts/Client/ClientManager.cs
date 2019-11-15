@@ -12,6 +12,8 @@ public class ClientManager : MonoBehaviour {
     public GameObject coinButton;
     float time;
     public Text debugText;
+    public Text sellText;
+    public Text sellText2;
     public GameObject spendCoinsPanel;
     public GameObject gameInterfacePanel;
     //Forward channel example
@@ -47,5 +49,16 @@ public class ClientManager : MonoBehaviour {
     {
         gameInterfacePanel.SetActive(value.BOOL_VALUE);
         spendCoinsPanel.SetActive(!value.BOOL_VALUE);
+    }
+
+    void StartSell(StringBackchannelType value)
+    {
+        sellText.text = value.STRING_VALUE;
+    }
+
+    void sellIsOver(BoolBackchannelType value)
+    {
+        if(value.BOOL_VALUE)
+            sellText2.text = "SellIsOver";
     }
 }

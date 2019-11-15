@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PersonnalHeal : Pickable {
+public class BurstDamage : Pickable {
 
 	// Use this for initialization
 	void Start () {
