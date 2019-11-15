@@ -21,7 +21,7 @@ public class EnemyBehaviour : MonoBehaviour {
     public bool isMoving = true;
     [Range(0,20)]public float stopDistance = 2;
     public LaserManager laserManager;
-    public LaserBehaviour laser;
+    public Player targetedPlayer;
     void Start () {
         mainCamera = Camera.main;
 
@@ -35,7 +35,7 @@ public class EnemyBehaviour : MonoBehaviour {
         hitCooldown = hitTime;
 
         laserManager = mainCamera.transform.GetChild(0).GetComponent<LaserManager>();
-        laser = laserManager.laserGameObjects[Random.Range(0, laserManager.playingPlayers - 1)].GetComponent<LaserBehaviour>();
+        targetedPlayer = GameManager.instance.players[Random.Range(0, GameManager.instance.playingPlayers - 1)];
     }
 
 	// Update is called once per frame

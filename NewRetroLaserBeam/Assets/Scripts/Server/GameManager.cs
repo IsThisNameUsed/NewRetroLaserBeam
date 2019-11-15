@@ -12,12 +12,17 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     
     public float TimeForSpendCoins;
-
-    [Range(0, 4)] public int playingPlayers = 4;
+    [Range(0,4)]int _playingPlayers = 0;
+    public int playingPlayers {
+        get { return _playingPlayers; }
+        set { _playingPlayers = value;
+              SetPlayersNumber(ref _playingPlayers);}
+    }
     [ReadOnly] public int numberOfConnectedPlayer = 4;
     private bool allPlayersConnected = false;
     private float numberOfReadyPlayers = 0;
-
+    [Range(1,10)]public int playersBaseHealth = 3;
+    public Player[] players;
     private void Awake()
     {
         if (instance != null)
@@ -25,10 +30,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         else instance = this;
-
         if (debugMode)
         {
-            LaserManager.instance.debugMode = true;
             CamManager.instance.SetGameActiv(true);
             playingPlayers = 0;
             numberOfConnectedPlayer = playingPlayers;
@@ -44,7 +47,9 @@ public class GameManager : MonoBehaviour
             {
                 allPlayersConnected = true;
             }
-        } 
+            playingPlayers = playingPlayers;
+        }
+        else playingPlayers = 1;
     }
 
     public void playerIsReady(ButtonControllerType button)
@@ -58,7 +63,6 @@ public class GameManager : MonoBehaviour
         {
             numberOfReadyPlayers -= 1;
         }
-
         if (numberOfReadyPlayers == playingPlayers)
         {
             CamManager.instance.SetGameActiv(true);
@@ -66,7 +70,34 @@ public class GameManager : MonoBehaviour
             Debug.Log("GOGOGOGOGO:" + true);
         }
     }
+    public void CheckPlayerState()
+    {
+        int playerRemaining = 0;
+        for (int i = 0; i < playingPlayers; ++i)
+        {
+            if (players[i].playerIsAlive == true)
+            {
+                ++playerRemaining;
+            }
+        }
+        if (playerRemaining == 0)
+        {
+            Debug.Log("Game Over");
+        }
+    }
+    public void SetPlayersNumber(ref int _number)
+    {
+        int i;
+        for (i=3; i >= playingPlayers; --i)
+        {
+            players[i].gameObject.SetActive(false);
+        }
+        for(i=0; i < playingPlayers; ++i)
+        {
+            players[i].gameObject.SetActive(true);
+        }
 
+    }
     //Forward channel example
     /*public void stopSpendingCoins(BoolBackchannelType value)
     {
