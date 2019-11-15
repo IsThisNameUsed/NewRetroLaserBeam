@@ -38,6 +38,7 @@ public class LaserManager : MonoBehaviour
         if (debugMode)
         {
             playingPlayers = 1;
+
         }
         else playingPlayers = GameManager.instance.playingPlayers;
 
@@ -49,8 +50,10 @@ public class LaserManager : MonoBehaviour
         lasers = new LaserBehaviour[playingPlayers];
         for (int i = 0; i < playingPlayers; ++i)
         {   
+            
             lasers[i] = laserGameObjects[i].GetComponent<LaserBehaviour>();
             lasers[i].UpdateLaserRootPosition();
+            lasers[i].playerCurrentMaxHealth = playersBaseHealth;
             print("oo");
         }
 
