@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Pickable : MonoBehaviour {
 
-    public enum itemType { GroupeHeal, heal, BurstDamage };
     public itemType type;
 	void Start () {
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -15,3 +14,5 @@ public class Pickable : MonoBehaviour {
 		
 	}
 }
+
+public enum itemType { GroupeHeal, PersonalHeal, BurstDamage };

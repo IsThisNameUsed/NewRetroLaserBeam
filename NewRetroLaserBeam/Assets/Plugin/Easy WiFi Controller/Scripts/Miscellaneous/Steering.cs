@@ -9,6 +9,9 @@ public class Steering : MonoBehaviour {
 
     public FloatServerBackchannel floatBackchannel;
     public BoolServerBackchannel allPlayerReady;
+    public StringServerBackchannel objectForSale;
+    public BoolServerBackchannel endSell;
+
     Rigidbody myRigidbody;
     Vector3 accel;
     float horizontal, vertical;
@@ -35,6 +38,19 @@ public class Steering : MonoBehaviour {
     {
         allPlayerReady.setValue(true);
     }
+
+    public void sendNameObjectForSale(string name)
+    {
+        Debug.Log("SellObject" + name);
+        objectForSale.setValue(name);
+    }
+
+    public void sendSellIsOver(bool value)
+    {
+        endSell.setValue(value);
+        Debug.Log("Sell over");
+    }
+
     //human example scene methods (gaspedal, brakepedal, and steerball)
     public void gasPedal(ButtonControllerType gasButton)
     {

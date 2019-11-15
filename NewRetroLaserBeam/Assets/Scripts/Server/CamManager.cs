@@ -46,9 +46,7 @@ public class CamManager : MonoBehaviour
         times[2] = 2.25f;
         times[3] = 10f;
         times[4] = 18f;
-        Debug.Log(playableDirector.time);
-        Debug.Log(times[4]);
-        
+        //Debug.Log(playableDirector.time);     
     }
 
     // Update is called once per frame

@@ -6,7 +6,7 @@ using EasyWiFi.Core;
 public class LaserBehaviour : MonoBehaviour
 {
     LineRenderer laser;
-    public GameObject enemyHit;
+    public EnemyBehaviour enemyHit;
     public bool laserHit = false;
     public static LaserManager laserManager;
     public bool isShooting = false;
@@ -53,7 +53,7 @@ public class LaserBehaviour : MonoBehaviour
         {
             if (enemyHit != null && isShooting && enemyHit.transform.gameObject.tag == "Enemy")
             {
-                enemyHit.transform.GetComponent<EnemyBehaviour>().DealDamage(laserDamage, enemyHit.GetComponent<Collider>(), playerId);
+                enemyHit.DealDamage(laserDamage, enemyHit.GetComponent<Collider>(), playerId);
                 //burnParticle.SetActive(true);
                 //burnParticle.transform.position = hit.point;
             }
@@ -149,10 +149,16 @@ public class LaserBehaviour : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit,500f,layerMask))
             {
-                if (hit.transform.gameObject.tag == "Enemy")
+                Transform transformHit = hit.transform;
+                if (transformHit.gameObject.tag == "Pickable")
+                {
+                    Pickable pickable = transformHit.gameObject.GetComponent<Pickable>();
+                    return;
+                }
+                if (transformHit.gameObject.tag == "Enemy")
                 {
                     laserHit = true;
-                    enemyHit = hit.transform.gameObject;
+                    enemyHit = transformHit.gameObject.GetComponent<EnemyBehaviour>();
                 }
                 else laserHit = false;
             }

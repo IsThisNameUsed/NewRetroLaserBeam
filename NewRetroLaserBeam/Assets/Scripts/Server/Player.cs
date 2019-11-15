@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public Pickable possessedObject;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -13,4 +14,14 @@ public class Player : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void AddPickableToPlayer(itemType type)
+    {
+       if(type == itemType.GroupeHeal )
+        {
+            //possessedObject = GetComponent()
+        }
+       
+    }
 }
+// GroupeHeal, PersonnalHeal, BurstDamage };

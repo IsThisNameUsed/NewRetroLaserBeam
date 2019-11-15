@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EasyWiFi.ServerBackchannels;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,21 +7,32 @@ using UnityEngine;
 public class Store : MonoBehaviour {
 
     public Pickable[] pickable;
+    [SerializeField]
+    private GameObject groupHealSellPanel;
+    [SerializeField]
+    private GameObject personalHealSellPanel;
+    [SerializeField]
+    private GameObject burstDamageSellPanel;
+
+    //Script use to send information to clients in basics types
+    [SerializeField]
+    private Steering steering;
 
     IEnumerator nextObject(int time)
     {
         yield return new WaitForSeconds(time);
-        StartNewSequence();
+        CreateNewPickable();
+        //StartNewSequence();
     }
 
+    IEnumerator sellDuration()
+    {
+        Debug.Log("Coroutine sell");
+        yield return new WaitForSeconds(5);
+        steering.sendSellIsOver(true);
+        steering.sendNameObjectForSale("");
+    }
     void Start() {
-        Component[] components = GetComponents(typeof(Pickable));
-        pickable = new Pickable[components.Length];
-
-        for (int i = 0; i < components.Length; i++)
-        {
-            pickable[i] = components[i] as Pickable;
-        }
         StartNewSequence();
     }
 
@@ -33,24 +45,29 @@ public class Store : MonoBehaviour {
     void StartNewSequence()
     {
         StopAllCoroutines();
-        StartCoroutine(nextObject(Random.Range(2, 5)));
+        StartCoroutine(nextObject(6));
     }
 
     void CreateNewPickable()
     {
         int type = Random.Range(1, 3);
-        GameObject item = null;
-        Pickable itemScript;
         switch(type)
         {
-            case 1: item = Resources.Load("Items/item") as GameObject;
-                    itemScript = item.AddComponent<PersonnalHeal>();
-            break;
-            case 2: item = Resources.Load("Items/item") as GameObject;
-                    itemScript = item.AddComponent<GroupHeal>(); 
-            break;
+            case 1:
+                groupHealSellPanel.SetActive(true);
+                steering.sendNameObjectForSale("groupHeal");
+                StartCoroutine(sellDuration());
+                break;
+            case 2:
+                personalHealSellPanel.SetActive(true);
+                steering.sendNameObjectForSale("personalHeal");
+                StartCoroutine(sellDuration());
+                break;
+            case 3:
+                burstDamageSellPanel.SetActive(true);
+                steering.sendNameObjectForSale("burstDamage");
+                StartCoroutine(sellDuration());
+                break;
         }
-
-        item.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 5;
     }
 }
