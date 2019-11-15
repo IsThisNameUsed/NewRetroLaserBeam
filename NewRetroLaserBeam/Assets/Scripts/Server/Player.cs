@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
     [Header("References")]
     public LaserBehaviour laser;
     public Slider healthBar;
+    public Pickable possessedObject;
+
     [Header("Players Health")]//on peut vérifier la vie à chaque fois que celle ci est changé.
     [ReadOnly] [SerializeField] public int _playerCurrentHealth;
     [ReadOnly] [SerializeField] bool _playerIsAlive = true;
@@ -71,14 +73,12 @@ public class Player : MonoBehaviour {
             laser.gameObject.SetActive(false);
         }
     }
-    public Pickable possessedObject;
+    void AddPickableToPlayer(itemType type)
     {
        if(type == itemType.GroupeHeal )
         {
             //possessedObject = GetComponent()
         }
        
-    }
-    void AddPickableToPlayer(itemType type)
-}
+    }}
 // GroupeHeal, PersonnalHeal, BurstDamage };
