@@ -199,7 +199,6 @@ public class LaserBehaviour : MonoBehaviour
     }
     public int TakeDamage(ref int _damage)
     {
-        Debug.Log(_damage);
         return playerCurrentHealth -= _damage;
     }
     private void OnEnable()

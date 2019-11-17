@@ -29,8 +29,8 @@ public class ClientManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        gameInterfacePanel.SetActive(false);
-        spendCoinsPanel.SetActive(true);
+        //gameInterfacePanel.SetActive(false);
+        //spendCoinsPanel.SetActive(true);
     }
 	
 	// Update is called once per frame

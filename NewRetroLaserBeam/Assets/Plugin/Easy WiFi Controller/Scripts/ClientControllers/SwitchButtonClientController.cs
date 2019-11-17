@@ -58,10 +58,7 @@ namespace EasyWiFi.ClientControls
             //mouse
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                if (Input.mousePosition.x >= screenPixelsRect.x &&
-                        Input.mousePosition.x <= (screenPixelsRect.x + screenPixelsRect.width) &&
-                        Input.mousePosition.y >= screenPixelsRect.y &&
-                        Input.mousePosition.y <= (screenPixelsRect.y + screenPixelsRect.height))
+                if (screenPixelsRect.Contains(Input.mousePosition))
                 {
                     if (!momentartyLock)
                     {

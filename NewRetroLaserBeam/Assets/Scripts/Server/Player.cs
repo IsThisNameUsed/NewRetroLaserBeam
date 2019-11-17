@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
     public Pickable possessedObject;
     // Use this for initialization
+
     void Start () {
 		
 	}
