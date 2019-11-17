@@ -16,6 +16,7 @@ public class ClientManager : MonoBehaviour {
     public Text sellText2;
     public GameObject spendCoinsPanel;
     public GameObject gameInterfacePanel;
+    public GameObject buyButton;
     //Forward channel example
     /*IEnumerator displayCoinPanel()
     {
@@ -31,6 +32,7 @@ public class ClientManager : MonoBehaviour {
     void Start () {
         //gameInterfacePanel.SetActive(false);
         //spendCoinsPanel.SetActive(true);
+        buyButton.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -51,14 +53,24 @@ public class ClientManager : MonoBehaviour {
         spendCoinsPanel.SetActive(!value.BOOL_VALUE);
     }
 
-    void StartSell(StringBackchannelType value)
+    //control name: nameObjectForSell
+    void setObjectName(StringBackchannelType value)
     {
         sellText.text = value.STRING_VALUE;
     }
 
-    void sellIsOver(BoolBackchannelType value)
+    //control name: sellIsActiv
+    void setSellState(BoolBackchannelType value)
     {
         if(value.BOOL_VALUE)
+        {
+            buyButton.SetActive(true);
+            sellText2.text = "SellIsActiv";
+        }
+        else
+        {
+            buyButton.SetActive(false);
             sellText2.text = "SellIsOver";
+        }  
     }
 }

@@ -22,6 +22,7 @@ public class EnemyBehaviour : MonoBehaviour {
     [Range(0,20)]public float stopDistance = 2;
     public LaserManager laserManager;
     public Player targetedPlayer;
+
     void Start () {
         mainCamera = Camera.main;
 

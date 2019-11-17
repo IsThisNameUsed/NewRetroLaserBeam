@@ -54,14 +54,16 @@ namespace EasyWiFi.ClientControls
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 /*if (Input.mousePosition.x >= screenPixelsRect.x &&
-                        Input.mousePosition.x <= (screenPixelsRect.x + screenPixelsRect.width) &&
-                        Input.mousePosition.y >= screenPixelsRect.y &&
-                        Input.mousePosition.y <= (screenPixelsRect.y + screenPixelsRect.height))
-                {*/
-                if (screenPixelsRect.Contains(Input.mousePosition))
-                { 
-                    pressed = true;
-                }
+                       Input.mousePosition.x <= (screenPixelsRect.x + screenPixelsRect.width) &&
+                       Input.mousePosition.y >= screenPixelsRect.y &&
+                       Input.mousePosition.y <= (screenPixelsRect.y + screenPixelsRect.height))
+               {
+                   pressed = true;
+               }*/
+               if (screenPixelsRect.Contains(Input.mousePosition))
+               { 
+                   pressed = true;
+               }
 
             }
 
@@ -75,12 +77,17 @@ namespace EasyWiFi.ClientControls
                     Touch touch = Input.GetTouch(i);
 
                     //touch somewhere on control
-                    if (touch.position.x >= screenPixelsRect.x &&
+                    /*if (touch.position.x >= screenPixelsRect.x &&
                             touch.position.x <= (screenPixelsRect.x + screenPixelsRect.width) &&
                             touch.position.y >= screenPixelsRect.y &&
                             touch.position.y <= (screenPixelsRect.y + screenPixelsRect.height))
                     {
 
+                        pressed = true;
+                        break;
+                    }*/
+                    if (screenPixelsRect.Contains(touch.position))
+                    {
                         pressed = true;
                         break;
                     }

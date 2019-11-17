@@ -12,12 +12,15 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     
     public float TimeForSpendCoins;
-    [Range(0,4)]int _playingPlayers = 0;
+    [Range(0,4)]
+    public int _playingPlayers = 0;
+
     public int playingPlayers {
         get { return _playingPlayers; }
         set { _playingPlayers = value;
               SetPlayersNumber(ref _playingPlayers);}
     }
+
     [ReadOnly] public int numberOfConnectedPlayer = 4;
     private bool allPlayersConnected = false;
     private float numberOfReadyPlayers = 0;

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public LaserBehaviour laser;
     public Slider healthBar;
     public Pickable possessedObject;
+    public int coins;
 
     [Header("Players Health")]//on peut vérifier la vie à chaque fois que celle ci est changé.
     [ReadOnly] [SerializeField] public int _playerCurrentHealth;
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour {
         playerCurrentHealth = playerCurrentMaxHealth;
         if(laser != null) {laser.UpdateLaserRootPosition();}
     }
+
     public bool playerIsAlive
     {
         get { return _playerIsAlive; }
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour {
             GameManager.instance.CheckPlayerState();
         }
     }
+
     public int playerCurrentHealth
     {
         get { return _playerCurrentHealth; }
@@ -47,16 +50,19 @@ public class Player : MonoBehaviour {
             }
         }
     }
+
     public int TakeDamage(ref int _damage)
     {
         Debug.Log(_damage);
         return playerCurrentHealth -= _damage;
     }
+
     public void DebugTakeDamage()
     {
         int damage = 1;
         TakeDamage(ref damage);
     }
+
     private void OnEnable()
     {
         if(healthBar){ healthBar.gameObject.SetActive(true); }
@@ -66,6 +72,7 @@ public class Player : MonoBehaviour {
         }
         
     }
+
     private void OnDisable()
     {
         if (healthBar) { healthBar.gameObject.SetActive(false); }
@@ -74,6 +81,7 @@ public class Player : MonoBehaviour {
             laser.gameObject.SetActive(false);
         }
     }
+
     void AddPickableToPlayer(itemType type)
     {
        if(type == itemType.GroupeHeal )
@@ -81,5 +89,6 @@ public class Player : MonoBehaviour {
             //possessedObject = GetComponent()
         }
        
-    }}
-// GroupeHeal, PersonnalHeal, BurstDamage };
+    }
+
+}

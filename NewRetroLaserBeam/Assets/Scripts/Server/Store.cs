@@ -1,4 +1,5 @@
-﻿using EasyWiFi.ServerBackchannels;
+﻿using EasyWiFi.Core;
+using EasyWiFi.ServerBackchannels;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,8 +16,7 @@ public class Store : MonoBehaviour {
     private GameObject burstDamageSellPanel;
 
     //Script use to send information to clients in basics types
-    [SerializeField]
-    private Steering steering;
+    public Steering steering;
 
     IEnumerator nextObject(int time)
     {
@@ -28,10 +28,12 @@ public class Store : MonoBehaviour {
     IEnumerator sellDuration()
     {
         Debug.Log("Coroutine sell");
+        steering.sellIsActiv(true);
         yield return new WaitForSeconds(5);
-        steering.sendSellIsOver(true);
+        steering.sellIsActiv(false);
         steering.sendNameObjectForSale("");
     }
+
     void Start() {
         StartNewSequence();
     }
@@ -45,7 +47,7 @@ public class Store : MonoBehaviour {
     void StartNewSequence()
     {
         StopAllCoroutines();
-        StartCoroutine(nextObject(6));
+        StartCoroutine(nextObject(5));
     }
 
     void CreateNewPickable()
@@ -69,5 +71,16 @@ public class Store : MonoBehaviour {
                 StartCoroutine(sellDuration());
                 break;
         }
+    }
+    
+    void BuyObject(ButtonControllerType buyButton)
+    {
+        if(buyButton.BUTTON_STATE_IS_PRESSED)
+        {    
+            Debug.Log("Acheté par client numero " + buyButton.clientKey+" " + buyButton.logicalPlayerNumber);
+            steering.sellIsActiv(false);
+            steering.sendNameObjectForSale("");
+        }
+        
     }
 }
