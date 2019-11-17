@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
     [Header("References")]
     public LaserBehaviour laser;
-    public Slider healthBar;
-    public Pickable possessedObject;
-    public int coins;
+    
+    public Item possessedObject;
+    [SerializeField]
+    private int coins;
 
+    public Slider healthBar;
     [Header("Players Health")]//on peut vérifier la vie à chaque fois que celle ci est changé.
     [ReadOnly] [SerializeField] public int _playerCurrentHealth;
     [ReadOnly] [SerializeField] bool _playerIsAlive = true;
@@ -17,7 +19,7 @@ public class Player : MonoBehaviour {
     public int playerCurrentMaxHealth;
     public int playerBonusOnHealth = 0;
 
-    // Use this for initialization
+   
 
     void Start () {
         playerCurrentMaxHealth = GameManager.instance.playersBaseHealth + playerBonusOnHealth;
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour {
         if(laser != null) {laser.UpdateLaserRootPosition();}
     }
 
+#region Life
     public bool playerIsAlive
     {
         get { return _playerIsAlive; }
@@ -81,14 +84,17 @@ public class Player : MonoBehaviour {
             laser.gameObject.SetActive(false);
         }
     }
+    #endregion
 
-    void AddPickableToPlayer(itemType type)
+#region coins
+    public int GetCoins()
     {
-       if(type == itemType.GroupeHeal )
-        {
-            //possessedObject = GetComponent()
-        }
-       
+        return coins;
     }
 
+    public void SetCoins(int value)
+    {
+        coins += value;
+    }
+#endregion
 }

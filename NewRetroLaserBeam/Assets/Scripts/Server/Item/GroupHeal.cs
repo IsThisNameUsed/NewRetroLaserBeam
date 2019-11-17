@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroupHeal : Pickable {
+public class GroupHeal : Item {
 
     // Use this for initialization
     void Start () {

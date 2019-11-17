@@ -3,20 +3,21 @@ using EasyWiFi.ServerBackchannels;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Store en stand by
 public class Store : MonoBehaviour {
 
-    public Pickable[] pickable;
+    
     [SerializeField]
-    private GameObject groupHealSellPanel;
-    [SerializeField]
-    private GameObject personalHealSellPanel;
-    [SerializeField]
-    private GameObject burstDamageSellPanel;
+    private GameObject sellPanel;
+   
 
-    //Script use to send information to clients in basics types
-    public Steering steering;
+    public Item[] itemsForSell;
+    private int actualSellingItemID;
+    private bool itemSold;                                      // Security bool: Item is bought by a player and can't be bought again
+    
+    public Steering steering;                                   //Script use to send information to clients in basics types
 
     IEnumerator nextObject(int time)
     {
@@ -25,13 +26,21 @@ public class Store : MonoBehaviour {
         //StartNewSequence();
     }
 
-    IEnumerator sellDuration()
+    IEnumerator SellItem()
     {
-        Debug.Log("Coroutine sell");
+        SetSellState(true);
         steering.sellIsActiv(true);
         yield return new WaitForSeconds(5);
-        steering.sellIsActiv(false);
-        steering.sendNameObjectForSale("");
+        SetSellState(false);
+        yield return new WaitForSeconds(2);
+        itemSold = false;
+    }
+
+    IEnumerator StopSell()
+    {
+        SetSellState(false);
+        yield return new WaitForSeconds(2);
+        itemSold = false;
     }
 
     void Start() {
@@ -46,41 +55,59 @@ public class Store : MonoBehaviour {
 
     void StartNewSequence()
     {
-        StopAllCoroutines();
         StartCoroutine(nextObject(5));
     }
 
     void CreateNewPickable()
     {
-        int type = Random.Range(1, 3);
-        switch(type)
-        {
-            case 1:
-                groupHealSellPanel.SetActive(true);
-                steering.sendNameObjectForSale("groupHeal");
-                StartCoroutine(sellDuration());
-                break;
-            case 2:
-                personalHealSellPanel.SetActive(true);
-                steering.sendNameObjectForSale("personalHeal");
-                StartCoroutine(sellDuration());
-                break;
-            case 3:
-                burstDamageSellPanel.SetActive(true);
-                steering.sendNameObjectForSale("burstDamage");
-                StartCoroutine(sellDuration());
-                break;
-        }
+        int actualSellingItemID = Random.Range(0, 3);
+        string name = itemsForSell[actualSellingItemID].name;
+        steering.sendNameObjectForSale(itemsForSell[actualSellingItemID].name);
+        StartCoroutine("SellItem");          
     }
     
     void BuyObject(ButtonControllerType buyButton)
     {
         if(buyButton.BUTTON_STATE_IS_PRESSED)
-        {    
+        {
+            if (itemSold)
+                return;
+
             Debug.Log("Acheté par client numero " + buyButton.clientKey+" " + buyButton.logicalPlayerNumber);
-            steering.sellIsActiv(false);
-            steering.sendNameObjectForSale("");
+            int playerId = buyButton.logicalPlayerNumber;
+            int playersCoins = GameManager.instance.players[playerId].GetCoins();
+            int itemCost = itemsForSell[actualSellingItemID].price;
+            if (playersCoins >= itemCost)
+            {
+                itemSold = true;
+                SetSellState(false);
+                steering.sendNameObjectForSale("");
+                GameManager.instance.players[playerId].SetCoins(-itemCost);
+                StopCoroutine("SellItem");
+                StartCoroutine("StopSell");
+            }    
         }
         
     }
+
+    private void SetSellState(bool value)
+    {
+        steering.sellIsActiv(value);
+        
+        string itemName="";
+        if (value)
+        {
+            itemName = itemsForSell[actualSellingItemID].name;
+            sellPanel.SetActive(value);
+            sellPanel.GetComponent<Text>().text = name;     
+        }
+        else
+        {
+            sellPanel.GetComponent<Text>().text = name;
+            sellPanel.SetActive(value);
+        }
+        steering.sendNameObjectForSale(itemName);
+    }
+    
 }
+

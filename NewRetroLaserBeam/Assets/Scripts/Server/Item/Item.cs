@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BurstDamage : Pickable {
+public class Item : MonoBehaviour {
 
-	// Use this for initialization
+    public int price;
+    public string name;
+
 	void Start () {
-		
+        
 	}
 	
 	// Update is called once per frame

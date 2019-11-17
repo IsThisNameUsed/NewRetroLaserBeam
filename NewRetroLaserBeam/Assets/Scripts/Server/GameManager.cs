@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     
     public float TimeForSpendCoins;
     [Range(0,4)]
+
     public int _playingPlayers = 0;
 
     public int playingPlayers {
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     private float numberOfReadyPlayers = 0;
     [Range(1,10)]public int playersBaseHealth = 3;
     public Player[] players;
+
     private void Awake()
     {
         if (instance != null)
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
         else playingPlayers = 1;
     }
 
+    #region player
     public void playerIsReady(ButtonControllerType button)
     {
         if (button.BUTTON_STATE_IS_PRESSED)
@@ -88,6 +91,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Over");
         }
     }
+
     public void SetPlayersNumber(ref int _number)
     {
         int i;
@@ -101,6 +105,9 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    #endregion
+
+
     //Forward channel example
     /*public void stopSpendingCoins(BoolBackchannelType value)
     {

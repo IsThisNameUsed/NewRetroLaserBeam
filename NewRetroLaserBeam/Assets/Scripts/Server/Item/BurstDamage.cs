@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickableManager : MonoBehaviour {
+public class BurstDamage : Item {
 
 	// Use this for initialization
 	void Start () {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PersonalHeal : Pickable {
+public class PersonalHeal : Item {
 
 	// Use this for initialization
 	void Start () {
