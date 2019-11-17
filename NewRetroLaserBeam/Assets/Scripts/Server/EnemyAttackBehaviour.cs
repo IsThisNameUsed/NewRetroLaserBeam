@@ -27,7 +27,7 @@ public class EnemyAttackBehaviour : StateMachineBehaviour {
         while(timer >= enemyBehaviour.hitTime*5)
         {
             timer = 0;
-            enemyBehaviour.laser.TakeDamage(ref enemyBehaviour.damagePoint);
+            enemyBehaviour.targetedPlayer.TakeDamage(ref enemyBehaviour.damagePoint);
         }
     }
 

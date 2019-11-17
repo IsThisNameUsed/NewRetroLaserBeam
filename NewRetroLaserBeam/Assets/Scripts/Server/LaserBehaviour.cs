@@ -18,15 +18,11 @@ public class LaserBehaviour : MonoBehaviour
     public AudioSource laserHitSound;
     public GameObject emitter;
     public GameObject burnParticle;
-    public Slider slider;
+
     public LayerMask layerMask;
     public GameObject scope;
+    public Player player;
 
-    [Header("Players Health")]//on peut vérifier la vie à chaque fois que celle ci est changé.
-    [ReadOnly] [SerializeField] public int _playerCurrentHealth;
-    [ReadOnly] [SerializeField] bool _playerIsAlive = true;
-    //la vie qu'il a avec les coins? Servira pour les revives.
-    public int playerCurrentMaxHealth;
 
 
     void Awake()
@@ -40,9 +36,9 @@ public class LaserBehaviour : MonoBehaviour
 
     private void Start()
     {
-        //SetLaserActive();        
-        
-        playerCurrentHealth = laserManager.playersBaseHealth/* +  coinOnHealth*/;//a changer surement
+        //SetLaserActive();
+
+
     }
 
     // Update is called once per frame
@@ -63,7 +59,7 @@ public class LaserBehaviour : MonoBehaviour
 
         //Commande de debug à la souris DEBUG MODE
 #if UNITY_EDITOR
-        if (LaserManager.instance.debugMode)
+        if (GameManager.instance.debugMode)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -72,42 +68,10 @@ public class LaserBehaviour : MonoBehaviour
         }
 #endif
     }
-    public int playerCurrentHealth
+    public Player SetPlayer(Player _player)
     {
-        get { return _playerCurrentHealth; }
-        set
-        {
-            _playerCurrentHealth = value;
-            slider.value = (float)value / playerCurrentMaxHealth;
-
-            switch (playerIsAlive)
-            {
-                case true:
-                    if (_playerCurrentHealth <= 0)//le joueur est mort
-                    {
-                        playerIsAlive = false;
-                    }
-                    break;
-                case false:
-                    if (_playerCurrentHealth > 0)// le joueur vient de start / revive.
-                    {
-                        playerIsAlive = true;
-                    }
-                    break;
-            }
-        }
+        return player = _player;
     }
-
-    public bool playerIsAlive
-    {
-        get { return _playerIsAlive; }
-        set
-        {
-            _playerIsAlive = value;
-            laserManager.CheckPlayerState();
-        }
-    }
-
     public void UpdateLaserRootPosition()
     {
         laser.SetPosition(0, emitter.transform.position);
@@ -129,7 +93,7 @@ public class LaserBehaviour : MonoBehaviour
         {
             //On cherche le point d'impact sur le targetingCollider et on translate en coordonnée écran pour positionner le viseur sur le canvas
             for (int i = 0; i < hits.Length; i++)
-            {      
+            {
                 GameObjectHit = hits[i].transform.gameObject;
                 if (GameObjectHit.name == "TargetingCollider")
                 {
@@ -145,8 +109,8 @@ public class LaserBehaviour : MonoBehaviour
                 {
                     laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 100);
                 }
-            } 
-            
+            }
+
             //On cast un ray depuis la camera vers le viseur pour détecter si un enemi est dans la ligne de tir
             Ray ray = Camera.main.ScreenPointToRay(scope.transform.position);
             Debug.DrawRay(ray.origin, ray.direction*100, Color.yellow,0.5f);
@@ -191,22 +155,5 @@ public class LaserBehaviour : MonoBehaviour
             isShooting = false;
             laser.enabled = false;
         }
-    }
-    public void DebugTakeDamage()
-    {
-        int damage = 1;
-        TakeDamage(ref damage);
-    }
-    public int TakeDamage(ref int _damage)
-    {
-        return playerCurrentHealth -= _damage;
-    }
-    private void OnEnable()
-    {
-        slider.gameObject.SetActive(true);
-    }
-    private void OnDisable()
-    {
-        slider.gameObject.SetActive(false);
     }
 }
