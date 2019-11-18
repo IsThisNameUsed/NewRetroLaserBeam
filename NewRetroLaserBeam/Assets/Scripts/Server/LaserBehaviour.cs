@@ -7,7 +7,7 @@ using EasyWiFi.Core;
 public class LaserBehaviour : MonoBehaviour
 {
     LineRenderer laser;
-    public EnemyBehaviour enemyHit;
+    public MeleeEnemyBehaviour enemyHit;
     public bool laserHit = false;
     public static LaserManager laserManager;
     public bool isShooting = false;
@@ -129,7 +129,7 @@ public class LaserBehaviour : MonoBehaviour
                 if (transformHit.gameObject.tag == "Enemy")
                 {
                     laserHit = true;
-                    enemyHit = transformHit.gameObject.GetComponent<EnemyBehaviour>();
+                    enemyHit = transformHit.gameObject.GetComponent<MeleeEnemyBehaviour>();
                 }
                 else laserHit = false;
             }

@@ -2,27 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGetCloseBehaviour : StateMachineBehaviour {
-    GameObject gameObject;
-    MeleeEnemyBehaviour enemyBehaviour;
+public class EnemyShootBehaviour : StateMachineBehaviour
+{
+    private float timer;
+    private float timerBeforeShooting;
+    private bool isShooting = false;
+    private ShooterEnemyBehaviour shooterEnemyBehaviour;
+
+    
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        gameObject = animator.gameObject;
-        enemyBehaviour = gameObject.GetComponent<MeleeEnemyBehaviour>();
+        shooterEnemyBehaviour = animator.gameObject.GetComponent<ShooterEnemyBehaviour>();
+        if (shooterEnemyBehaviour == null)
+            Debug.Log("enemyBehaviour NULL");
+        timerBeforeShooting = shooterEnemyBehaviour.timerBeforeShooting;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //gameObject.GetComponent<EnemyBehaviour>().GoToLocation();
-        animator.transform.position += (Camera.main.transform.position - animator.transform.position).normalized * Time.deltaTime * enemyBehaviour.moveSpeed;
-        if (Vector3.Distance(gameObject.transform.position, Camera.main.transform.position) < 10 * enemyBehaviour.stopDistance)
+
+        if (!isShooting)
         {
-            enemyBehaviour.EnemyIsClose(true);
+            WaitBeforeFirstShoot();
+            return;
         }
+
+        timer += Time.deltaTime;
+        if(timer >= shooterEnemyBehaviour.hitTime * 5)
+        {
+            timer = 0;
+            shooterEnemyBehaviour.targetedPlayer.TakeDamage(ref shooterEnemyBehaviour.damagePoint);
+        }
+        
     }
 
+    private void WaitBeforeFirstShoot()
+    {
+        timer += Time.deltaTime;
+        if (timer >= timerBeforeShooting)
+        {
+            isShooting = true;
+            timer = 0;
+        }
+            
+    }
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
     //
@@ -38,3 +63,4 @@ public class EnemyGetCloseBehaviour : StateMachineBehaviour {
     //
     //}
 }
+

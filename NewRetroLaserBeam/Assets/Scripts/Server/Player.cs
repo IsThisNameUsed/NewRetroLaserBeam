@@ -56,7 +56,6 @@ public class Player : MonoBehaviour {
 
     public int TakeDamage(ref int _damage)
     {
-        Debug.Log(_damage);
         return playerCurrentHealth -= _damage;
     }
 
@@ -68,7 +67,6 @@ public class Player : MonoBehaviour {
 
     private void OnEnable()
     {
-        Debug.Log("OnEnable");
         if(healthBar){ healthBar.gameObject.SetActive(true); }
         if (laser != null) {
             laser.gameObject.SetActive(true);

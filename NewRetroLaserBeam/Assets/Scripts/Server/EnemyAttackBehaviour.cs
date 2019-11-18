@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyAttackBehaviour : StateMachineBehaviour {
 
     float timer = 0;
-    EnemyBehaviour enemyBehaviour;
+    MeleeEnemyBehaviour enemyBehaviour;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyBehaviour = animator.gameObject.GetComponent<EnemyBehaviour>();
+        enemyBehaviour = animator.gameObject.GetComponent<MeleeEnemyBehaviour>();
         if (enemyBehaviour == null)
             Debug.Log("enemyBehaviour NULL");
 
@@ -24,7 +24,7 @@ public class EnemyAttackBehaviour : StateMachineBehaviour {
     {
         //damage here
         timer += Time.deltaTime;
-        while(timer >= enemyBehaviour.hitTime*5)
+        if(timer >= enemyBehaviour.hitTime*5)
         {
             timer = 0;
             enemyBehaviour.targetedPlayer.TakeDamage(ref enemyBehaviour.damagePoint);

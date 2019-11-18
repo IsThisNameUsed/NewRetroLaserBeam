@@ -4,57 +4,57 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(ParticleSystem))]
-public class EnemyBehaviour : MonoBehaviour {
+abstract public class EnemyBehaviour : MonoBehaviour {
 
-    [SerializeField]float healthPoint = 1;
+    [SerializeField] float healthPoint = 1;
     public float moveSpeed = 0.25f;
     public int damagePoint = 1;
+    [Range(0, 20)] public float stopDistance = 2;
     public bool isCloseToPlayers;
-    Collider headCollider;
-    Collider bodyCollider;
-    public Camera mainCamera;
-    Animator animator;
-    public float hitTime = 1f;
-    public float hitCooldown = 0;
+
     public int[] playersHit = { 0, 0, 0, 0 };
     public ParticleSystem particleSystem;
-    public bool isMoving = true;
-    [Range(0,20)]public float stopDistance = 2;
+
+    Collider headCollider;
+    Collider bodyCollider;
+    protected Animator animator;
     public LaserManager laserManager;
     public Player targetedPlayer;
 
-    void Start () {
-        mainCamera = Camera.main;
+    public float hitTime = 1f;
+    public float hitCooldown = 0;
 
+
+    void Start()
+    {
+        Instanciation();
+    }
+
+    void Update()
+    {
+        if (hitCooldown > 0)
+        {
+            hitCooldown -= Time.deltaTime;
+        }
+        CheckHealth();
+
+    }
+
+    protected void Instanciation()
+    {
         animator = GetComponent<Animator>();
         particleSystem = GetComponent<ParticleSystem>();
 
         headCollider = transform.GetChild(0).GetComponent<Collider>();
         bodyCollider = transform.GetChild(1).GetComponent<Collider>();
 
-        EnemyIsActive(isMoving);
+        EnemyIsActive(true);
         hitCooldown = hitTime;
 
-        laserManager = mainCamera.transform.GetChild(0).GetComponent<LaserManager>();
         targetedPlayer = GameManager.instance.players[Random.Range(0, GameManager.instance.playingPlayers - 1)];
     }
 
-	// Update is called once per frame
-	void Update () {
-        if(hitCooldown > 0)
-        {
-            hitCooldown -= Time.deltaTime;
-        }
-        CheckHealth();
-
-	}
-
-    public void GoToLocation()
-    {
-        transform.position += (mainCamera.transform.position - transform.position).normalized * Time.deltaTime * moveSpeed;
-    }
-
-    void CheckHealth()
+    protected void CheckHealth()
     {
         if (healthPoint <= 0)
         {
@@ -64,9 +64,9 @@ public class EnemyBehaviour : MonoBehaviour {
         }
     }
 
-    public float DealDamage(float _damage,Collider _col, int _playerId)
+    public float DealDamage(float _damage, Collider _col, int _playerId)
     {
-        print(_damage);
+        //print(_damage);
         //Check if hit on head.
         if (_col == headCollider)
         {
@@ -83,7 +83,7 @@ public class EnemyBehaviour : MonoBehaviour {
         {
             float totalDamage = 0;
 
-            for(int i = 0; i < playersHit.Length; i++)
+            for (int i = 0; i < playersHit.Length; i++)
             {
                 totalDamage += (_damage * playersHit[i]);
                 Debug.Log(totalDamage);
@@ -98,26 +98,15 @@ public class EnemyBehaviour : MonoBehaviour {
         {
             return 0;
         }
-
     }
 
     private void ResetPlayersHit()
     {
-        for(int i = 0; i < playersHit.Length; i++)
+        for (int i = 0; i < playersHit.Length; i++)
         {
             playersHit[i] = 0;
         }
     }
 
-    public bool EnemyIsActive(bool _state)
-    {
-        animator.SetBool("isActive", _state);
-        return _state;
-    }
-
-    public bool EnemyIsClose(bool _state)
-    {
-        animator.SetBool("isClose", _state);
-        return _state;
-    }
+    abstract public bool EnemyIsActive(bool _state); 
 }
