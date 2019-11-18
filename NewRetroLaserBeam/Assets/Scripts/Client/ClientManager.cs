@@ -17,35 +17,20 @@ public class ClientManager : MonoBehaviour {
     public GameObject spendCoinsPanel;
     public GameObject gameInterfacePanel;
     public GameObject buyButton;
-    //Forward channel example
-    /*IEnumerator displayCoinPanel()
-    {
-        yield return new WaitForSeconds(time);
-        coinButton.SetActive(false);
-        gameObject.GetComponent<BoolDataClientController>().setValue(true);
-    }*/
 
-    private void Awake()
-    {
-    }
-    // Use this for initialization
+    public StringDataClientController testString;
+
     void Start () {
         //gameInterfacePanel.SetActive(false);
         //spendCoinsPanel.SetActive(true);
         buyButton.SetActive(false);
+        testString.setValue("BUTTON 1");
     }
 	
 	// Update is called once per frame
 	void Update () {
         debugText.text = time.ToString();
     }
-
-    /*void SpendCoins(FloatBackchannelType inputTime)
-    {
-        coinButton.SetActive(true);
-        time = inputTime.FLOAT_VALUE;
-        StartCoroutine("displayCoinPanel");
-    }*/
 
     void switchToGameInterface(BoolBackchannelType value)
     {
@@ -73,4 +58,29 @@ public class ClientManager : MonoBehaviour {
             sellText2.text = "SellIsOver";
         }  
     }
+
+    public void setString1()
+    {
+        testString.setValue("BUTTON 1");
+    }
+
+    public void setString2()
+    {
+        testString.setValue("BUTTON 2");
+    }
+
+    //Forward channel example
+    /*IEnumerator displayCoinPanel()
+    {
+        yield return new WaitForSeconds(time);
+        coinButton.SetActive(false);
+        gameObject.GetComponent<BoolDataClientController>().setValue(true);
+    }*/
+
+    /*void SpendCoins(FloatBackchannelType inputTime)
+   {
+       coinButton.SetActive(true);
+       time = inputTime.FLOAT_VALUE;
+       StartCoroutine("displayCoinPanel");
+   }*/
 }

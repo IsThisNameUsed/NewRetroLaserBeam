@@ -7,12 +7,10 @@ using UnityEngine.UI;
 
 //Store en stand by
 public class Store : MonoBehaviour {
-
-    
+ 
     [SerializeField]
     private GameObject sellPanel;
    
-
     public Item[] itemsForSell;
     private int actualSellingItemID;
     private bool itemSold;                                      // Security bool: Item is bought by a player and can't be bought again
@@ -79,10 +77,12 @@ public class Store : MonoBehaviour {
             int itemCost = itemsForSell[actualSellingItemID].price;
             if (playersCoins >= itemCost)
             {
+                Player buyer = GameManager.instance.players[playerId];
                 itemSold = true;
                 SetSellState(false);
                 steering.sendNameObjectForSale("");
-                GameManager.instance.players[playerId].SetCoins(-itemCost);
+                buyer.AddCoins(-itemCost);
+                buyer.possesseditem = itemsForSell[actualSellingItemID];
                 StopCoroutine("SellItem");
                 StartCoroutine("StopSell");
             }    
@@ -99,11 +99,11 @@ public class Store : MonoBehaviour {
         {
             itemName = itemsForSell[actualSellingItemID].name;
             sellPanel.SetActive(value);
-            sellPanel.GetComponent<Text>().text = name;     
+            sellPanel.GetComponent<Text>().text = itemName;     
         }
         else
         {
-            sellPanel.GetComponent<Text>().text = name;
+            sellPanel.GetComponent<Text>().text =itemName + " A VENDRE!!!";
             sellPanel.SetActive(value);
         }
         steering.sendNameObjectForSale(itemName);

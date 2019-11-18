@@ -41,14 +41,12 @@ public class Steering : MonoBehaviour {
 
     public void sendNameObjectForSale(string name)
     {
-        Debug.Log("SellObject" + name);
         objectForSale.setValue(name);
     }
 
     public void sellIsActiv(bool value)
     {
         endSell.setValue(value);
-        Debug.Log("Sell is activ"+value.ToString());
     }
 
     //human example scene methods (gaspedal, brakepedal, and steerball)

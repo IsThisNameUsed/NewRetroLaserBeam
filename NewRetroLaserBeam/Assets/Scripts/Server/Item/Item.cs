@@ -15,4 +15,9 @@ public class Item : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void UseItem()
+    {
+        Debug.Log("Utilisation de " + name);
+    }
 }

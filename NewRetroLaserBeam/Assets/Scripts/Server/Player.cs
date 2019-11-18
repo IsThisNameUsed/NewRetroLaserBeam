@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
     [Header("References")]
     public LaserBehaviour laser;
     
-    public Item possessedObject;
+    public Item possesseditem;
     [SerializeField]
     private int coins;
 
@@ -68,6 +68,7 @@ public class Player : MonoBehaviour {
 
     private void OnEnable()
     {
+        Debug.Log("OnEnable");
         if(healthBar){ healthBar.gameObject.SetActive(true); }
         if (laser != null) {
             laser.gameObject.SetActive(true);
@@ -92,7 +93,7 @@ public class Player : MonoBehaviour {
         return coins;
     }
 
-    public void SetCoins(int value)
+    public void AddCoins(int value)
     {
         coins += value;
     }

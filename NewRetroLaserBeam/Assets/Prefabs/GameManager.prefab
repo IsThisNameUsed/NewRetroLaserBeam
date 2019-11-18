@@ -11,6 +11,38 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1893250077976206}
   m_IsPrefabAsset: 1
+--- !u!1 &1084691515283990
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4389420725256780}
+  - component: {fileID: 114805009782519808}
+  m_Layer: 0
+  m_Name: burstDps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1451479677123440
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4082329619710732}
+  - component: {fileID: 114552414437408926}
+  m_Layer: 0
+  m_Name: personalHeal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1529544950982774
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,8 +67,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4812252974232522}
   - component: {fileID: 114773279908130736}
-  - component: {fileID: 114793470425892922}
-  - component: {fileID: 114571688277987718}
+  - component: {fileID: 114972948076602248}
+  - component: {fileID: 114448075130970522}
+  - component: {fileID: 114850175406990046}
   m_Layer: 0
   m_Name: Store
   m_TagString: Untagged
@@ -76,6 +109,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1713880974161144
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4133166550304856}
+  - component: {fileID: 114024938468662886}
+  m_Layer: 0
+  m_Name: groupHeal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1893250077976206
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +140,7 @@ GameObject:
   - component: {fileID: 114231539928523784}
   - component: {fileID: 114260632172406030}
   - component: {fileID: 114295396001722162}
+  - component: {fileID: 114022582472355528}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -130,6 +180,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4082329619710732
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1451479677123440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4812252974232522}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4104953778344132
 Transform:
   m_ObjectHideFlags: 1
@@ -143,6 +206,19 @@ Transform:
   m_Father: {fileID: 4419626952943962}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4133166550304856
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1713880974161144}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000002}
+  m_Children: []
+  m_Father: {fileID: 4812252974232522}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4171452285501844
 Transform:
   m_ObjectHideFlags: 1
@@ -154,6 +230,19 @@ Transform:
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000002}
   m_Children: []
   m_Father: {fileID: 4419626952943962}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4389420725256780
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084691515283990}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000002}
+  m_Children: []
+  m_Father: {fileID: 4812252974232522}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4419626952943962
@@ -195,7 +284,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4082329619710732}
+  - {fileID: 4133166550304856}
+  - {fileID: 4389420725256780}
   m_Father: {fileID: 4902920546973614}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -322,6 +414,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114022582472355528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893250077976206}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f8983642bb1474398547180940a989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: string
+  player: 0
+  notifyMethod: PrintString
+  callType: 1
+--- !u!114 &114024938468662886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1713880974161144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217375027722a6041be8b89c0ca734a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 5
+  name: group heal
 --- !u!114 &114126051855194328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,6 +454,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 0}
+  possesseditem: {fileID: 0}
+  coins: 0
   healthBar: {fileID: 0}
   _playerCurrentHealth: 0
   _playerIsAlive: 1
@@ -351,6 +473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 0}
+  possesseditem: {fileID: 0}
+  coins: 5
   healthBar: {fileID: 0}
   _playerCurrentHealth: 0
   _playerIsAlive: 1
@@ -396,6 +520,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 0}
+  possesseditem: {fileID: 0}
+  coins: 4
   healthBar: {fileID: 0}
   _playerCurrentHealth: 0
   _playerIsAlive: 1
@@ -414,6 +540,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatBackchannel: {fileID: 0}
   allPlayerReady: {fileID: 114260632172406030}
+  objectForSale: {fileID: 114448075130970522}
+  endSell: {fileID: 114972948076602248}
 --- !u!114 &114435670137426270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -427,7 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCam: {fileID: 0}
   shakeCamera: {fileID: 0}
---- !u!114 &114571688277987718
+--- !u!114 &114448075130970522
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -435,10 +563,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1543046563938408}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca345cda08cd5e248a2bec780e660ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: nameObjectForSale
+  player: 999
+--- !u!114 &114552414437408926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1451479677123440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e695993db35d6f34faba52b6bbb2c74d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  price: 5
+  name: personal heal
 --- !u!114 &114751442385932294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -465,8 +607,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf21989234f32d34e8f9b847032c14e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickable: []
---- !u!114 &114793470425892922
+  sellPanel: {fileID: 0}
+  itemsForSell:
+  - {fileID: 114552414437408926}
+  - {fileID: 114024938468662886}
+  - {fileID: 114805009782519808}
+  steering: {fileID: 114295396001722162}
+--- !u!114 &114805009782519808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084691515283990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21fbe6609578418499c420d7eca7adea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 5
+  name: burst damage
+--- !u!114 &114850175406990046
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -474,10 +634,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1543046563938408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 217375027722a6041be8b89c0ca734a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2610d61dfb3850d48a33ace0445018e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  control: buyButton
+  player: 999
+  notifyMethod: BuyObject
+  callType: 1
 --- !u!114 &114900095486457454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -489,8 +652,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2dc55910113e04ebca844376fcd71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 1
+  debugMode: 0
   TimeForSpendCoins: 0
+  _playingPlayers: 1
   numberOfConnectedPlayer: 4
   playersBaseHealth: 3
   players:
@@ -498,6 +662,7 @@ MonoBehaviour:
   - {fileID: 114281748348823008}
   - {fileID: 114126051855194328}
   - {fileID: 114904893684544532}
+  test: {fileID: 114022582472355528}
 --- !u!114 &114904893684544532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -510,8 +675,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 0}
+  possesseditem: {fileID: 0}
+  coins: 0
   healthBar: {fileID: 0}
   _playerCurrentHealth: 0
   _playerIsAlive: 1
   playerCurrentMaxHealth: 0
   playerBonusOnHealth: 0
+--- !u!114 &114972948076602248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543046563938408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4c9ab998d74bf4fa867fd801d2618f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: sellIsActiv
+  player: 999

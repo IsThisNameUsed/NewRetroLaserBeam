@@ -7,6 +7,7 @@ public class LaserOrientationDebugMod : MonoBehaviour {
     Camera cam;
 
     public GameObject scopeImage;
+    public Transform lineRendererTarget;
     public float rotationSpeed = 8;
     // Use this for initialization
     void Start () {
@@ -23,8 +24,7 @@ public class LaserOrientationDebugMod : MonoBehaviour {
 	void Update () {
 
         Vector3 vector = cam.ScreenPointToRay(Input.mousePosition).direction;
-        scopeImage.transform.position = cam.transform.position + vector * 10;
-
+        scopeImage.transform.position = cam.transform.position + vector * 50;
         Vector3 targetDir = scopeImage.transform.position - transform.position;
         float step = rotationSpeed * Time.deltaTime;
 

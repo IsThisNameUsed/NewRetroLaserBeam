@@ -120,7 +120,10 @@ public class LaserBehaviour : MonoBehaviour
                 Transform transformHit = hit.transform;
                 if (transformHit.gameObject.tag == "Pickable")
                 {
-                    //Pickable pickable = transformHit.gameObject.GetComponent<Pickable>();
+
+                    Pickable pickable = transformHit.gameObject.GetComponent<Pickable>();
+                    player.AddCoins(1);
+                    Destroy(pickable.gameObject);
                     return;
                 }
                 if (transformHit.gameObject.tag == "Enemy")

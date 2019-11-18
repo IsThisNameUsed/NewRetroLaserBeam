@@ -1,4 +1,5 @@
 ﻿using EasyWiFi.Core;
+using EasyWiFi.ServerControls;
 using EasyWiFi.ServerBackchannels;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
     [Range(1,10)]public int playersBaseHealth = 3;
     public Player[] players;
 
+    public CustomStringDataServerController test;
+ 
     private void Awake()
     {
         if (instance != null)
@@ -106,7 +109,11 @@ public class GameManager : MonoBehaviour
 
     }
     #endregion
-
+    
+    public void PrintString(StringBackchannelType value)
+    {       
+            Debug.Log(value.STRING_VALUE);     
+    }
 
     //Forward channel example
     /*public void stopSpendingCoins(BoolBackchannelType value)
