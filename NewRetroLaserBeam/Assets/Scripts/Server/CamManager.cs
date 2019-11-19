@@ -60,7 +60,7 @@ public class CamManager : MonoBehaviour
         {
             if (currentWayPoint < waypointNb)
                 currentWayPoint += 1;
-            else SceneManager.LoadScene("KOM_SERVER 1");
+            //else SceneManager.LoadScene("KOM_SERVER 1");
             if (playableDirector.time < times[currentWayPoint])
             {
                 playableDirector.Play();
