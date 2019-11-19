@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class CamManager : MonoBehaviour
 {
+    public List<List<EnemyBehaviour>> wavesList;
+    public List<int> numberOfenemiesPerWayPoint;
+
     public static CamManager instance;
 
     public CinemachinePathBase m_Path;
@@ -17,7 +20,7 @@ public class CamManager : MonoBehaviour
     private bool stopCamera;
     public int waypointNb = 3;
     public int currentWayPoint = 1;
-    public int[] numberOfenemiesPerWayPoint;
+    
     public float[] times;
     public GameObject camChild;
 
@@ -38,26 +41,31 @@ public class CamManager : MonoBehaviour
 
 
     void Start()
-    {    
-        enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint-1];
-        //playableDirector = GetComponent<PlayableDirector>();
-        times = new float[5];
-        times[1] = 1.40f;
-        times[2] = 2.25f;
-        times[3] = 10f;
-        times[4] = 18f;
-        //Debug.Log(playableDirector.time);     
+    {
+        numberOfenemiesPerWayPoint = new List<int>();
+        int countList = 0;
+        Debug.Log(wavesList.Count);
+        foreach(List<EnemyBehaviour> list in wavesList)
+        {
+            int countEnemies = 0;
+            foreach(EnemyBehaviour enemy in list)
+            {
+                countEnemies += 1;
+            }
+            numberOfenemiesPerWayPoint.Add(countEnemies);
+            countList += 1;
+        }
     }
 
     // Update is called once per frame
  
     void Update()
     {
-        Debug.Log("dolly" + dollyOne.m_Position);
+        /*Debug.Log("dolly" + dollyOne.m_Position);
         Debug.Log("way point " + currentWayPoint);
         Debug.Log(dollyOne.m_Position >= currentWayPoint);
         Debug.Log("to die " + enemyToDie);
-        Debug.Log("number " + numberOfenemiesPerWayPoint[currentWayPoint - 1]);
+        Debug.Log("number " + numberOfenemiesPerWayPoint[currentWayPoint - 1]);*/
         if (!GameIsActiv)
             return;
 

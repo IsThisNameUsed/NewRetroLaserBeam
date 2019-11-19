@@ -7,7 +7,7 @@ public class Wave : MonoBehaviour {
     public List<EnemyBehaviour> enemyList = new List<EnemyBehaviour>();
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
         enemyList.AddRange(transform.GetComponentsInChildren<EnemyBehaviour>(true));
     }
