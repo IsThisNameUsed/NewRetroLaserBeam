@@ -56,6 +56,10 @@ public class CamManager : MonoBehaviour
         if (!GameIsActiv)
             return;
 
+        if(dollyOne.m_Position >= waypointNb && enemyToDie > 0)
+        {
+
+        }
         if (enemyToDie <= 0)
         {
             if (currentWayPoint < waypointNb)
@@ -69,12 +73,12 @@ public class CamManager : MonoBehaviour
             }
         }
 
-        if (playableDirector.time >= times[currentWayPoint] && enemyToDie > 0)
+        /*if (playableDirector.time >= times[currentWayPoint] && enemyToDie > 0)
         {
             playableDirector.Pause();
             dollyOne.m_Speed = 0;
-        }
-
+        }*/
+        
         if (Input.GetKeyDown(KeyCode.A))
         {
             enemyToDie -= 1;

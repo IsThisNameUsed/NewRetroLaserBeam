@@ -2154,7 +2154,7 @@ Prefab:
     - target: {fileID: 114900095486457454, guid: 9df7e389f753698409e0580d2bc0ae3f,
         type: 2}
       propertyPath: debugMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114140109146967524, guid: 9df7e389f753698409e0580d2bc0ae3f,
         type: 2}
@@ -2297,7 +2297,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 492491489}
-  m_LocalRotation: {x: -0.058818966, y: 0.62393945, z: 0.18303421, w: 0.7574552}
+  m_LocalRotation: {x: -0.05881898, y: 0.6239394, z: 0.18303424, w: 0.75745517}
   m_LocalPosition: {x: 23.871378, y: -21.422474, z: -47.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4581,7 +4581,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1371303591}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 3f0389e0732263d4e8f496f8928e5323, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: c4c2fba0cfbba234799414b74416f4e9, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -4617,6 +4617,12 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 114124498333979574, guid: 3f0389e0732263d4e8f496f8928e5323, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 114356092428673882, guid: c4c2fba0cfbba234799414b74416f4e9, type: 2}
+    value: {fileID: 666759394}
+  - key: {fileID: 114031699570551104, guid: c4c2fba0cfbba234799414b74416f4e9, type: 2}
+    value: {fileID: 1737222689}
+  - key: {fileID: 114935699277132072, guid: c4c2fba0cfbba234799414b74416f4e9, type: 2}
+    value: {fileID: 492491491}
   m_ExposedReferences:
     m_References:
     - 16632ff47f2dae64e8a227a4f9425554: {fileID: 0}
@@ -5130,8 +5136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1757261924}
   m_PathPosition: 0
-  m_PositionUnits: 0
-  m_PathOffset: {x: -0.2600428, y: 0.1361319, z: 14.82573}
+  m_PositionUnits: 2
+  m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 1
