@@ -11,25 +11,48 @@ public class GameManager : MonoBehaviour
     public bool debugMode;
 
     public static GameManager instance;
-    
-    public float TimeForSpendCoins;
-    [Range(0,4)]
+    public Player[] players;
 
-    public int _playingPlayers = 0;
-
+    [Range(0,4)]public int _playingPlayers = 0;//jdois enlever le ref si je commente celui ci
     public int playingPlayers {
         get { return _playingPlayers; }
         set { _playingPlayers = value;
               SetPlayersNumber(ref _playingPlayers);}
     }
-
     [ReadOnly] public int numberOfConnectedPlayer = 4;
     private bool allPlayersConnected = false;
     private float numberOfReadyPlayers = 0;
-    [Range(1,10)]public int playersBaseHealth = 3;
-    public Player[] players;
-
     public CustomStringDataServerController test;
+
+    [Space(4)]
+    [Tooltip("The number of coin spent on Score")]
+    [Header("Editable Variables")]
+    [Space(4)]
+    [Header("Player Base Stats")]
+    [Range(1,10)]public int playersGlobalScoreIncrementation = 1;
+    [Range(1,10)]public int playersBaseHealth = 3;
+    [Range(1,10)]public int playersBaseCoin = 3;
+    [Space(4)]
+    [Range(1,10)]public int playersBonusHealth = 1;
+    [Range(1,10)]public int playersBonusScoreIncrementation = 1;
+    [Space(4)]
+    [Range(1, 30)] public float TimeForSpendCoins = 5;
+
+    #region ScoreValues
+    [Space(8)]
+    [Header("Score Parameters")]
+    public int enemyKill_ScoreValue = 1500;
+    public int enemyAssist_ScoreValue = 700;
+    public int coinUnit_ScoreValue = 1000;
+    public int death_ScoreValue = -1000;
+    public int damage_ScoreValue = 150;
+    public int damageCombo_ScoreValue = 150;
+    //Je sais pas encore comment on utilise les overtime
+
+    public int death_ScoreValueOvertime = 200;
+    public int damageCombo_ScoreValueOvertime = 250;
+    #endregion
+    
  
     private void Awake()
     {
@@ -114,7 +137,11 @@ public class GameManager : MonoBehaviour
     {       
             Debug.Log(value.STRING_VALUE);     
     }
+    public float AddScore(ref int _playerId, float _scoreValue = 0)
+    {
 
+        return players[_playerId].playerScore += _scoreValue;
+    }
     //Forward channel example
     /*public void stopSpendingCoins(BoolBackchannelType value)
     {
