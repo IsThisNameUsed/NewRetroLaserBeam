@@ -36,9 +36,8 @@ public class launchingCam : MonoBehaviour
         Debug.Log(enemyToDie);
         //Debug.Log(dollyOne.m_Position);
 
-        if (dollyOne.m_Position >= waypointNb && enemyToDie > 0)
+        if (dollyOne.m_Position >= waypointNb)
         {
-
             camDir.Pause();
             dollyOne.m_Speed = 0;
 

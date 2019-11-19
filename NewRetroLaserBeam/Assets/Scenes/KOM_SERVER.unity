@@ -2187,7 +2187,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 492491489}
-  m_LocalRotation: {x: -0.034594964, y: 0.7477143, z: 0.20247981, w: 0.6314495}
+  m_LocalRotation: {x: -0.034594987, y: 0.7477143, z: 0.20247981, w: 0.6314495}
   m_LocalPosition: {x: 23.871378, y: -21.422474, z: -47.2}
   m_LocalScale: {x: 1, y: 0.9999998, z: 1}
   m_Children:
@@ -4901,7 +4901,7 @@ MonoBehaviour:
   enemyToDie: 5
   waypointNb: 4
   currentWayPoint: 1
-  numberOfenemiesPerWayPoint: 00000000020000000500000008000000
+  numberOfenemiesPerWayPoint: 02000000030000000200000003000000
   times: []
   camChild: {fileID: 0}
   playableDirector: {fileID: 1371303593}
