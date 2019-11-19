@@ -27,33 +27,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1244887588805894
+--- !u!1 &1215367121413450
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4274975303869838}
-  - component: {fileID: 114556739293590876}
+  - component: {fileID: 4417498705322968}
+  - component: {fileID: 114665967524334358}
   m_Layer: 0
-  m_Name: groupHeal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1359760177138160
-GameObject:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4090705771998446}
-  - component: {fileID: 114750953946358584}
-  m_Layer: 0
-  m_Name: burstDps
+  m_Name: Tools
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,9 +86,6 @@ GameObject:
   - component: {fileID: 114972948076602248}
   - component: {fileID: 114448075130970522}
   - component: {fileID: 114850175406990046}
-  - component: {fileID: 114702529331134170}
-  - component: {fileID: 114394163835454738}
-  - component: {fileID: 114002942292290856}
   m_Layer: 0
   m_Name: Store
   m_TagString: Untagged
@@ -155,22 +136,6 @@ GameObject:
   - component: {fileID: 114024938468662886}
   m_Layer: 0
   m_Name: groupHeal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1888851997957958
-GameObject:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4440971852151944}
-  - component: {fileID: 114410819637719668}
-  m_Layer: 0
-  m_Name: personalHeal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,20 +207,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4812252974232522}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4090705771998446
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1359760177138160}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000002}
-  m_Children: []
-  m_Father: {fileID: 4812252974232522}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4104953778344132
 Transform:
@@ -281,7 +233,7 @@ Transform:
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000002}
   m_Children: []
   m_Father: {fileID: 4812252974232522}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4171452285501844
 Transform:
@@ -296,19 +248,6 @@ Transform:
   m_Father: {fileID: 4419626952943962}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4274975303869838
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1244887588805894}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000002}
-  m_Children: []
-  m_Father: {fileID: 4812252974232522}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4389420725256780
 Transform:
   m_ObjectHideFlags: 1
@@ -320,7 +259,7 @@ Transform:
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000002}
   m_Children: []
   m_Father: {fileID: 4812252974232522}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4417498705322968
 Transform:
@@ -352,19 +291,6 @@ Transform:
   m_Father: {fileID: 4902920546973614}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4440971852151944
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1888851997957958}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4812252974232522}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4563794093290690
 Transform:
   m_ObjectHideFlags: 1
@@ -388,9 +314,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4440971852151944}
-  - {fileID: 4274975303869838}
-  - {fileID: 4090705771998446}
   - {fileID: 4082329619710732}
   - {fileID: 4133166550304856}
   - {fileID: 4389420725256780}
@@ -521,21 +444,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114002942292290856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1543046563938408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2610d61dfb3850d48a33ace0445018e2, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  control: buyButton
-  player: 999
-  notifyMethod: BuyObject
-  callType: 1
 --- !u!114 &114022582472355528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -545,8 +453,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6f8983642bb1474398547180940a989, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   control: string
   player: 0
   notifyMethod: PrintString
@@ -560,8 +468,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 217375027722a6041be8b89c0ca734a3, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   price: 5
   name: group heal
 --- !u!114 &114126051855194328
@@ -573,16 +481,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10cd0777c8a94f149867f436399c5d93, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   laser: {fileID: 0}
   possesseditem: {fileID: 0}
+  coins: 0
   healthBar: {fileID: 0}
   _playerCurrentHealth: 0
   _playerIsAlive: 1
   playerCurrentMaxHealth: 0
   playerBonusOnHealth: 0
-  playerBonusOnScore: 0
 --- !u!114 &114140109146967524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -592,16 +500,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10cd0777c8a94f149867f436399c5d93, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   laser: {fileID: 0}
   possesseditem: {fileID: 0}
+  coins: 5
   healthBar: {fileID: 0}
   _playerCurrentHealth: 0
   _playerIsAlive: 1
   playerCurrentMaxHealth: 0
   playerBonusOnHealth: 0
-  playerBonusOnScore: 0
 --- !u!114 &114231539928523784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -611,8 +519,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7263eb6bdec11c04faaed4825f449952, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   control: endSpendCoins
   player: 999
   notifyMethod: stopSpendingCoins
@@ -626,8 +534,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b4c9ab998d74bf4fa867fd801d2618f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   control: allPlayerReady
   player: 999
 --- !u!114 &114281748348823008
@@ -639,16 +547,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10cd0777c8a94f149867f436399c5d93, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   laser: {fileID: 0}
   possesseditem: {fileID: 0}
+  coins: 4
   healthBar: {fileID: 0}
   _playerCurrentHealth: 0
   _playerIsAlive: 1
   playerCurrentMaxHealth: 0
   playerBonusOnHealth: 0
-  playerBonusOnScore: 0
 --- !u!114 &114295396001722162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -658,38 +566,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a089bd2f0d35f943b18d882bdc3726e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   floatBackchannel: {fileID: 0}
   allPlayerReady: {fileID: 114260632172406030}
-  objectForSale: {fileID: 114394163835454738}
-  endSell: {fileID: 114702529331134170}
---- !u!114 &114394163835454738
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1543046563938408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca345cda08cd5e248a2bec780e660ed7, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  control: nameObjectForSale
-  player: 999
---- !u!114 &114410819637719668
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1888851997957958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e695993db35d6f34faba52b6bbb2c74d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  price: 5
-  name:
+  objectForSale: {fileID: 114448075130970522}
+  endSell: {fileID: 114972948076602248}
 --- !u!114 &114435670137426270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -699,8 +581,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02c153d83cb30f7408ceabda6bea1b28, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   virtualCam: {fileID: 0}
   shakeCamera: {fileID: 0}
 --- !u!114 &114448075130970522
@@ -712,8 +594,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca345cda08cd5e248a2bec780e660ed7, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   control: nameObjectForSale
   player: 999
 --- !u!114 &114552414437408926
@@ -725,49 +607,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e695993db35d6f34faba52b6bbb2c74d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   price: 5
   name: personal heal
---- !u!114 &114556739293590876
+--- !u!114 &114665967524334358
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1244887588805894}
+  m_GameObject: {fileID: 1215367121413450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 217375027722a6041be8b89c0ca734a3, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  price: 5
-  name:
---- !u!114 &114702529331134170
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1543046563938408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b4c9ab998d74bf4fa867fd801d2618f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  control: sellIsActiv
-  player: 999
---- !u!114 &114750953946358584
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1359760177138160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21fbe6609578418499c420d7eca7adea, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  price: 5
-  name:
+  m_Script: {fileID: 11500000, guid: 425d0759839498a45aae183d1dc29eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114751442385932294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -777,8 +631,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2610d61dfb3850d48a33ace0445018e2, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   control: readyButton
   player: 999
   notifyMethod: playerIsReady
@@ -792,13 +646,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf21989234f32d34e8f9b847032c14e0, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   sellPanel: {fileID: 0}
   itemsForSell:
-  - {fileID: 114410819637719668}
-  - {fileID: 114556739293590876}
-  - {fileID: 114750953946358584}
+  - {fileID: 114552414437408926}
+  - {fileID: 114024938468662886}
+  - {fileID: 114805009782519808}
   steering: {fileID: 114295396001722162}
 --- !u!114 &114805009782519808
 MonoBehaviour:
@@ -809,8 +663,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21fbe6609578418499c420d7eca7adea, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   price: 5
   name: burst damage
 --- !u!114 &114850175406990046
@@ -822,8 +676,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2610d61dfb3850d48a33ace0445018e2, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   control: buyButton
   player: 999
   notifyMethod: BuyObject
@@ -837,22 +691,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d2dc55910113e04ebca844376fcd71d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   debugMode: 1
+  TimeForSpendCoins: 0
+  _playingPlayers: 0
+  numberOfConnectedPlayer: 4
+  playersBaseHealth: 3
   players:
   - {fileID: 114140109146967524}
   - {fileID: 114281748348823008}
   - {fileID: 114126051855194328}
   - {fileID: 114904893684544532}
-  _playingPlayers: 1
-  numberOfConnectedPlayer: 4
-  playersGlobalScoreIncrementation: 1
-  playersBaseHealth: 3
-  playersBaseCoin: 3
-  TimeForSpendCoins: 5
-  playersBonusHealth: 1
-  playersBonusScoreIncrementation: 1
   test: {fileID: 114022582472355528}
 --- !u!114 &114904893684544532
 MonoBehaviour:
@@ -863,16 +713,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10cd0777c8a94f149867f436399c5d93, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   laser: {fileID: 0}
   possesseditem: {fileID: 0}
+  coins: 0
   healthBar: {fileID: 0}
   _playerCurrentHealth: 0
   _playerIsAlive: 1
   playerCurrentMaxHealth: 0
   playerBonusOnHealth: 0
-  playerBonusOnScore: 0
 --- !u!114 &114972948076602248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -882,7 +732,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b4c9ab998d74bf4fa867fd801d2618f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   control: sellIsActiv
   player: 999

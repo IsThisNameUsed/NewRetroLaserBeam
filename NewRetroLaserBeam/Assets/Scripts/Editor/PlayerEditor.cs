@@ -17,9 +17,7 @@ public class PlayerEditor : Editor {
     {
         serializedObject.Update();
         DrawDefaultInspector();
-        EditorGUILayout.Separator();
         foldState = EditorGUILayout.Foldout(foldState, "Debug Functions");
-        
         if (foldState)
         {
             EditorGUI.indentLevel += 2;

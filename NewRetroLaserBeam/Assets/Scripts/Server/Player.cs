@@ -5,13 +5,12 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     [Header("References")]
-    [Tooltip("laser should be in Camera children")]
     public LaserBehaviour laser;
-
+    
     public Item possesseditem;
-    [ReadOnly]private int coins;
+    [SerializeField]
+    private int coins;
 
-    [Tooltip("healthBar should be in UICanvas children")]
     public Slider healthBar;
     [Header("Players Health")]//on peut vérifier la vie à chaque fois que celle ci est changé.
     [ReadOnly] [SerializeField] public int _playerCurrentHealth;
@@ -19,23 +18,13 @@ public class Player : MonoBehaviour {
     //la vie qu'il a avec les coins? Servira pour les revives.
     public int playerCurrentMaxHealth;
     public int playerBonusOnHealth = 0;
-    public float playerBonusOnScore = 0;
-    [ReadOnly] public int playerCombo = 0;
-    [ReadOnly] public int playerKill = 0;
-    [ReadOnly] public int playerAssist = 0;
-    [Space(4)]
-    [ReadOnly]public float playerScore = 0;
 
+   
 
     void Start () {
         playerCurrentMaxHealth = GameManager.instance.playersBaseHealth + playerBonusOnHealth;
         playerCurrentHealth = playerCurrentMaxHealth;
-        coins = GameManager.instance.playersBaseCoin;
-        if (laser != null) { laser.UpdateLaserRootPosition(); }
-        Debug.Assert(healthBar != null, "Pas de healthBar attaché à "+ this.name);
-#if UNITY_EDITOR
-        Debug.Assert(laser != null, "Pas de laser attaché à "+ this.name);
-#endif
+        if(laser != null) {laser.UpdateLaserRootPosition();}
     }
 
 #region Life
@@ -56,10 +45,7 @@ public class Player : MonoBehaviour {
             switch (playerIsAlive)
             {
                 case true://DEATH
-                    if (_playerCurrentHealth <= 0){
-                        playerIsAlive = false;
-                        playerScore -= GameManager.instance.death_ScoreValue;
-                    }
+                    if (_playerCurrentHealth <= 0){playerIsAlive = false;}
                     break;
                 case false://When player is alive
                     if (_playerCurrentHealth > 0){playerIsAlive = true;}
