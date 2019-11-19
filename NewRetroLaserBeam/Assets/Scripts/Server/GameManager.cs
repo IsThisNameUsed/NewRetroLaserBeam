@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         }
         if (playerRemaining == 0)
         {
+            gameOverPanel.SetActive(true);
             Debug.Log("Game Over");
         }
     }

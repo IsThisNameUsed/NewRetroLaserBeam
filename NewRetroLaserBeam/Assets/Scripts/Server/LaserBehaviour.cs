@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using EasyWiFi.Core;
 
+
 public class LaserBehaviour : MonoBehaviour
 {
     LineRenderer laser;
@@ -115,6 +116,7 @@ public class LaserBehaviour : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(scope.transform.position);
             Debug.DrawRay(ray.origin, ray.direction*100, Color.yellow,0.5f);
             RaycastHit hit;
+if(!(!player.playerIsAlive && !GameManager.instance.debugMode))
             if (Physics.Raycast(ray, out hit,500f,layerMask))
             {
                 Transform transformHit = hit.transform;

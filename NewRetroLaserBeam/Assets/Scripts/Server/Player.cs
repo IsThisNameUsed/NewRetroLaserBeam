@@ -90,7 +90,10 @@ public class Player : MonoBehaviour {
     {
         return coins;
     }
-
+    public  int ResetCoin()
+    {
+        return coins = 0;
+    }
     public void AddCoins(int value)
     {
         coins += value;
