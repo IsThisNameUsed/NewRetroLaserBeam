@@ -9,7 +9,6 @@ public class EnemyShootBehaviour : StateMachineBehaviour
     private bool isShooting = false;
     private ShooterEnemyBehaviour shooterEnemyBehaviour;
 
-    
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -22,7 +21,6 @@ public class EnemyShootBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
         if (!isShooting)
         {
             WaitBeforeFirstShoot();
@@ -33,6 +31,7 @@ public class EnemyShootBehaviour : StateMachineBehaviour
         if(timer >= shooterEnemyBehaviour.hitTime * 5)
         {
             timer = 0;
+            shooterEnemyBehaviour.Shoot();
             shooterEnemyBehaviour.targetedPlayer.TakeDamage(ref shooterEnemyBehaviour.damagePoint);
         }
         

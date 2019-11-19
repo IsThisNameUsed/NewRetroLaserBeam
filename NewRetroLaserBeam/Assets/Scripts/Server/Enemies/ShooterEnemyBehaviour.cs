@@ -6,6 +6,8 @@ public class ShooterEnemyBehaviour : EnemyBehaviour {
 
     public float timerBeforeShooting = 2;
 
+    public GameObject bullet;
+
     private void Start()
     {
         Instanciation();
@@ -24,5 +26,13 @@ public class ShooterEnemyBehaviour : EnemyBehaviour {
     {
         animator.SetBool("isShooting", _state);
         return _state;
+    }
+
+    public void Shoot()
+    { 
+        Instantiate(bullet, transform.position, Quaternion.identity);
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.target = targetedPlayer.healthBar.gameObject;
+        bulletScript.isActiv = true;
     }
 }

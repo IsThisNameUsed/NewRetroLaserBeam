@@ -28,8 +28,6 @@ public class PlayerEditor : Editor {
             EditorGUI.indentLevel -= 2;
         }
         serializedObject.ApplyModifiedProperties();
-
-
     }
 
 }
