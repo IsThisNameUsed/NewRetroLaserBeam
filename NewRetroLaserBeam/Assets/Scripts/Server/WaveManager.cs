@@ -7,7 +7,7 @@ public class WaveManager : MonoBehaviour {
     
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         CamManager.instance.wavesList = new List<List<EnemyBehaviour>>();
         foreach (Transform child in transform)
         {            

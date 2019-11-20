@@ -26,7 +26,7 @@ public class CamManager : MonoBehaviour
 
     public PlayableDirector playableDirector;
 
-    public bool GameIsActiv = false; //If we need to pause the the game use this
+    public bool GameIsActiv = false; //If we need to pause the camera move use this
 
     public CinemachineTrackedDolly dollyTrack;
     private void Awake()
@@ -38,6 +38,7 @@ public class CamManager : MonoBehaviour
         else instance = this;
         //Attention!! Doit être appelé avant le awake du game manager -> régler la priorité d'exécution des scripts
         playableDirector.Pause();
+        
     }
 
 
@@ -49,8 +50,6 @@ public class CamManager : MonoBehaviour
         CinemachineVirtualCamera cam = vcam1.GetComponent<CinemachineVirtualCamera>();
         dollyTrack = cam.GetCinemachineComponent<CinemachineTrackedDolly>();
         dollyTrack = cam.GetCinemachineComponent<CinemachineTrackedDolly>();
-
-        Debug.Log(dollyTrack.m_PathPosition);
 
         foreach (List<EnemyBehaviour> list in wavesList)
         {
@@ -73,7 +72,6 @@ public class CamManager : MonoBehaviour
  
     void Update()
     {
-        Debug.Log(dollyTrack.m_PathPosition);
         //Debug.Log("dolly" + dollyOne.m_Position);
         //Debug.Log("way point " + currentWayPoint);
         //Debug.Log(dollyOne.m_Position >= currentWayPoint);

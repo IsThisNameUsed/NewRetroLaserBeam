@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         set { _playingPlayers = value;
               ActivePlayers(ref _playingPlayers);}
     }
-    [ReadOnly] public int numberOfConnectedPlayer = 4;
+    [ReadOnly] public int numberOfConnectedPlayer = 0;
     private bool allPlayersConnected = false;
     private float numberOfReadyPlayers = 0;
     [Tooltip("gameOverPanel should be in UICanvas children")]
@@ -69,14 +69,13 @@ public class GameManager : MonoBehaviour
             playingPlayers = 0;
             numberOfConnectedPlayer = playingPlayers;
         }
-
     }
  
     void Update()
     {
         if(!debugMode)
         {
-            int numberOfConnectedPlayer = EasyWiFiUtilities.getHighestPlayerNumber() + 1;
+            numberOfConnectedPlayer = EasyWiFiUtilities.getHighestPlayerNumber() + 1;
             if (numberOfConnectedPlayer == playingPlayers && allPlayersConnected == false)
             {
                 allPlayersConnected = true;
@@ -89,6 +88,7 @@ public class GameManager : MonoBehaviour
     #region player
     public void playerIsReady(ButtonControllerType button)
     {
+        Debug.Log(numberOfReadyPlayers);
         if (button.BUTTON_STATE_IS_PRESSED)
         {
             Debug.Log("one player is ready");
