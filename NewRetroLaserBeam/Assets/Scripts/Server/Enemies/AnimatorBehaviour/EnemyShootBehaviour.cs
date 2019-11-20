@@ -28,7 +28,7 @@ public class EnemyShootBehaviour : StateMachineBehaviour
         }
 
         timer += Time.deltaTime;
-        if(timer >= shooterEnemyBehaviour.hitTime * 5)
+        if(timer >= GameManager.instance.timeToCheckHitOnEnnemy * 5)
         {
             timer = 0;
             shooterEnemyBehaviour.Shoot();

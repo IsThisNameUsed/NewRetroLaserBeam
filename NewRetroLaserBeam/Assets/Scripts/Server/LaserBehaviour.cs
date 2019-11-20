@@ -12,7 +12,6 @@ public class LaserBehaviour : MonoBehaviour
     public bool laserHit = false;
     public static LaserManager laserManager;
     public bool isShooting = false;
-    public float laserDamage = 0.2f;
     [Range(0, 3)] public int playerId;
     private Component[] audioSources;
     private AudioSource laserSound;
@@ -52,7 +51,7 @@ public class LaserBehaviour : MonoBehaviour
         {
             if (enemyHit != null && isShooting && enemyHit.transform.gameObject.tag == "Enemy")
             {
-                enemyHit.DealDamage(laserDamage, enemyHit.GetComponent<Collider>(), playerId);
+                enemyHit.DealDamage(player.playerDamage, enemyHit.GetComponent<Collider>(), playerId);
                 //burnParticle.SetActive(true);
                 //burnParticle.transform.position = hit.point;
             }
