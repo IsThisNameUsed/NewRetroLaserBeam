@@ -18,7 +18,7 @@ public class CamManager : MonoBehaviour
    
     public int enemyToDie;
     private bool stopCamera;
-    public int waypointNb = 3;
+    public int waypointNb;
     public int currentWayPoint = 1;
     
     public float[] times;
@@ -28,6 +28,7 @@ public class CamManager : MonoBehaviour
 
     public bool GameIsActiv = false; //If we need to pause the the game use this
 
+    public CinemachineTrackedDolly dollyTrack;
     private void Awake()
     {
         if (instance != null)
@@ -42,8 +43,16 @@ public class CamManager : MonoBehaviour
 
     void Start()
     {
-        numberOfenemiesPerWayPoint = new List<int>();
-        foreach(List<EnemyBehaviour> list in wavesList)
+        waypointNb = wavesList.Count;
+        GameObject vcam1 = gameObject.transform.Find("CM vcam1").gameObject;
+        Debug.Log(vcam1.name);
+        CinemachineVirtualCamera cam = vcam1.GetComponent<CinemachineVirtualCamera>();
+        dollyTrack = cam.GetCinemachineComponent<CinemachineTrackedDolly>();
+        dollyTrack = cam.GetCinemachineComponent<CinemachineTrackedDolly>();
+
+        Debug.Log(dollyTrack.m_PathPosition);
+
+        foreach (List<EnemyBehaviour> list in wavesList)
         {
             if(list.Count == 0)
                 numberOfenemiesPerWayPoint.Add(0);
@@ -64,17 +73,19 @@ public class CamManager : MonoBehaviour
  
     void Update()
     {
-        /*Debug.Log("dolly" + dollyOne.m_Position);
-        Debug.Log("way point " + currentWayPoint);
-        Debug.Log(dollyOne.m_Position >= currentWayPoint);
-        Debug.Log("to die " + enemyToDie);
-        Debug.Log("number " + numberOfenemiesPerWayPoint[currentWayPoint - 1]);*/
+        Debug.Log(dollyTrack.m_PathPosition);
+        //Debug.Log("dolly" + dollyOne.m_Position);
+        //Debug.Log("way point " + currentWayPoint);
+        //Debug.Log(dollyOne.m_Position >= currentWayPoint);
+        //Debug.Log("to die " + enemyToDie);
+        //Debug.Log("number " + numberOfenemiesPerWayPoint[currentWayPoint - 1]);*/
+        //Debug.Log("////////");
         if (!GameIsActiv)
             return;
 
         if (!stopCamera)
         {
-            if(dollyOne.m_Position >= currentWayPoint)
+            if(dollyTrack.m_PathPosition >= currentWayPoint)
             {
                 dollyOne.m_Speed = 0;
                 playableDirector.Pause();
@@ -85,7 +96,6 @@ public class CamManager : MonoBehaviour
         {
             if(enemyToDie <= 0)
             {
-                
                 if (currentWayPoint < waypointNb)
                 {
                     currentWayPoint += 1;
