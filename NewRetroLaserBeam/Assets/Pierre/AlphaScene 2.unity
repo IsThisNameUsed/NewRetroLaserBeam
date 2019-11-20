@@ -2426,7 +2426,7 @@ MonoBehaviour:
   clientConnectAutomatically: 1
   clientMaxSendRate: 0
   heartbeatTimeout: 0
-  logVerbose: 0
+  logVerbose: 1
   applicationName: NewRetroLaserBeam
 --- !u!1 &617770404
 GameObject:
