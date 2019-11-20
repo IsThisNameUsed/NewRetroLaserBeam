@@ -10,7 +10,7 @@ public class Player : MonoBehaviour {
     [Tooltip("healthBar should be in UICanvas children")]
     public Slider healthBar;
     public Animator animator;
-
+    public GameObject body;
     public Item possesseditem;
     [SerializeField] private int coins;
 
