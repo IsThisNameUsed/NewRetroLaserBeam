@@ -33,6 +33,8 @@ public class ShooterEnemyBehaviour : EnemyBehaviour {
         Instantiate(bullet, transform.position, Quaternion.identity);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.target = targetedPlayer.body;
+        bulletScript.targetedPlayer = targetedPlayer;
+        bulletScript.damage = damagePoint;
         bulletScript.isActiv = true;
     }
 }

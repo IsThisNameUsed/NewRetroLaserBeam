@@ -20,17 +20,17 @@ GameObject:
   m_Component:
   - component: {fileID: 4676916021685692}
   - component: {fileID: 54646113808046084}
+  - component: {fileID: 114828439884682764}
   - component: {fileID: 95630618033863060}
   - component: {fileID: 198810417927237732}
   - component: {fileID: 199948773632096032}
-  - component: {fileID: 114828439884682764}
   m_Layer: 0
   m_Name: EnemyShoot
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1579947903007468
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1526584319633214}
   m_LocalRotation: {x: -0.0727317, y: 0.69438016, z: 0.07458021, w: 0.7120282}
-  m_LocalPosition: {x: -29.7, y: 689, z: 49.2}
+  m_LocalPosition: {x: 49.3, y: 705.4, z: 49.2}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4288776037699280}
@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90f90ea03879c549bdfa18fc899d30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weakness: 0
   healthPoint: 1
   moveSpeed: 0.25
   damagePoint: 1
@@ -169,10 +170,9 @@ MonoBehaviour:
   particleSystem: {fileID: 0}
   laserManager: {fileID: 0}
   targetedPlayer: {fileID: 0}
-  hitTime: 1
   hitCooldown: 0
   timerBeforeShooting: 2
-  bullet: {fileID: 0}
+  bullet: {fileID: 1118385129323814, guid: 5a6abd2f62de1554c9a6b2b213314d9a, type: 2}
 --- !u!198 &198810417927237732
 ParticleSystem:
   m_ObjectHideFlags: 1

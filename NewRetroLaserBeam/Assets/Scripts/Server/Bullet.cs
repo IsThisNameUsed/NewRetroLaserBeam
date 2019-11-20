@@ -5,6 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
     public GameObject target;
+    public Player targetedPlayer;
+    public int damage;
     public float speed;
     public bool isActiv;
 	// Use this for initialization
@@ -20,5 +22,13 @@ public class Bullet : MonoBehaviour {
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
         } 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "playersCollider")
+            targetedPlayer.TakeDamage(ref damage);
+
+        Debug.Log("Collision");
     }
 }

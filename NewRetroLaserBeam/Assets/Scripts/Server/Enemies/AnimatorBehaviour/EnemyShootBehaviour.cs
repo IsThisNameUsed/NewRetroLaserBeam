@@ -32,7 +32,6 @@ public class EnemyShootBehaviour : StateMachineBehaviour
         {
             timer = 0;
             shooterEnemyBehaviour.Shoot();
-            shooterEnemyBehaviour.targetedPlayer.TakeDamage(ref shooterEnemyBehaviour.damagePoint);
         }
         
     }

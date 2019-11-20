@@ -62,8 +62,8 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         EnemyIsActive(true);
         hitCooldown = GameManager.instance.timeToCheckHitOnEnnemy;
 
-        targetedPlayer = GameManager.instance.players[Random.Range(0, 4)];
-        //GameManager.instance.playingPlayers - 1
+        targetedPlayer = GameManager.instance.players[Random.Range(0, GameManager.instance.playingPlayers - 1)];
+        //
         weakness = (Weakness)Random.Range(0,2);
     }
 
