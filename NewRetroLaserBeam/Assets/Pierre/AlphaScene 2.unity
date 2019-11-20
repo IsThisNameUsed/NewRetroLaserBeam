@@ -2315,7 +2315,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 492491489}
-  m_LocalRotation: {x: -0.05881898, y: 0.6239394, z: 0.18303424, w: 0.75745517}
+  m_LocalRotation: {x: -0.058818966, y: 0.62393945, z: 0.18303421, w: 0.7574552}
   m_LocalPosition: {x: 23.871378, y: -21.422474, z: -47.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2557,8 +2557,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 666759390}
-  m_LocalRotation: {x: -0.070650004, y: 0.6760906, z: 0.06538757, w: 0.73050296}
-  m_LocalPosition: {x: -56.34075, y: 683.17926, z: 34.510807}
+  m_LocalRotation: {x: -0.07064757, y: 0.6760932, z: 0.06538574, w: 0.73050094}
+  m_LocalPosition: {x: -144.34155, y: 665.7011, z: 33.91975}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 686813693}
@@ -5614,6 +5614,9 @@ MonoBehaviour:
     tangent: {x: 0.04674244, y: -0.052282333, z: 0.60785675}
     roll: 0
   - position: {x: 3.0467732, y: 11.025116, z: 105.69543}
+    tangent: {x: 0.046740532, y: -0.14599037, z: 1.877182}
+    roll: 0
+  - position: {x: 3.0935137, y: 10.879126, z: 107.57261}
     tangent: {x: 0.046740532, y: -0.14599037, z: 1.877182}
     roll: 0
 --- !u!4 &1757261925
