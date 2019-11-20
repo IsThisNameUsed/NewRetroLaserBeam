@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 65452717888913384}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1728677785133140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.56, y: -2.559333, z: 11.86}
+  m_LocalPosition: {x: -9.044977, y: -2.559333, z: 10.62}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4751616669406390}
@@ -205,20 +205,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b29f91462eba4549a480aa215246fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  condition: 0
   healthPoint: 1
   moveSpeed: 4
   damagePoint: 1
+  stopDistance: 2
   isCloseToPlayers: 0
-  mainCamera: {fileID: 0}
-  hitTime: 0.5
-  hitCooldown: 0
   playersHit: 00000000000000000000000000000000
   particleSystem: {fileID: 0}
-  isMoving: 1
-  stopDistance: 2
   laserManager: {fileID: 0}
   targetedPlayer: {fileID: 0}
+  hitTime: 0.5
+  hitCooldown: 0
 --- !u!198 &198769486628485332
 ParticleSystem:
   m_ObjectHideFlags: 1
