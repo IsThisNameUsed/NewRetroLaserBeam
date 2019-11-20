@@ -43,18 +43,21 @@ public class CamManager : MonoBehaviour
     void Start()
     {
         numberOfenemiesPerWayPoint = new List<int>();
-        int countList = 0;
-        Debug.Log(wavesList.Count);
         foreach(List<EnemyBehaviour> list in wavesList)
         {
-            int countEnemies = 0;
-            foreach(EnemyBehaviour enemy in list)
+            if(list.Count == 0)
+                numberOfenemiesPerWayPoint.Add(0);
+            else
             {
-                countEnemies += 1;
+                int countEnemies = 0;
+                foreach (EnemyBehaviour enemy in list)
+                {
+                    countEnemies += 1;
+                }
+                numberOfenemiesPerWayPoint.Add(countEnemies);
             }
-            numberOfenemiesPerWayPoint.Add(countEnemies);
-            countList += 1;
         }
+        enemyToDie = numberOfenemiesPerWayPoint[0];
     }
 
     // Update is called once per frame
@@ -86,7 +89,7 @@ public class CamManager : MonoBehaviour
                 if (currentWayPoint < waypointNb)
                 {
                     currentWayPoint += 1;
-                    enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint - 1];
+                    enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint-1];
                     stopCamera = false;
                     dollyOne.m_Speed = 0.5f;
                     playableDirector.Play();
