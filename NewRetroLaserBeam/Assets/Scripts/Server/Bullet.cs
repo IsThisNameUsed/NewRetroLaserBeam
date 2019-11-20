@@ -30,5 +30,6 @@ public class Bullet : MonoBehaviour {
             targetedPlayer.TakeDamage(ref damage);
 
         Debug.Log("Collision");
+        Destroy(this.gameObject);
     }
 }

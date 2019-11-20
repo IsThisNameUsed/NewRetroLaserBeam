@@ -8,7 +8,7 @@ using EasyWiFi.Core;
 public class LaserBehaviour : MonoBehaviour
 {
     LineRenderer laser;
-    public MeleeEnemyBehaviour enemyHit;
+    public EnemyBehaviour enemyHit;
     public bool laserHit = false;
     public static LaserManager laserManager;
     public bool isShooting = false;
@@ -115,7 +115,7 @@ public class LaserBehaviour : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(scope.transform.position);
             Debug.DrawRay(ray.origin, ray.direction*100, Color.yellow,0.5f);
             RaycastHit hit;
-if(!(!player.playerIsAlive && !GameManager.instance.debugMode))
+            //if(!(!player.playerIsAlive && !GameManager.instance.debugMode)) what's that??
             if (Physics.Raycast(ray, out hit,500f,layerMask))
             {
                 Transform transformHit = hit.transform;
@@ -130,7 +130,7 @@ if(!(!player.playerIsAlive && !GameManager.instance.debugMode))
                 if (transformHit.gameObject.tag == "Enemy")
                 {
                     laserHit = true;
-                    enemyHit = transformHit.gameObject.GetComponent<MeleeEnemyBehaviour>();
+                    enemyHit = transformHit.gameObject.GetComponent<EnemyBehaviour>();
                 }
                 else laserHit = false;
             }

@@ -68,6 +68,7 @@ public class Store : MonoBehaviour {
     {
         if(buyButton.BUTTON_STATE_IS_PRESSED)
         {
+            Debug.Log("CLICK");
             if (itemSold)
                 return;
 
@@ -75,6 +76,7 @@ public class Store : MonoBehaviour {
             int playerId = buyButton.logicalPlayerNumber;
             int playersCoins = GameManager.instance.players[playerId].GetCoins();
             int itemCost = itemsForSell[actualSellingItemID].price;
+            Debug.Log("Coute " + itemCost + " coins");
             if (playersCoins >= itemCost)
             {
                 Player buyer = GameManager.instance.players[playerId];
