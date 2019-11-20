@@ -21,8 +21,8 @@ public class ClientManager : MonoBehaviour {
     public StringDataClientController testString;
 
     void Start () {
-        //gameInterfacePanel.SetActive(false);
-        //spendCoinsPanel.SetActive(true);
+        gameInterfacePanel.SetActive(false);
+        spendCoinsPanel.SetActive(true);
         buyButton.SetActive(false);
         testString.setValue("BUTTON 1");
     }
