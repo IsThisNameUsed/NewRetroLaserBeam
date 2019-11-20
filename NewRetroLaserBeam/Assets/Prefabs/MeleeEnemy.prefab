@@ -73,8 +73,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1728677785133140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.044977, y: -2.559333, z: 10.62}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: -1.71, y: -3.61, z: -4.3}
+  m_LocalScale: {x: 2.000001, y: 2, z: 2.0000005}
   m_Children:
   - {fileID: 4751616669406390}
   - {fileID: 4471689708072098}
@@ -205,7 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b29f91462eba4549a480aa215246fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoint: 1
+  weakness: 0
+  healthPoint: 5
   moveSpeed: 4
   damagePoint: 1
   stopDistance: 2
@@ -214,7 +215,6 @@ MonoBehaviour:
   particleSystem: {fileID: 0}
   laserManager: {fileID: 0}
   targetedPlayer: {fileID: 0}
-  hitTime: 0.5
   hitCooldown: 0
 --- !u!198 &198769486628485332
 ParticleSystem:
