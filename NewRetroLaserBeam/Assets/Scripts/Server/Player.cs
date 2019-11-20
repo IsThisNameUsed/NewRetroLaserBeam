@@ -9,6 +9,8 @@ public class Player : MonoBehaviour {
     public LaserBehaviour laser;
     [Tooltip("healthBar should be in UICanvas children")]
     public Slider healthBar;
+    public Animator animator;
+
     public Item possesseditem;
     [SerializeField] private int coins;
 
@@ -22,8 +24,10 @@ public class Player : MonoBehaviour {
     [ReadOnly] public int playerCombo = 0;
     [ReadOnly] public int playerKill = 0;
     [ReadOnly] public int playerAssist = 0;
+    [ReadOnly] public int playerDamage = 1;
     [Space(4)]
     [ReadOnly] public float playerScore = 0;
+    [ReadOnly] public float playerHitCurrentCooldown = 0;
 
 
     void Start () {
@@ -31,8 +35,9 @@ public class Player : MonoBehaviour {
         playerCurrentHealth = playerCurrentMaxHealth;
         coins = GameManager.instance.playersBaseCoin;
         if (laser != null) { laser.UpdateLaserRootPosition(); }
-        Debug.Assert(healthBar != null, "Pas de healthBar attaché à " + this.name);
+        if(healthBar != null) { animator = healthBar.GetComponent<Animator>(); }
 #if UNITY_EDITOR
+        Debug.Assert(healthBar != null, "Pas de healthBar attaché à " + this.name);
         Debug.Assert(laser != null, "Pas de laser attaché à " + this.name);
 #endif
     }
@@ -68,9 +73,23 @@ public class Player : MonoBehaviour {
 
     public int TakeDamage(ref int _damage)
     {
+        if (animator != null)
+        {
+            animator.SetTrigger("isTakingDamage");
+        }
+        else
+        {
+            Debug.Log("ANIMATOR NON TROUVE");
+        }
         return playerCurrentHealth -= _damage;
     }
-
+    private void Update()
+    {
+        if (playerHitCurrentCooldown > 0)
+        {
+            playerHitCurrentCooldown -= Time.deltaTime;
+        }
+    }
     public void DebugTakeDamage()
     {
         int damage = 1;

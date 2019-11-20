@@ -24,7 +24,7 @@ public class EnemyAttackBehaviour : StateMachineBehaviour {
     {
         //damage here
         timer += Time.deltaTime;
-        if(timer >= enemyBehaviour.hitTime*5)
+        if(timer >= GameManager.instance.timeToCheckHitOnEnnemy *5)
         {
             timer = 0;
             enemyBehaviour.targetedPlayer.TakeDamage(ref enemyBehaviour.damagePoint);

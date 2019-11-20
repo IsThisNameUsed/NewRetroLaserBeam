@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public int playingPlayers {
         get { return _playingPlayers; }
         set { _playingPlayers = value;
-              SetPlayersNumber(ref _playingPlayers);}
+              ActivePlayers(ref _playingPlayers);}
     }
     [ReadOnly] public int numberOfConnectedPlayer = 4;
     private bool allPlayersConnected = false;
@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     [Range(1, 10)] public int playersBonusScoreIncrementation = 1;
     [Space(4)]
     [Range(1, 30)] public float TimeForSpendCoins = 5;
+    [Range(0.01f, 1)] public float timeToCheckHitOnEnnemy = 0.5f;
 
     #region ScoreValues
     [Space(8)]
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
             playingPlayers = 0;
             numberOfConnectedPlayer = playingPlayers;
         }
+
     }
  
     void Update()
@@ -78,8 +80,8 @@ public class GameManager : MonoBehaviour
             if (numberOfConnectedPlayer == playingPlayers && allPlayersConnected == false)
             {
                 allPlayersConnected = true;
+                ActivePlayers(ref _playingPlayers);
             }
-            playingPlayers = playingPlayers;
         }
         else playingPlayers = 1;
     }
@@ -120,7 +122,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetPlayersNumber(ref int _number)
+    public void ActivePlayers(ref int _number)
     {
         int i;
         for (i=3; i >= playingPlayers; --i)

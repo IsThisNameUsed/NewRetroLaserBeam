@@ -6,7 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
 abstract public class EnemyBehaviour : MonoBehaviour {
 
-    [SerializeField] float healthPoint = 1;
+    public enum Weakness
+    {
+        Null,
+        TypeA,
+        TypeB
+    }
+    public Weakness weakness = Weakness.Null;
+    [SerializeField] float healthPoint = 5;
     public float moveSpeed = 0.25f;
     public int damagePoint = 1;
     [Range(0, 20)] public float stopDistance = 2;
@@ -21,7 +28,6 @@ abstract public class EnemyBehaviour : MonoBehaviour {
     public LaserManager laserManager;
     public Player targetedPlayer;
 
-    public float hitTime = 1f;
     public float hitCooldown = 0;
 
 
@@ -36,7 +42,12 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         {
             hitCooldown -= Time.deltaTime;
         }
-        CheckHealth();
+        else
+        {
+            CheckDamage();
+           CheckHealth(); 
+        }
+        
 
     }
 
@@ -49,9 +60,11 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         bodyCollider = transform.GetChild(1).GetComponent<Collider>();
 
         EnemyIsActive(true);
-        hitCooldown = hitTime;
+        hitCooldown = GameManager.instance.timeToCheckHitOnEnnemy;
 
         targetedPlayer = GameManager.instance.players[Random.Range(0, GameManager.instance.playingPlayers - 1)];
+
+        weakness = (Weakness)Random.Range(0,2);
     }
 
     protected void CheckHealth()
@@ -89,7 +102,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
                 Debug.Log(totalDamage);
             }
             ResetPlayersHit();
-            hitCooldown = hitTime;
+            hitCooldown = GameManager.instance.timeToCheckHitOnEnnemy;
             print(totalDamage);
             particleSystem.Play();
             return healthPoint -= totalDamage;
@@ -98,6 +111,10 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         {
             return 0;
         }
+    }
+    void CheckDamage()
+    {
+
     }
 
     private void ResetPlayersHit()
