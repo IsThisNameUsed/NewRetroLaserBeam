@@ -13,7 +13,7 @@ public class Store : MonoBehaviour {
    
     public Item[] itemsForSell;
     private int actualSellingItemID;
-    private bool itemSold;                                      // Security bool: Item is bought by a player and can't be bought again
+    public bool itemSold;                                      // Security bool: Item is bought by a player and can't be bought again
     private bool sequenceIsStarted = false;
     public Steering steering;                                   //Script use to send information to clients in basics types
 
@@ -30,12 +30,14 @@ public class Store : MonoBehaviour {
         steering.sellIsActiv(true);
         yield return new WaitForSeconds(5);
         SetSellState(false);
+        Debug.Log("Sell is stop");
         yield return new WaitForSeconds(2);
         itemSold = false;
     }
 
     IEnumerator StopSell()
     {
+        Debug.Log("Sell is stop by a buyer");
         SetSellState(false);
         yield return new WaitForSeconds(2);
         itemSold = false;
@@ -64,13 +66,14 @@ public class Store : MonoBehaviour {
 
     void CreateNewPickable()
     {
+        Debug.Log("Sell is activ");
         int actualSellingItemID = Random.Range(0, 3);
         string name = itemsForSell[actualSellingItemID].name;
         steering.sendNameObjectForSale(itemsForSell[actualSellingItemID].name);
         StartCoroutine("SellItem");          
     }
     
-    void BuyObject(ButtonControllerType buyButton)
+    public void BuyObject(ButtonControllerType buyButton)
     {
         if(buyButton.BUTTON_STATE_IS_PRESSED)
         {

@@ -16,6 +16,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
     Collider headCollider;
     Collider bodyCollider;
     public ParticleSystem particleSystem;
+    Vector3 direction;
     [Space(4)]
     [Header("Enemy Dmg Received")]
     [Space(4)]
@@ -43,12 +44,6 @@ abstract public class EnemyBehaviour : MonoBehaviour {
     [Range(1, 10)] public int enemyHeadDamageMultiplier = 2;
     [Range(1, 10)] public int multiLaserDamageMultiplier = 2;
 
-
-
-    
-    
-
-
     protected virtual void Start()
     {
         Instanciation();
@@ -59,6 +54,8 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         if (hitCooldown > 0)
         {
             hitCooldown -= Time.deltaTime;
+            direction = GameManager.instance.camera.transform.position - transform.position;
+            transform.forward = direction.normalized;
         }
         else
         {
