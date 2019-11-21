@@ -54,7 +54,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         if (hitCooldown > 0)
         {
             hitCooldown -= Time.deltaTime;
-            direction = GameManager.instance.camera.transform.position - transform.position;
+            direction = Camera.main.transform.position - transform.position;
             transform.forward = direction.normalized;
         }
         else
