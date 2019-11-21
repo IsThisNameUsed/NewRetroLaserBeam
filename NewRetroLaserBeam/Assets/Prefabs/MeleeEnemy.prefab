@@ -126,7 +126,6 @@ GameObject:
   - component: {fileID: 23777269907816768}
   - component: {fileID: 135012612089006010}
   - component: {fileID: 114868437509822600}
-  - component: {fileID: 114365349939651224}
   m_Layer: 0
   m_Name: Respawn
   m_TagString: Untagged
@@ -157,9 +156,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1728677785133140}
-  m_LocalRotation: {x: -0.07273195, y: 0.694385, z: 0.07458077, w: 0.7120233}
-  m_LocalPosition: {x: -758.46967, y: 109.856445, z: -31.979382}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.0727317, y: 0.69438016, z: 0.07458021, w: 0.7120282}
+  m_LocalPosition: {x: -694.82, y: 137.74, z: -24.39}
+  m_LocalScale: {x: 2, y: 1, z: 2}
   m_Children:
   - {fileID: 4958018176012986}
   - {fileID: 4827824064813650}
@@ -418,23 +417,12 @@ MonoBehaviour:
   weakness: 0
   generateRandomWeakness: 0
   healthPoint: 5
-  moveSpeed: 4
+  moveSpeed: 0
   stopDistance: 2
   damagePoint: 1
   enemyWeaknessDamageMultiplier: 2
   enemyHeadDamageMultiplier: 2
   multiLaserDamageMultiplier: 2
---- !u!114 &114365349939651224
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1918418559907690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5534078a71aded24e9efe187c0b4158e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114868437509822600
 MonoBehaviour:
   m_ObjectHideFlags: 1
