@@ -42,7 +42,9 @@ public class Store : MonoBehaviour {
     }
 
     void Start() {
-        StartNewSequence();
+
+        if (GameManager.instance.AllPlayerAreConnected())
+            StartNewSequence();
     }
 
     // Update is called once per frame

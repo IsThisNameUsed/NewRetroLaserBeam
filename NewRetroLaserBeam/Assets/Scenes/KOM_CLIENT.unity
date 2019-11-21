@@ -2222,8 +2222,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1888014328}
   - component: {fileID: 1888014331}
-  - component: {fileID: 1888014330}
   - component: {fileID: 1888014329}
+  - component: {fileID: 1888014330}
   m_Layer: 0
   m_Name: ReadyButton
   m_TagString: Untagged
@@ -2262,18 +2262,18 @@ CanvasRenderer:
 --- !u!114 &1888014330
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114580830750227238, guid: d136ac7a902df9343884ce018bb6784b,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1888014327}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d043ae6611b3f240b3ad4a1ab3b79e2, type: 3}
+  m_Script: {fileID: 11500000, guid: f07a9911f663f4449853025b9c711ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controlName: readyButton
-  buttonPressedSprite: {fileID: 21300000, guid: c63c830e66cd4d145b6a7cff606b8d28,
+  buttonPressedSprite: {fileID: 21300000, guid: d9d08ba539d927d4c80230161f77a0fe,
     type: 3}
+  fastestPressRate: 1
 --- !u!114 &1888014331
 MonoBehaviour:
   m_ObjectHideFlags: 0

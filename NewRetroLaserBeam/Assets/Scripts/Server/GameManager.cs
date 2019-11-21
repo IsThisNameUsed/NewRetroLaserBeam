@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
             {
                 allPlayersConnected = true;
                 ActivePlayers(ref _playingPlayers);
+                Debug.Log("All players connected");
             }
         }
         else playingPlayers = 1;
@@ -136,11 +137,7 @@ public class GameManager : MonoBehaviour
 
     }
     #endregion
-    
-    public void PrintString(StringBackchannelType value)
-    {       
-            Debug.Log(value.STRING_VALUE);     
-    }
+
     public void EndLevel()
     {
         for (int i = 0; i < playingPlayers; ++i)
@@ -154,6 +151,21 @@ public class GameManager : MonoBehaviour
 
         return players[_playerId].playerScore += _scoreValue;
     }
+
+    #region get information
+    public bool AllPlayerAreConnected()
+    {
+        return (numberOfConnectedPlayer == playingPlayers);
+    }
+
+    #endregion
+    #region test
+    public void PrintString(StringBackchannelType value)
+    {
+        Debug.Log(value.STRING_VALUE);
+    }
+
+    #endregion
     //Forward channel example
     /*public void stopSpendingCoins(BoolBackchannelType value)
     {
