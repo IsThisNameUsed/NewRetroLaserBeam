@@ -28,6 +28,7 @@ public class EnemyAttackBehaviour : StateMachineBehaviour {
         {
             timer = 0;
             enemyBehaviour.targetedPlayer.TakeDamage(ref enemyBehaviour.damagePoint);
+            enemyBehaviour.Attack();
         }
     }
 
