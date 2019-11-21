@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool debugMode;
 
     public static GameManager instance;
+    public Camera camera;
     public Player[] players;
 
     [Range(0,4)]public int _playingPlayers = 0;
@@ -107,6 +108,7 @@ public class GameManager : MonoBehaviour
         if (numberOfReadyPlayers == playingPlayers)
         {
             CamManager.instance.SetGameActiv(true);
+            camera = Camera.main;
             this.gameObject.GetComponent<Steering>().sendAllPlayerReady();
             Debug.Log("GOGOGOGOGO:" + true);
         }
