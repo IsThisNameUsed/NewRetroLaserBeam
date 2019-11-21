@@ -14,7 +14,7 @@ public class Store : MonoBehaviour {
     public Item[] itemsForSell;
     private int actualSellingItemID;
     private bool itemSold;                                      // Security bool: Item is bought by a player and can't be bought again
-    
+    private bool sequenceIsStarted = false;
     public Steering steering;                                   //Script use to send information to clients in basics types
 
     IEnumerator nextObject(int time)
@@ -43,14 +43,18 @@ public class Store : MonoBehaviour {
 
     void Start() {
 
-        if (GameManager.instance.AllPlayerAreConnected())
-            StartNewSequence();
+        
     }
 
     // Update is called once per frame
     void Update() {
 
-
+        if (GameManager.instance.AllPlayerAreConnected() && !sequenceIsStarted)
+        {
+            StartNewSequence();
+            sequenceIsStarted = true;
+        }
+            
     }
 
     void StartNewSequence()
