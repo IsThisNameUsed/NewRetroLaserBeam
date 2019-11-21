@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     }
     [ReadOnly] public int numberOfConnectedPlayer = 0;
     private bool allPlayersConnected = false;
+    private bool gameStart = false;
     private float numberOfReadyPlayers = 0;
     [Tooltip("gameOverPanel should be in UICanvas children")]
     public GameObject gameOverPanel;
@@ -76,10 +77,11 @@ public class GameManager : MonoBehaviour
         if(!debugMode)
         {
             numberOfConnectedPlayer = EasyWiFiUtilities.getHighestPlayerNumber() + 1;
-            if (numberOfConnectedPlayer == playingPlayers && allPlayersConnected == false)
+            if (numberOfConnectedPlayer == playingPlayers && allPlayersConnected == false && gameStart == false)
             {
                 allPlayersConnected = true;
                 ActivePlayers(ref _playingPlayers);
+                gameStart = true;
             }
         }
         else playingPlayers = 1;
@@ -125,6 +127,7 @@ public class GameManager : MonoBehaviour
     public void ActivePlayers(ref int _number)
     {
         int i;
+        EnemyBehaviour.LaserType startType = (EnemyBehaviour.LaserType)Random.Range(1, 3);
         for (i=3; i >= playingPlayers; --i)
         {
             players[i].gameObject.SetActive(false);
@@ -132,6 +135,14 @@ public class GameManager : MonoBehaviour
         for(i=0; i < playingPlayers; ++i)
         {
             players[i].gameObject.SetActive(true);
+            if(i == 0)
+            {
+                players[i].laserType = startType;
+            }
+            else
+            {
+                players[i].laserType =  (EnemyBehaviour.LaserType)(Mathf.Repeat((int)startType+i,1)+1);
+            }
         }
 
     }

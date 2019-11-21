@@ -5,18 +5,14 @@ using UnityEngine;
 
 public class MeleeEnemyBehaviour : EnemyBehaviour {
 
-    private void Start()
+    protected override void  Start()
     {
-        Instanciation();
+        base.Start();
     }
 
-    private void Update()
+    protected override void Update()
     {
-        if (hitCooldown > 0)
-        {
-            hitCooldown -= Time.deltaTime;
-        }
-        CheckHealth();
+        base.Update();
     }
 
     public override bool  EnemyIsActive(bool _state) 
