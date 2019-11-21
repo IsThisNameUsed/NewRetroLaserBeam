@@ -16,8 +16,7 @@ public class GameManager : MonoBehaviour
     [Range(0,4)]public int _playingPlayers = 0;
     public int playingPlayers {
         get { return _playingPlayers; }
-        set { _playingPlayers = value;
-              ActivePlayers(ref _playingPlayers);}
+        set { _playingPlayers = value;}
     }
     [ReadOnly] public int numberOfConnectedPlayer = 0;
     private bool allPlayersConnected = false;
@@ -74,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(!debugMode)
+        if (!debugMode)
         {
             numberOfConnectedPlayer = EasyWiFiUtilities.getHighestPlayerNumber() + 1;
             if (numberOfConnectedPlayer == playingPlayers && allPlayersConnected == false && gameStart == false)
@@ -85,7 +84,11 @@ public class GameManager : MonoBehaviour
                 gameStart = true;
             }
         }
-        else playingPlayers = 1;
+        else
+        {
+            playingPlayers = 1;
+            ActivePlayers(ref _playingPlayers);
+        }
     }
 
     #region player

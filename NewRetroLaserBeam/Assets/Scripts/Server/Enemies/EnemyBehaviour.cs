@@ -12,30 +12,41 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         TypeA,
         TypeB
     }
+    protected Animator animator;
+    Collider headCollider;
+    Collider bodyCollider;
+    public ParticleSystem particleSystem;
+    [Space(4)]
+    [Header("Enemy Dmg Received")]
+    [Space(4)]
+    [ReadOnly] public int[] playersHit = { 0, 0, 0, 0 };
+    [ReadOnly] public float[] playersTimeHit = { 0, 0, 0, 0 };
+    [ReadOnly] public float[] playersDamage = { 0, 0, 0, 0 };
+    [ReadOnly] public float[] playersTotalTimeHit = { 0, 0, 0, 0 };
+    [ReadOnly] public float[] playersTotalDamage = { 0, 0, 0, 0 };
+    [Space(4)]
+    [ReadOnly] public bool isCloseToPlayers;
+    public Player targetedPlayer;
+    [Space(8)]
+    [Header("Enemy Stats")]
+    [Space(4)]
+    [ReadOnly]public float hitCooldown = 0;
     public LaserType weakness = LaserType.Null;
+    public bool generateRandomWeakness = false;
+
+    [SerializeField] float healthPoint = 5;
+    public float moveSpeed = 0.25f;
+    [Range(0, 20)] public float stopDistance = 2;
+    public int damagePoint = 1;
+
     [Range(1, 10)] public int enemyWeaknessDamageMultiplier = 2;
     [Range(1, 10)] public int enemyHeadDamageMultiplier = 2;
     [Range(1, 10)] public int multiLaserDamageMultiplier = 2;
-    [SerializeField] float healthPoint = 5;
-    public float moveSpeed = 0.25f;
-    public int damagePoint = 1;
-    [Range(0, 20)] public float stopDistance = 2;
-    public bool isCloseToPlayers;
 
-    public int[] playersHit = { 0, 0, 0, 0 };
-    public float[] playersTimeHit = { 0, 0, 0, 0 };
-    public float[] playersDamage = { 0, 0, 0, 0 };
-    public float[] playersTotalTimeHit = { 0, 0, 0, 0 };
-    public float[] playersTotalDamage = { 0, 0, 0, 0 };
-    public ParticleSystem particleSystem;
 
-    Collider headCollider;
-    Collider bodyCollider;
-    protected Animator animator;
-    public LaserManager laserManager;
-    public Player targetedPlayer;
 
-    public float hitCooldown = 0;
+    
+    
 
 
     protected virtual void Start()
@@ -68,7 +79,10 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         hitCooldown = GameManager.instance.timeToCheckHitOnEnnemy;
 
         targetedPlayer = GameManager.instance.players[Random.Range(0, GameManager.instance.playingPlayers - 1)];
-        weakness = (LaserType)Random.Range(0,3);
+        if (generateRandomWeakness)
+        {
+            weakness = (LaserType)Random.Range(0,3);
+        }
         switch (weakness)
         {
             case LaserType.TypeA:
@@ -168,7 +182,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
             particleSystem.Play();
         }
 
-        Debug.Log(totalDamage + " => "+ playersHit[0] + ", " + playersHit[1] + ", " + playersHit[2] + ", " + playersHit[3]);
+        //Debug.Log(totalDamage + " => "+ playersHit[0] + ", " + playersHit[1] + ", " + playersHit[2] + ", " + playersHit[3]);
         hitCooldown = GameManager.instance.timeToCheckHitOnEnnemy;
 
         ResetPlayersHit();
