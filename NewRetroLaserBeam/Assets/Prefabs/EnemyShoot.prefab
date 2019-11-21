@@ -37,7 +37,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4288776037699280}
-  - component: {fileID: 65780807367681624}
   m_Layer: 0
   m_Name: Head
   m_TagString: Enemy
@@ -54,6 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4123778679226942}
   - component: {fileID: 65556725047992228}
+  - component: {fileID: 65780807367681624}
   m_Layer: 0
   m_Name: Body
   m_TagString: Enemy
@@ -187,7 +187,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -200,8 +200,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f90f90ea03879c549bdfa18fc899d30f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   weakness: 0
   enemyWeaknessDamageMultiplier: 2
   enemyHeadDamageMultiplier: 2
