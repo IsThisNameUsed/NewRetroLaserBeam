@@ -7,8 +7,10 @@ using EasyWiFi.Core;
 
 public class LaserBehaviour : MonoBehaviour
 {
+
     LineRenderer laser;
     public EnemyBehaviour enemyHit;
+    public Collider bodyPart;
     public bool laserHit = false;
     public static LaserManager laserManager;
     public bool isShooting = false;
@@ -22,7 +24,6 @@ public class LaserBehaviour : MonoBehaviour
     public LayerMask layerMask;
     public GameObject scope;
     public Player player;
-
 
 
     void Awake()
@@ -51,14 +52,13 @@ public class LaserBehaviour : MonoBehaviour
         {
             if (enemyHit != null && isShooting && enemyHit.transform.gameObject.tag == "Enemy")
             {
-                enemyHit.DealDamage(player.playerDamage, enemyHit.GetComponent<Collider>(), playerId);
+                enemyHit.DealDamage(bodyPart ,playerId);
                 //burnParticle.SetActive(true);
                 //burnParticle.transform.position = hit.point;
             }
         }
 
-        //Commande de debug à la souris DEBUG MODE
-#if UNITY_EDITOR
+#if UNITY_EDITOR//Commande de debug à la souris DEBUG MODE
         if (GameManager.instance.debugMode)
         {
             if (Input.GetMouseButtonDown(0))
@@ -104,8 +104,7 @@ public class LaserBehaviour : MonoBehaviour
                     laser.SetPosition(1, hits[i].point);
                     break;
                 }
-                // TargetingCollider non trouvé -> ce cas ne doit pas arriver
-                else if (i == hits.Length - 1)
+                else if (i == hits.Length - 1)// TargetingCollider non trouvé -> ce cas ne doit pas arriver
                 {
                     laser.SetPosition(1, emitter.transform.position + emitter.transform.forward * 100);
                 }
@@ -115,13 +114,12 @@ public class LaserBehaviour : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(scope.transform.position);
             Debug.DrawRay(ray.origin, ray.direction*100, Color.yellow,0.5f);
             RaycastHit hit;
-            //if(!(!player.playerIsAlive && !GameManager.instance.debugMode)) what's that??
+            if(!(!player.playerIsAlive && !GameManager.instance.debugMode))
             if (Physics.Raycast(ray, out hit,500f,layerMask))
             {
                 Transform transformHit = hit.transform;
                 if (transformHit.gameObject.tag == "Pickable")
                 {
-
                     Pickable pickable = transformHit.gameObject.GetComponent<Pickable>();
                     player.AddCoins(1);
                     Destroy(pickable.gameObject);
@@ -131,6 +129,7 @@ public class LaserBehaviour : MonoBehaviour
                 {
                     laserHit = true;
                     enemyHit = transformHit.gameObject.GetComponent<EnemyBehaviour>();
+                    bodyPart = hit.collider;
                 }
                 else laserHit = false;
             }

@@ -28,13 +28,28 @@ public class Player : MonoBehaviour {
     [Space(4)]
     [ReadOnly] public float playerScore = 0;
     [ReadOnly] public float playerHitCurrentCooldown = 0;
-
+    [ReadOnly] public EnemyBehaviour.LaserType laserType = EnemyBehaviour.LaserType.Null;
+    public Gradient typeAGradient;
+    public Gradient typeBGradient;
 
     void Start () {
         playerCurrentMaxHealth = GameManager.instance.playersBaseHealth + playerBonusOnHealth;
         playerCurrentHealth = playerCurrentMaxHealth;
         coins = GameManager.instance.playersBaseCoin;
-        if (laser != null) { laser.UpdateLaserRootPosition(); }
+        if (laser != null)
+        {
+            laser.UpdateLaserRootPosition();
+            switch (laserType)
+            {
+                case EnemyBehaviour.LaserType.TypeA:
+                    laser.GetComponent<LineRenderer>().colorGradient = typeAGradient;
+                    break;
+                case EnemyBehaviour.LaserType.TypeB:
+                    laser.GetComponent<LineRenderer>().colorGradient = typeBGradient;
+                    break;
+            }
+
+        }
         if(healthBar != null) { animator = healthBar.GetComponent<Animator>(); }
 #if UNITY_EDITOR
         Debug.Assert(healthBar != null, "Pas de healthBar attaché à " + this.name);
