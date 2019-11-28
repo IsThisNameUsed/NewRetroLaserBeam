@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Pickable
+  - TAZOFX
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Vhs Effect
   - ScopeCollider
   - 
-  - 
+  - Postprocessing
   - 
   - 
   - 
