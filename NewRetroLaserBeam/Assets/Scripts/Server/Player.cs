@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
     [ReadOnly] public int playerKill = 0;
     [ReadOnly] public int playerAssist = 0;
     [ReadOnly] public int playerDamage = 1;
+    [ReadOnly] public int playerTotalDamage = 0;
     [Space(4)]
     [ReadOnly] public float playerScore = 0;
     [ReadOnly] public float playerHitCurrentCooldown = 0;
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour {
 #endif
     }
 
-    #region Life
+#region Life
     public bool playerIsAlive
     {
         get { return _playerIsAlive; }
@@ -71,13 +72,13 @@ public class Player : MonoBehaviour {
     {
         get { return _playerCurrentHealth; }
         set { _playerCurrentHealth = value;
-            if (healthBar) { DOTweenModuleUI.DOValue(healthBar, (float)value / playerCurrentMaxHealth, 0.2f); }
+            if (healthBar) { DOTweenModuleUI.DOValue(healthBar, (float)value / playerCurrentMaxHealth, 0.1f); }
             
             switch (playerIsAlive)
             {
                 case true://DEATH
-                    if (_playerCurrentHealth <= 0){playerIsAlive = false;
-                        playerScore -= GameManager.instance.death_ScoreValue;
+                    if (_playerCurrentHealth <= 0){
+                        AddDeathScore();
                     }
                     break;
                 case false://When player is alive
@@ -131,8 +132,47 @@ public class Player : MonoBehaviour {
         }
     }
     #endregion
-
-#region coins
+#region Score
+    public void AddKillScore()
+    {
+        playerKill++;
+        playerScore += GameManager.instance.enemyKill_ScoreValue;
+    }
+    public void AddAssistScore()
+    {
+        playerAssist++;
+        playerScore += GameManager.instance.enemyAssist_ScoreValue;
+    }
+    public void AddUniqueCoinScore()
+    {
+        if(coins > 0)
+        {
+            coins--;
+            playerScore += GameManager.instance.coinUnit_ScoreValue;
+        }
+    }
+    public void AddCoinScore()
+    {
+        while(coins != 0)
+        {
+            AddUniqueCoinScore();
+        }
+    }
+    public void AddDeathScore()
+    {
+        playerIsAlive = false;
+        playerScore -= GameManager.instance.death_ScoreValue;
+    }
+    public float AddDamageScore(int _multiplier = 1)
+    {
+        return playerScore += GameManager.instance.damage_ScoreValue * _multiplier;
+    }
+    public float AddHeadDamageScore(int _multiplier = 1)
+    {
+        return playerScore += GameManager.instance.damageHead_ScoreValue * _multiplier;
+    }
+    #endregion
+    #region coins
     public int GetCoins()
     {
         return coins;
