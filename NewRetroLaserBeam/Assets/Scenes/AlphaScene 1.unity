@@ -2726,6 +2726,11 @@ Prefab:
       propertyPath: body
       value: 
       objectReference: {fileID: 97999587}
+    - target: {fileID: 114751442385932294, guid: 9df7e389f753698409e0580d2bc0ae3f,
+        type: 2}
+      propertyPath: callType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9df7e389f753698409e0580d2bc0ae3f, type: 2}
   m_IsPrefabAsset: 0
@@ -2837,7 +2842,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 492491489}
-  m_LocalRotation: {x: -0.22200912, y: 0.014771579, z: 0.0039578932, w: 0.9749246}
+  m_LocalRotation: {x: -0.22200915, y: 0.014771638, z: 0.003957912, w: 0.9749247}
   m_LocalPosition: {x: 23.871378, y: -21.422474, z: -47.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3654,7 +3659,7 @@ RectTransform:
   m_GameObject: {fileID: 789677128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 0.29999998}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_Children: []
   m_Father: {fileID: 1425826985}
   m_RootOrder: 2
@@ -3683,7 +3688,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ee2d3d25cfb09194b9268d8b9281bcb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 354a50b77b517d24db704203be756387, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5106,7 +5111,7 @@ RectTransform:
   m_GameObject: {fileID: 1094995695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.3}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_Children: []
   m_Father: {fileID: 1425826985}
   m_RootOrder: 0
@@ -5135,7 +5140,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ee2d3d25cfb09194b9268d8b9281bcb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b41fc1517aec79841ad9c83fd4151bbf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6307,7 +6312,7 @@ RectTransform:
   m_GameObject: {fileID: 1612373656}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 0.29999998}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_Children: []
   m_Father: {fileID: 1425826985}
   m_RootOrder: 1
@@ -6336,7 +6341,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ee2d3d25cfb09194b9268d8b9281bcb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6508eca7914772b42802abd7dd8b97cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7499,14 +7504,14 @@ RectTransform:
   m_GameObject: {fileID: 1924276731}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.099999994, y: 0.099999994, z: 0.29999998}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_Children: []
   m_Father: {fileID: 1425826985}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 13.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1924276733
@@ -7528,7 +7533,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ee2d3d25cfb09194b9268d8b9281bcb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7442eabe853020440a0492a9ca19feb6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

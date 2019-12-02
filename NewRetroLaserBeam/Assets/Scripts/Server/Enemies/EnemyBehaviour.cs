@@ -127,6 +127,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         }
         playersTimeHit[_playerId] += Time.deltaTime;
     }
+
     protected float CheckDamage()
     {
         float totalDamage = 0;

@@ -18,13 +18,13 @@ public class Player : MonoBehaviour {
     [ReadOnly] [SerializeField] public int _playerCurrentHealth;
     [ReadOnly] [SerializeField] bool _playerIsAlive = true;
     //la vie qu'il a avec les coins? Servira pour les revives.
-    public int playerCurrentMaxHealth;
+    public int playerBaseMaxHealth;
     public int playerBonusOnHealth = 0;
     public float playerBonusOnScore = 0;
+    public int playerDamage = 1;
     [ReadOnly] public int playerCombo = 0;
     [ReadOnly] public int playerKill = 0;
     [ReadOnly] public int playerAssist = 0;
-    [ReadOnly] public int playerDamage = 1;
     [Space(4)]
     [ReadOnly] public float playerScore = 0;
     [ReadOnly] public float playerHitCurrentCooldown = 0;
@@ -33,8 +33,8 @@ public class Player : MonoBehaviour {
     public Gradient typeBGradient;
 
     void Start () {
-        playerCurrentMaxHealth = GameManager.instance.playersBaseHealth + playerBonusOnHealth;
-        playerCurrentHealth = playerCurrentMaxHealth;
+        playerBaseMaxHealth = GameManager.instance.playersBaseHealth + playerBonusOnHealth;
+        playerCurrentHealth = playerBaseMaxHealth;
         coins = GameManager.instance.playersBaseCoin;
         if (laser != null)
         {
@@ -58,6 +58,7 @@ public class Player : MonoBehaviour {
     }
 
     #region Life
+
     public bool playerIsAlive
     {
         get { return _playerIsAlive; }
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour {
     {
         get { return _playerCurrentHealth; }
         set { _playerCurrentHealth = value;
-            if (healthBar) {healthBar.value = (float)value / playerCurrentMaxHealth;}
+            if (healthBar) {healthBar.value = (float)value / playerBaseMaxHealth;}
             
             switch (playerIsAlive)
             {

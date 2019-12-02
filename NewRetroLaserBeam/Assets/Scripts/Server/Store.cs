@@ -59,12 +59,12 @@ public class Store : MonoBehaviour {
             
     }
 
-    void StartNewSequence()
+    private void StartNewSequence()
     {
         StartCoroutine(nextObject(5));
     }
 
-    void CreateNewPickable()
+    private void CreateNewPickable()
     {
         Debug.Log("Sell is activ");
         int actualSellingItemID = Random.Range(0, 3);

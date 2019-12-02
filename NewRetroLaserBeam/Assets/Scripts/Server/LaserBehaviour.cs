@@ -72,6 +72,7 @@ public class LaserBehaviour : MonoBehaviour
     {
         return player = _player;
     }
+
     public void UpdateLaserRootPosition()
     {
         laser.SetPosition(0, emitter.transform.position);
