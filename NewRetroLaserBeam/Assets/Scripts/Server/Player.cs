@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Player : MonoBehaviour {
     [Header("References")]
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour {
     {
         get { return _playerCurrentHealth; }
         set { _playerCurrentHealth = value;
-            if (healthBar) {healthBar.value = (float)value / playerCurrentMaxHealth;}
+            if (healthBar) { DOTweenModuleUI.DOValue(healthBar, (float)value / playerCurrentMaxHealth, 0.2f); }
             
             switch (playerIsAlive)
             {
