@@ -6,9 +6,9 @@ using UnityEngine;
 public class Oscillator : MonoBehaviour
 {
     // User Inputs
-    [Range(0, 5)] public float amplitudeX = 1f;
+    [Range(-5, 5)] public float amplitudeX = 1f;
     [Range(0, 4)] public float frequencyX = 0.8f;
-    [Range(0, 5)] public float amplitudeY = 0.5f;
+    [Range(-5, 5)] public float amplitudeY = 0.5f;
     [Range(0, 4)] public float frequencyY = 1.2f;
 
     // Position Storage Variables

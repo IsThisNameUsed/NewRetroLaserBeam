@@ -13,6 +13,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         TypeB
     }
     protected Animator animator;
+    protected Animator spriteAnimator;
     Collider headCollider;
     Collider bodyCollider;
     public ParticleSystem particleSystem;
@@ -67,6 +68,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
     protected void Instanciation()
     {
         animator = GetComponent<Animator>();
+        spriteAnimator = transform.GetChild(0).GetComponent<Animator>();
         particleSystem = transform.GetChild(0).GetComponent<ParticleSystem>();
 
         headCollider = transform.GetChild(0).GetChild(0).GetComponent<Collider>();
@@ -198,6 +200,9 @@ abstract public class EnemyBehaviour : MonoBehaviour {
             playersTimeHit[i] = 0;
         }
     }
-
+    public void Attack()
+    {
+        spriteAnimator.SetTrigger("isCharging");
+    }
     abstract public bool EnemyIsActive(bool _state); 
 }

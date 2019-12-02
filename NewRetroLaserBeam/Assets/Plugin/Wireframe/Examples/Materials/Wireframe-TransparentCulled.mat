@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Wireframe-TransparentCulled
   m_Shader: {fileID: 4800000, guid: a64caad055200da45b6df1c7c80839ed, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -71,7 +71,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WireSmoothness: 0
+    - _WireSmoothness: 3.58
     - _WireThickness: 0
     - _ZWrite: 1
     m_Colors:

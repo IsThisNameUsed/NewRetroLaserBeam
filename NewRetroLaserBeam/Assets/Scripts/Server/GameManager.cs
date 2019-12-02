@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     [Space(4)]
     [Header("Player Base Stats")]
     [Range(1, 10)] public int playersGlobalScoreIncrementation = 1;
-    [Range(1, 10)] public int playersBaseHealth = 3;
+    [Range(1, 10)] public int playersBaseHealth = 10;
     [Range(1, 10)] public int playersBaseCoin = 3;
     [Space(4)]
     [Range(1, 10)] public int playersBonusHealth = 1;
@@ -87,8 +87,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            playingPlayers = 1;
-            ActivePlayers(ref _playingPlayers);
+            if(gameStart == false)
+            {
+                playingPlayers = 1;
+                ActivePlayers(ref _playingPlayers);
+                gameStart = true;
+            }
         }
     }
 

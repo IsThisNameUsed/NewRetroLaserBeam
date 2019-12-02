@@ -417,8 +417,8 @@ MonoBehaviour:
   hitCooldown: -0.0015664008
   weakness: 0
   generateRandomWeakness: 0
-  healthPoint: 5
-  moveSpeed: 0
+  healthPoint: 1
+  moveSpeed: 1
   stopDistance: 2
   damagePoint: 1
   enemyWeaknessDamageMultiplier: 2
