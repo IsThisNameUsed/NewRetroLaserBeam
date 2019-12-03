@@ -48,12 +48,8 @@ public class GameManager : MonoBehaviour
     public int enemyAssist_ScoreValue = 700;
     public int coinUnit_ScoreValue = 1000;
     public int death_ScoreValue = -1000;
-    public int damage_ScoreValue = 150;
-    public int damageCombo_ScoreValue = 150;
-    //Je sais pas encore comment on utilise les overtime
-
-    public int death_ScoreValueOvertime = 200;
-    public int damageCombo_ScoreValueOvertime = 250;
+    public int damage_ScoreValue = 50;
+    public int damageHead_ScoreValue = 100;
     #endregion
 
     private void Awake()

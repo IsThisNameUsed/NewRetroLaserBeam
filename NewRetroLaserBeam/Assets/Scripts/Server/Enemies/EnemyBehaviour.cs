@@ -103,11 +103,11 @@ abstract public class EnemyBehaviour : MonoBehaviour {
             {
                 if(playersTotalDamage[i] == playersTotalDamage.Max())
                 {
-                    GameManager.instance.players[i].playerKill++;
+                    GameManager.instance.players[i].AddKillScore();
                 }
                 else if(playersTotalDamage[i] > 0)
                 {
-                    GameManager.instance.players[i].playerAssist++;
+                    GameManager.instance.players[i].AddAssistScore();
                 }
             }
             Destroy(gameObject);
@@ -119,11 +119,11 @@ abstract public class EnemyBehaviour : MonoBehaviour {
     public void DealDamage(Collider _col ,int _playerId)
     {
         //Check if hit on head.
-        if (_col == headCollider)
+        if (_col == headCollider)//HEAD = 2
         {
             playersHit[_playerId] = 2;
         }
-        else
+        else//BODY = 1
         {
             playersHit[_playerId] = 1;
         }
@@ -134,7 +134,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
     {
         float totalDamage = 0;
         int playerHitting = 0;
-        for (int i = 0; i < playersHit.Length; i++)
+        for (int i = 0; i < playersHit.Length; i++)//the damages dealt by each players will be calculated individually before being merged in one value to decrement.
         {
             switch (playersHit[i])
             {
@@ -181,18 +181,57 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         {
             particleSystem.Play();
         }
-
         //Debug.Log(totalDamage + " => "+ playersHit[0] + ", " + playersHit[1] + ", " + playersHit[2] + ", " + playersHit[3]);
         hitCooldown = GameManager.instance.timeToCheckHitOnEnnemy;
 
         ResetPlayersHit();
         return healthPoint -= totalDamage;
     }
+    private void AddScoreToPlayers(int _playerId,int _headCount,int _bodyCount)
+    {
+        if (playersHit[_playerId] == 1)
+        {
+            if (_bodyCount > 1)
+            {
+                GameManager.instance.players[_playerId].AddDamageScore(2);
+            }
+            else
+            {
+                GameManager.instance.players[_playerId].AddDamageScore();
+            }
 
+        }
+        else if (playersHit[_playerId] == 2)
+        {
+            if (_headCount > 1)
+            {
+                GameManager.instance.players[_playerId].AddHeadDamageScore(2);
+            }
+            else
+            {
+                GameManager.instance.players[_playerId].AddHeadDamageScore();
+            }
+        }
+    }
     private void ResetPlayersHit()
     {
+        int headCount = 0;
+        int bodyCount = 0;
+        foreach(int p in playersHit)
+        {
+            switch (p)
+            {
+                case 1:
+                    bodyCount++;
+                    break;
+                case 2:
+                    headCount++;
+                    break;
+            }
+        }
         for (int i = 0; i < playersHit.Length; i++)
         {
+            AddScoreToPlayers(i,headCount,bodyCount);
             playersTotalTimeHit[i] += playersTimeHit[i];
             playersTotalDamage[i] += playersDamage[i];
             playersDamage[i] = 0;
