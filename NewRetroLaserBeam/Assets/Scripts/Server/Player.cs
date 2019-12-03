@@ -28,6 +28,9 @@ public class Player : MonoBehaviour {
     [ReadOnly] [SerializeField] public float playerDamage = 1;
     [ReadOnly] [SerializeField] private float playerTotalDamage = 0;
     [ReadOnly] [SerializeField] private int playerHitsOnHead = 0;
+    [ReadOnly] [SerializeField] private int playerRevivedTeammates = 0;
+    [ReadOnly] [SerializeField] private int playerReviveSelf = 0;
+    [ReadOnly] [SerializeField] private int playerUsedItem = 0;
     [Space(4)]
     [ReadOnly] public float playerScore = 0;
     [ReadOnly] public float playerHitCurrentCooldown = 0;
@@ -64,6 +67,7 @@ public class Player : MonoBehaviour {
     public void UseItem()
     {
         possesseditem.UseItem(this);
+        playerUsedItem++;
     }
 
     #region Life
@@ -179,7 +183,7 @@ public class Player : MonoBehaviour {
     {
         return playerScore += GameManager.instance.damageHead_ScoreValue * _multiplier;
     }
-    public int AddHeadHit()
+    public int AddHeadHitScore()
     {
         return playerHitsOnHead++;
     }
