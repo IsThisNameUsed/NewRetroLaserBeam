@@ -9,6 +9,7 @@ public class TweakingItem : MonoBehaviour {
     public int personnalHealAmountOfLife;
     public int groupHealAmountOfLife;
     public int burstDamageMultiplier;
+    public float burstDamageTimeOfUse;
 
 
     private void Awake()

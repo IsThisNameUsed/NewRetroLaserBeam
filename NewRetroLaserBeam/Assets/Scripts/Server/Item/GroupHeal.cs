@@ -9,7 +9,6 @@ public class GroupHeal : Item {
     // Use this for initialization
     void Start () {
         amountOfLife = TweakingItem.instance.groupHealAmountOfLife;
-
 	}
 	
 	// Update is called once per frame
@@ -20,5 +19,10 @@ public class GroupHeal : Item {
     public override void UseItem(Player player)
     {
         Debug.Log("Utilisation de " + name + " par " + player.gameObject.name);
+
+        for(int id=0;id<GameManager.instance._playingPlayers-1; id++)
+        {
+            players[id]._playerCurrentHealth += amountOfLife;
+        }
     }
 }
