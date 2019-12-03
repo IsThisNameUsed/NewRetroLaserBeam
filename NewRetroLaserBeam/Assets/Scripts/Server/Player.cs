@@ -19,23 +19,25 @@ public class Player : MonoBehaviour {
     [ReadOnly] [SerializeField] public int _playerCurrentHealth;
     [ReadOnly] [SerializeField] bool _playerIsAlive = true;
     //la vie qu'il a avec les coins? Servira pour les revives.
-    public int playerBaseMaxHealth;
+    public int playerCurrentMaxHealth;
     public int playerBonusOnHealth = 0;
     public float playerBonusOnScore = 0;
-    public int playerDamage = 1;
-    [ReadOnly] public int playerCombo = 0;
-    [ReadOnly] public int playerKill = 0;
-    [ReadOnly] public int playerAssist = 0;
+    [ReadOnly] [SerializeField] private int playerCombo = 0;
+    [ReadOnly] [SerializeField] private int playerKill = 0;
+    [ReadOnly] [SerializeField] private int playerAssist = 0;
+    [ReadOnly] [SerializeField] public float playerDamage = 1;
+    [ReadOnly] [SerializeField] private float playerTotalDamage = 0;
+    [ReadOnly] [SerializeField] private int playerHitsOnHead = 0;
     [Space(4)]
     [ReadOnly] public float playerScore = 0;
     [ReadOnly] public float playerHitCurrentCooldown = 0;
     [ReadOnly] public EnemyBehaviour.LaserType laserType = EnemyBehaviour.LaserType.Null;
-    public Gradient typeAGradient;
-    public Gradient typeBGradient;
+    [SerializeField] private Gradient typeAGradient;
+    [SerializeField] private Gradient typeBGradient;
 
     void Start () {
-        playerBaseMaxHealth = GameManager.instance.playersBaseHealth + playerBonusOnHealth;
-        playerCurrentHealth = playerBaseMaxHealth;
+        playerCurrentMaxHealth = GameManager.instance.playersBaseHealth + playerBonusOnHealth;
+        playerCurrentHealth = playerCurrentMaxHealth;
         coins = GameManager.instance.playersBaseCoin;
         if (laser != null)
         {
@@ -78,7 +80,7 @@ public class Player : MonoBehaviour {
     {
         get { return _playerCurrentHealth; }
         set { _playerCurrentHealth = value;
-            if (healthBar) { DOTweenModuleUI.DOValue(healthBar, (float)value / playerBaseMaxHealth, 0.2f); }
+            if (healthBar) { DOTweenModuleUI.DOValue(healthBar, (float)value / playerCurrentMaxHealth, 0.1f); }
 
             switch (playerIsAlive)
             {
@@ -176,6 +178,10 @@ public class Player : MonoBehaviour {
     public float AddHeadDamageScore(int _multiplier = 1)
     {
         return playerScore += GameManager.instance.damageHead_ScoreValue * _multiplier;
+    }
+    public int AddHeadHit()
+    {
+        return playerHitsOnHead++;
     }
     #endregion
     #region coins
