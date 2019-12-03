@@ -58,6 +58,12 @@ public class Player : MonoBehaviour {
 #endif
     }
 
+
+    public void UseItem()
+    {
+        possesseditem.UseItem(this);
+    }
+
     #region Life
 
     public bool playerIsAlive
@@ -72,7 +78,7 @@ public class Player : MonoBehaviour {
     {
         get { return _playerCurrentHealth; }
         set { _playerCurrentHealth = value;
-            if (healthBar) { DOTweenModuleUI.DOValue(healthBar, (float)value / playerCurrentMaxHealth, 0.2f); }
+            if (healthBar) { DOTweenModuleUI.DOValue(healthBar, (float)value / playerBaseMaxHealth, 0.2f); }
 
             switch (playerIsAlive)
             {

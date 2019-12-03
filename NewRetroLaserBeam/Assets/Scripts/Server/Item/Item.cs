@@ -16,8 +16,7 @@ public class Item : MonoBehaviour {
 		
 	}
 
-    void UseItem()
+    public virtual void UseItem(Player player)
     {
-        Debug.Log("Utilisation de " + name);
     }
 }

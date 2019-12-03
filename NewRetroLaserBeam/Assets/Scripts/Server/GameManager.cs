@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(playingPlayers);
         if (!debugMode)
         {
             numberOfConnectedPlayer = EasyWiFiUtilities.getHighestPlayerNumber() + 1;

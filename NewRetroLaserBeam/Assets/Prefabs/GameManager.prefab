@@ -83,6 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4812252974232522}
   - component: {fileID: 114773279908130736}
+  - component: {fileID: 114277613800098180}
   - component: {fileID: 114972948076602248}
   - component: {fileID: 114448075130970522}
   - component: {fileID: 114850175406990046}
@@ -108,7 +109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1680909505075064
 GameObject:
   m_ObjectHideFlags: 1
@@ -118,13 +119,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4987927053142672}
   - component: {fileID: 114140109146967524}
+  - component: {fileID: 114780035013916246}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1713880974161144
 GameObject:
   m_ObjectHideFlags: 1
@@ -179,7 +181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1973431059642488
 GameObject:
   m_ObjectHideFlags: 1
@@ -195,7 +197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4082329619710732
 Transform:
   m_ObjectHideFlags: 1
@@ -472,6 +474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 5
   name: group heal
+  amountOfLife: 0
 --- !u!114 &114126051855194328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -491,13 +494,13 @@ MonoBehaviour:
   coins: 0
   _playerCurrentHealth: 0
   _playerIsAlive: 1
-  playerCurrentMaxHealth: 0
+  playerBaseMaxHealth: 0
   playerBonusOnHealth: 0
   playerBonusOnScore: 0
+  playerDamage: 1
   playerCombo: 0
   playerKill: 0
   playerAssist: 0
-  playerDamage: 1
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -578,13 +581,13 @@ MonoBehaviour:
   coins: 5
   _playerCurrentHealth: 0
   _playerIsAlive: 1
-  playerCurrentMaxHealth: 0
+  playerBaseMaxHealth: 0
   playerBonusOnHealth: 0
   playerBonusOnScore: 0
+  playerDamage: 1
   playerCombo: 0
   playerKill: 0
   playerAssist: 0
-  playerDamage: 1
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -674,6 +677,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   control: allPlayerReady
   player: 999
+--- !u!114 &114277613800098180
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543046563938408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847ae7a48ab10134980782b3b2f255d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114281748348823008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -693,13 +707,13 @@ MonoBehaviour:
   coins: 4
   _playerCurrentHealth: 0
   _playerIsAlive: 1
-  playerCurrentMaxHealth: 0
+  playerBaseMaxHealth: 0
   playerBonusOnHealth: 0
   playerBonusOnScore: 0
+  playerDamage: 1
   playerCombo: 0
   playerKill: 0
   playerAssist: 0
-  playerDamage: 1
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -815,6 +829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 5
   name: personal heal
+  amountOfLife: 0
 --- !u!114 &114665967524334358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -857,7 +872,23 @@ MonoBehaviour:
   - {fileID: 114552414437408926}
   - {fileID: 114024938468662886}
   - {fileID: 114805009782519808}
+  itemSold: 0
   steering: {fileID: 114295396001722162}
+--- !u!114 &114780035013916246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680909505075064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2610d61dfb3850d48a33ace0445018e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: useItem
+  player: 0
+  notifyMethod: UseItem
+  callType: 1
 --- !u!114 &114805009782519808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -871,6 +902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 5
   name: burst damage
+  damageMultiplier: 0
 --- !u!114 &114850175406990046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -897,19 +929,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2dc55910113e04ebca844376fcd71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 1
+  debugMode: 0
   players:
   - {fileID: 114140109146967524}
   - {fileID: 114281748348823008}
   - {fileID: 114126051855194328}
   - {fileID: 114904893684544532}
-  _playingPlayers: 2
+  _playingPlayers: 1
   numberOfConnectedPlayer: 4
   gameOverPanel: {fileID: 0}
   test: {fileID: 114022582472355528}
   playersGlobalScoreIncrementation: 1
   playersBaseHealth: 3
-  playersBaseCoin: 3
+  playersBaseCoin: 5
   playersBonusHealth: 1
   playersBonusScoreIncrementation: 1
   TimeForSpendCoins: 0
@@ -941,13 +973,13 @@ MonoBehaviour:
   coins: 0
   _playerCurrentHealth: 0
   _playerIsAlive: 1
-  playerCurrentMaxHealth: 0
+  playerBaseMaxHealth: 0
   playerBonusOnHealth: 0
   playerBonusOnScore: 0
+  playerDamage: 1
   playerCombo: 0
   playerKill: 0
   playerAssist: 0
-  playerDamage: 1
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0

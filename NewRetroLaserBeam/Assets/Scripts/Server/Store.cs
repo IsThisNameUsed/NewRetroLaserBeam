@@ -20,7 +20,7 @@ public class Store : MonoBehaviour {
     IEnumerator nextObject(int time)
     {
         yield return new WaitForSeconds(time);
-        CreateNewPickable();
+        CreateNewSale();
         //StartNewSequence();
     }
 
@@ -64,10 +64,10 @@ public class Store : MonoBehaviour {
         StartCoroutine(nextObject(5));
     }
 
-    private void CreateNewPickable()
+    private void CreateNewSale()
     {
         Debug.Log("Sell is activ");
-        int actualSellingItemID = Random.Range(0, 3);
+        actualSellingItemID = Random.Range(0, 1);
         string name = itemsForSell[actualSellingItemID].name;
         steering.sendNameObjectForSale(itemsForSell[actualSellingItemID].name);
         StartCoroutine("SellItem");          

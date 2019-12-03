@@ -13,8 +13,7 @@ public class CamManager : MonoBehaviour
 
     public static CamManager instance;
 
-    public CinemachinePathBase m_Path;
-    public CinemachineDollyCart dollyOne;
+    //public CinemachineDollyCart dollyOne; to delete
    
     public int enemyToDie;
     private bool stopCamera;
@@ -25,10 +24,12 @@ public class CamManager : MonoBehaviour
     public GameObject camChild;
 
     public PlayableDirector playableDirector;
+    private CinemachineTrackedDolly dollyTrack;
 
     public bool GameIsActiv = false; //If we need to pause the camera move use this
 
-    public CinemachineTrackedDolly dollyTrack;
+    
+
     private void Awake()
     {
         if (instance != null)
@@ -48,7 +49,6 @@ public class CamManager : MonoBehaviour
         GameObject vcam1 = gameObject.transform.Find("CM vcam1").gameObject;
         Debug.Log(vcam1.name);
         CinemachineVirtualCamera cam = vcam1.GetComponent<CinemachineVirtualCamera>();
-        dollyTrack = cam.GetCinemachineComponent<CinemachineTrackedDolly>();
         dollyTrack = cam.GetCinemachineComponent<CinemachineTrackedDolly>();
 
         foreach (List<EnemyBehaviour> list in wavesList)
@@ -72,12 +72,6 @@ public class CamManager : MonoBehaviour
  
     void Update()
     {
-        //Debug.Log("dolly" + dollyOne.m_Position);
-        //Debug.Log("way point " + currentWayPoint);
-        //Debug.Log(dollyOne.m_Position >= currentWayPoint);
-        //Debug.Log("to die " + enemyToDie);
-        //Debug.Log("number " + numberOfenemiesPerWayPoint[currentWayPoint - 1]);*/
-        //Debug.Log("////////");
         if (!GameIsActiv)
             return;
 
@@ -85,7 +79,7 @@ public class CamManager : MonoBehaviour
         {
             if(dollyTrack.m_PathPosition >= currentWayPoint)
             {
-                dollyOne.m_Speed = 0;
+                //dollyOne.m_Speed = 0;
                 playableDirector.Pause();
                 stopCamera = true;
             }
@@ -99,30 +93,11 @@ public class CamManager : MonoBehaviour
                     currentWayPoint += 1;
                     enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint-1];
                     stopCamera = false;
-                    dollyOne.m_Speed = 0.5f;
+                    //dollyOne.m_Speed = 0.5f;
                     playableDirector.Play();
                 }
             }
         }
-
-        /*if (enemyToDie <= 0)
-        {
-            if (currentWayPoint < waypointNb)
-                currentWayPoint += 1;
-            //else SceneManager.LoadScene("KOM_SERVER 1");
-            if (playableDirector.time < times[currentWayPoint])
-            {
-                playableDirector.Play();
-                enemyToDie = numberOfenemiesPerWayPoint[currentWayPoint];
-                dollyOne.m_Speed = 1;
-            }
-        }*/
-
-        /*if (playableDirector.time >= times[currentWayPoint] && enemyToDie > 0)
-        {
-            playableDirector.Pause();
-            dollyOne.m_Speed = 0;
-        }*/
 
         if (Input.GetKeyDown(KeyCode.A))
         {
