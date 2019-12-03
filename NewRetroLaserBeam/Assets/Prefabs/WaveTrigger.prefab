@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 54142472569562668}
   - component: {fileID: 114824815607527146}
   m_Layer: 2
-  m_Name: Trigger
+  m_Name: WaveTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

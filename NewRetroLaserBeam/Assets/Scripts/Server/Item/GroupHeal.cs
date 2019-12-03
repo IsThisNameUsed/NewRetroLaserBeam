@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroupHeal : Item {
 
     public int amountOfLife;
-
+    public Player[] players;
     // Use this for initialization
     void Start () {
         amountOfLife = TweakingItem.instance.groupHealAmountOfLife;
