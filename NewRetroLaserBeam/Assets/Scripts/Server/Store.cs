@@ -5,31 +5,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//Store en stand by
+
 public class Store : MonoBehaviour {
- 
+
+    public static Store instance;
     [SerializeField]
     private GameObject sellPanel;
-   
+    public RawImage itemForSaleImage;
+    public Text saleText;
     public Item[] itemsForSell;
-    private int actualSellingItemID;
-    public bool itemSold;                                      // Security bool: Item is bought by a player and can't be bought again
-    private bool sequenceIsStarted = false;
+    [Tooltip ("must be ordered in the same order than itemForSell!" )]
+    public Texture[] itemSprite;
+
     public Steering steering;                                   //Script use to send information to clients in basics types
 
-    IEnumerator nextObject(int time)
+    private bool itemSold;                                      // Security bool: Item is bought by a player and can't be bought again
+    private int actualSellingItemID;
+    private bool sequenceIsStarted = false;
+ 
+    IEnumerator SaleItem()
     {
-        yield return new WaitForSeconds(time);
-        CreateNewSale();
-        //StartNewSequence();
-    }
-
-    IEnumerator SellItem()
-    {
-        SetSellState(true);
+        SetSaleState(true);
         steering.sellIsActiv(true);
         yield return new WaitForSeconds(5);
-        SetSellState(false);
+        SetSaleState(false);
         Debug.Log("Sell is stop");
         yield return new WaitForSeconds(2);
         itemSold = false;
@@ -38,39 +37,32 @@ public class Store : MonoBehaviour {
     IEnumerator StopSell()
     {
         Debug.Log("Sell is stop by a buyer");
-        SetSellState(false);
+        SetSaleState(false);
         yield return new WaitForSeconds(2);
         itemSold = false;
     }
 
-    void Start() {
-
-        
-    }
-
-    // Update is called once per frame
-    void Update() {
-
-        if (GameManager.instance.AllPlayerAreConnected() && !sequenceIsStarted)
-        {
-            StartNewSequence();
-            sequenceIsStarted = true;
-        }
-            
-    }
-
-    private void StartNewSequence()
+    private void Awake()
     {
-        StartCoroutine(nextObject(5));
+        if (instance == null)
+            instance = this;
+        else Destroy(gameObject);
+
+
     }
 
-    private void CreateNewSale()
+    void Update() {
+       
+    }
+
+    public void CreateNewSale()
     {
         Debug.Log("Sell is activ");
-        actualSellingItemID = Random.Range(0, 1);
+        actualSellingItemID = Random.Range(0, 3);
         string name = itemsForSell[actualSellingItemID].name;
+
         steering.sendNameObjectForSale(itemsForSell[actualSellingItemID].name);
-        StartCoroutine("SellItem");          
+        StartCoroutine("SaleItem");          
     }
     
     public void BuyObject(ButtonControllerType buyButton)
@@ -86,11 +78,12 @@ public class Store : MonoBehaviour {
             int playersCoins = GameManager.instance.players[playerId].GetCoins();
             int itemCost = itemsForSell[actualSellingItemID].price;
             Debug.Log("Coute " + itemCost + " coins");
+
             if (playersCoins >= itemCost)
             {
                 Player buyer = GameManager.instance.players[playerId];
                 itemSold = true;
-                SetSellState(false);
+                SetSaleState(false);
                 steering.sendNameObjectForSale("");
                 buyer.AddCoins(-itemCost);
                 buyer.possesseditem = itemsForSell[actualSellingItemID];
@@ -101,7 +94,7 @@ public class Store : MonoBehaviour {
         
     }
 
-    private void SetSellState(bool value)
+    private void SetSaleState(bool value)
     {
         steering.sellIsActiv(value);
         
@@ -110,11 +103,11 @@ public class Store : MonoBehaviour {
         {
             itemName = itemsForSell[actualSellingItemID].name;
             sellPanel.SetActive(value);
-            sellPanel.GetComponent<Text>().text = itemName;     
+            saleText.text = itemName + " à vendre!";
+            itemForSaleImage.texture = itemSprite[actualSellingItemID];
         }
         else
         {
-            sellPanel.GetComponent<Text>().text =itemName + " A VENDRE!!!";
             sellPanel.SetActive(value);
         }
         steering.sendNameObjectForSale(itemName);

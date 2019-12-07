@@ -475,6 +475,7 @@ MonoBehaviour:
   price: 5
   name: group heal
   amountOfLife: 0
+  players: []
 --- !u!114 &114126051855194328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -494,13 +495,15 @@ MonoBehaviour:
   coins: 0
   _playerCurrentHealth: 0
   _playerIsAlive: 1
-  playerBaseMaxHealth: 0
+  playerCurrentMaxHealth: 0
   playerBonusOnHealth: 0
   playerBonusOnScore: 0
-  playerDamage: 1
   playerCombo: 0
   playerKill: 0
   playerAssist: 0
+  playerDamage: 1
+  playerTotalDamage: 0
+  playerHitsOnHead: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -581,13 +584,15 @@ MonoBehaviour:
   coins: 5
   _playerCurrentHealth: 0
   _playerIsAlive: 1
-  playerBaseMaxHealth: 0
+  playerCurrentMaxHealth: 0
   playerBonusOnHealth: 0
   playerBonusOnScore: 0
-  playerDamage: 1
   playerCombo: 0
   playerKill: 0
   playerAssist: 0
+  playerDamage: 1
+  playerTotalDamage: 0
+  playerHitsOnHead: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -688,6 +693,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847ae7a48ab10134980782b3b2f255d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  personnalHealAmountOfLife: 1
+  groupHealAmountOfLife: 1
+  burstDamageMultiplier: 2
+  burstDamageTimeOfUse: 0
 --- !u!114 &114281748348823008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -707,13 +716,15 @@ MonoBehaviour:
   coins: 4
   _playerCurrentHealth: 0
   _playerIsAlive: 1
-  playerBaseMaxHealth: 0
+  playerCurrentMaxHealth: 0
   playerBonusOnHealth: 0
   playerBonusOnScore: 0
-  playerDamage: 1
   playerCombo: 0
   playerKill: 0
   playerAssist: 0
+  playerDamage: 1
+  playerTotalDamage: 0
+  playerHitsOnHead: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -868,11 +879,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sellPanel: {fileID: 0}
+  itemForSaleImage: {fileID: 0}
+  saleText: {fileID: 0}
   itemsForSell:
   - {fileID: 114552414437408926}
   - {fileID: 114024938468662886}
   - {fileID: 114805009782519808}
-  itemSold: 0
+  itemSprite:
+  - {fileID: 2800000, guid: 6fa8074c6cd085d49a3c81c613723622, type: 3}
+  - {fileID: 2800000, guid: 80372c425b5c2284ea363259ecf51a49, type: 3}
+  - {fileID: 2800000, guid: 9b1635589c91a9b4d8a7a49017e5a048, type: 3}
   steering: {fileID: 114295396001722162}
 --- !u!114 &114780035013916246
 MonoBehaviour:
@@ -903,6 +919,7 @@ MonoBehaviour:
   price: 5
   name: burst damage
   damageMultiplier: 0
+  timeOfUse: 0
 --- !u!114 &114850175406990046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -929,7 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2dc55910113e04ebca844376fcd71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
+  debugMode: 1
   players:
   - {fileID: 114140109146967524}
   - {fileID: 114281748348823008}
@@ -951,9 +968,7 @@ MonoBehaviour:
   coinUnit_ScoreValue: 1000
   death_ScoreValue: -1000
   damage_ScoreValue: 150
-  damageCombo_ScoreValue: 150
-  death_ScoreValueOvertime: 200
-  damageCombo_ScoreValueOvertime: 250
+  damageHead_ScoreValue: 100
 --- !u!114 &114904893684544532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -973,13 +988,15 @@ MonoBehaviour:
   coins: 0
   _playerCurrentHealth: 0
   _playerIsAlive: 1
-  playerBaseMaxHealth: 0
+  playerCurrentMaxHealth: 0
   playerBonusOnHealth: 0
   playerBonusOnScore: 0
-  playerDamage: 1
   playerCombo: 0
   playerKill: 0
   playerAssist: 0
+  playerDamage: 1
+  playerTotalDamage: 0
+  playerHitsOnHead: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
