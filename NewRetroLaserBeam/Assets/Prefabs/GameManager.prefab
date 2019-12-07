@@ -84,9 +84,9 @@ GameObject:
   - component: {fileID: 4812252974232522}
   - component: {fileID: 114773279908130736}
   - component: {fileID: 114277613800098180}
-  - component: {fileID: 114972948076602248}
   - component: {fileID: 114448075130970522}
   - component: {fileID: 114850175406990046}
+  - component: {fileID: 114706959277490846}
   m_Layer: 0
   m_Name: Store
   m_TagString: Untagged
@@ -504,6 +504,9 @@ MonoBehaviour:
   playerDamage: 1
   playerTotalDamage: 0
   playerHitsOnHead: 0
+  playerRevivedTeammates: 0
+  playerReviveSelf: 0
+  playerUsedItem: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -593,6 +596,9 @@ MonoBehaviour:
   playerDamage: 1
   playerTotalDamage: 0
   playerHitsOnHead: 0
+  playerRevivedTeammates: 0
+  playerReviveSelf: 0
+  playerUsedItem: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -725,6 +731,9 @@ MonoBehaviour:
   playerDamage: 1
   playerTotalDamage: 0
   playerHitsOnHead: 0
+  playerRevivedTeammates: 0
+  playerReviveSelf: 0
+  playerUsedItem: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -800,7 +809,7 @@ MonoBehaviour:
   floatBackchannel: {fileID: 0}
   allPlayerReady: {fileID: 114260632172406030}
   objectForSale: {fileID: 114448075130970522}
-  endSell: {fileID: 114972948076602248}
+  sellIsActiv: {fileID: 114706959277490846}
 --- !u!114 &114435670137426270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -852,6 +861,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425d0759839498a45aae183d1dc29eab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114706959277490846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543046563938408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace0bc22ac4d5464393c5303796525f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: sellIsActiv
+  player: 999
 --- !u!114 &114751442385932294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -946,7 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2dc55910113e04ebca844376fcd71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 1
+  debugMode: 0
   players:
   - {fileID: 114140109146967524}
   - {fileID: 114281748348823008}
@@ -997,6 +1019,9 @@ MonoBehaviour:
   playerDamage: 1
   playerTotalDamage: 0
   playerHitsOnHead: 0
+  playerRevivedTeammates: 0
+  playerReviveSelf: 0
+  playerUsedItem: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -1058,16 +1083,3 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
---- !u!114 &114972948076602248
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1543046563938408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b4c9ab998d74bf4fa867fd801d2618f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  control: sellIsActiv
-  player: 999

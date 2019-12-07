@@ -296,7 +296,6 @@ GameObject:
   - component: {fileID: 171019679}
   - component: {fileID: 171019678}
   - component: {fileID: 171019677}
-  - component: {fileID: 171019676}
   - component: {fileID: 171019675}
   - component: {fileID: 171019686}
   m_Layer: 0
@@ -319,21 +318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlName: string
---- !u!114 &171019676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114989500777724148, guid: d136ac7a902df9343884ce018bb6784b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 171019674}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b463a54c37b9040a00b64b7d31e9e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlName: g
-  notifyMethod: setSellState
-  callType: 1
 --- !u!114 &171019677
 MonoBehaviour:
   m_ObjectHideFlags: 0
