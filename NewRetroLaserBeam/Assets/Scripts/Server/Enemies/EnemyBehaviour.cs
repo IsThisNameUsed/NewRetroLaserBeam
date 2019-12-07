@@ -231,6 +231,10 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         }
         for (int i = 0; i < playersHit.Length; i++)
         {
+            if(playersHit[i] == 2)
+            {
+                GameManager.instance.players[i].AddHeadHitScore();
+            }
             AddScoreToPlayers(i,headCount,bodyCount);
             playersTotalTimeHit[i] += playersTimeHit[i];
             playersTotalDamage[i] += playersDamage[i];

@@ -158,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1728677785133140}
   m_LocalRotation: {x: -0.07273195, y: 0.694385, z: 0.07458077, w: 0.7120233}
-  m_LocalPosition: {x: -756.76, y: 109.856445, z: -30.557}
+  m_LocalPosition: {x: -758.46967, y: 109.856445, z: -31.979382}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4958018176012986}
@@ -241,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 1571198272188976}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4751616669406390}
   - {fileID: 4471689708072098}
@@ -329,8 +329,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14759395, y: 0.10415809, z: 0.15203354}
-  m_Center: {x: -0.005856375, y: 0.10634105, z: -0.00434496}
+  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!65 &65876637695169146
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -341,8 +341,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.19029903, y: 0.23974112, z: 0.1184143}
-  m_Center: {x: -0.027208734, y: 0.08240238, z: 0.0124646695}
+  m_Size: {x: 0.7, y: 0.6, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95519444905592444
 Animator:
   serializedVersion: 3
@@ -415,7 +415,7 @@ MonoBehaviour:
   isCloseToPlayers: 0
   targetedPlayer: {fileID: 0}
   hitCooldown: -0.0015664008
-  weakness: 0
+  weakness: 1
   generateRandomWeakness: 0
   healthPoint: 1
   moveSpeed: 1
