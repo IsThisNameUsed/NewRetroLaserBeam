@@ -25,10 +25,9 @@ public class Store : MonoBehaviour {
  
     IEnumerator SaleItem()
     {
-        SetSaleState(true);
-        steering.sellIsActiv(true);
+        SetSaleState(true, actualSellingItemID);
         yield return new WaitForSeconds(5);
-        SetSaleState(false);
+        SetSaleState(false, -1);
         Debug.Log("Sell is stop");
         yield return new WaitForSeconds(2);
         itemSold = false;
@@ -37,7 +36,7 @@ public class Store : MonoBehaviour {
     IEnumerator StopSell()
     {
         Debug.Log("Sell is stop by a buyer");
-        SetSaleState(false);
+        SetSaleState(false, -1);
         yield return new WaitForSeconds(2);
         itemSold = false;
     }
@@ -47,21 +46,16 @@ public class Store : MonoBehaviour {
         if (instance == null)
             instance = this;
         else Destroy(gameObject);
-
-
     }
 
-    void Update() {
-       
+    void Start() {
+        SetSaleState(false, -1);
     }
 
     public void CreateNewSale()
     {
         Debug.Log("Sell is activ");
         actualSellingItemID = Random.Range(0, 3);
-        string name = itemsForSell[actualSellingItemID].name;
-
-        steering.sendNameObjectForSale(itemsForSell[actualSellingItemID].name);
         StartCoroutine("SaleItem");          
     }
     
@@ -83,7 +77,7 @@ public class Store : MonoBehaviour {
             {
                 Player buyer = GameManager.instance.players[playerId];
                 itemSold = true;
-                SetSaleState(false);
+                SetSaleState(false, -1);
                 steering.sendNameObjectForSale("");
                 buyer.AddCoins(-itemCost);
                 buyer.possesseditem = itemsForSell[actualSellingItemID];
@@ -94,21 +88,21 @@ public class Store : MonoBehaviour {
         
     }
 
-    private void SetSaleState(bool value)
+    private void SetSaleState(bool state, int itemID)
     {
-        steering.sellIsActiv(value);
+        steering.SendSaleState(itemID);
         
         string itemName="";
-        if (value)
+        if (state)
         {
-            itemName = itemsForSell[actualSellingItemID].name;
-            sellPanel.SetActive(value);
+            itemName = itemsForSell[itemID].name;
+            sellPanel.SetActive(state);
             saleText.text = itemName + " à vendre!";
-            itemForSaleImage.texture = itemSprite[actualSellingItemID];
+            itemForSaleImage.texture = itemSprite[itemID];
         }
         else
         {
-            sellPanel.SetActive(value);
+            sellPanel.SetActive(state);
         }
         steering.sendNameObjectForSale(itemName);
     }

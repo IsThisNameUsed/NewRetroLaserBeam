@@ -12,16 +12,19 @@ public class ClientManager : MonoBehaviour {
     public GameObject coinButton;
     float time;
     public Text debugText;
-    public Text sellText;
     public Text sellText2;
     public GameObject spendCoinsPanel;
-    public GameObject gameInterfacePanel;
-    public GameObject buyButton;
+    public GameObject gamePanel;
 
+    public GameObject buyButton;
+    private Image buyButtonImage;
+    public Sprite[] itemSprite;
+    private int itemForSaleID;
     public StringDataClientController testString;
 
     void Start () {
-        gameInterfacePanel.SetActive(false);
+        buyButtonImage = buyButton.transform.GetChild(0).GetComponent<Image>();
+        gamePanel.SetActive(false);
         spendCoinsPanel.SetActive(true);
         buyButton.SetActive(false);
         testString.setValue("BUTTON 1");
@@ -34,28 +37,27 @@ public class ClientManager : MonoBehaviour {
 
     void switchToGameInterface(BoolBackchannelType value)
     {
-        gameInterfacePanel.SetActive(value.BOOL_VALUE);
+        gamePanel.SetActive(value.BOOL_VALUE);
         spendCoinsPanel.SetActive(!value.BOOL_VALUE);
     }
 
-    //control name: nameObjectForSell
-    void setObjectName(StringBackchannelType value)
-    {
-        sellText.text = value.STRING_VALUE;
-    }
+   
 
     //control name: sellIsActiv
-    void setSellState(BoolBackchannelType value)
+    void setSellState(IntBackchannelType value)
     {
-        if(value.BOOL_VALUE)
+        if(value.INT_VALUE >= 0)
         {
-            buyButton.SetActive(true);
+            buyButton.SetActive(true);         
+            buyButtonImage.color = new Vector4(255, 255, 255, 255);
+            buyButtonImage.sprite = itemSprite[value.INT_VALUE];
             sellText2.text = "SellIsActiv";
         }
         else
         {
             buyButton.SetActive(false);
             sellText2.text = "SellIsOver";
+            buyButtonImage.color = new Vector4(255, 255, 255, 0);
         }  
     }
 
@@ -69,18 +71,11 @@ public class ClientManager : MonoBehaviour {
         testString.setValue("BUTTON 2");
     }
 
-    //Forward channel example
-    /*IEnumerator displayCoinPanel()
+   /*
+    //control name: nameObjectForSell
+    void setObjectName(StringBackchannelType value)
     {
-        yield return new WaitForSeconds(time);
-        coinButton.SetActive(false);
-        gameObject.GetComponent<BoolDataClientController>().setValue(true);
-    }*/
-
-    /*void SpendCoins(FloatBackchannelType inputTime)
-   {
-       coinButton.SetActive(true);
-       time = inputTime.FLOAT_VALUE;
-       StartCoroutine("displayCoinPanel");
-   }*/
+        sellText.text = value.STRING_VALUE;
+    } 
+    */
 }

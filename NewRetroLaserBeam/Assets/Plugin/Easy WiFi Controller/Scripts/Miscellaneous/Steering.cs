@@ -10,7 +10,7 @@ public class Steering : MonoBehaviour {
     public FloatServerBackchannel floatBackchannel;
     public BoolServerBackchannel allPlayerReady;
     public StringServerBackchannel objectForSale;
-    public BoolServerBackchannel endSell;
+    public IntServerBackchannel sellIsActiv;
 
     Rigidbody myRigidbody;
     Vector3 accel;
@@ -44,9 +44,9 @@ public class Steering : MonoBehaviour {
         objectForSale.setValue(name);
     }
 
-    public void sellIsActiv(bool value)
+    public void SendSaleState(int value)
     {
-        endSell.setValue(value);
+        sellIsActiv.setValue(value);
     }
 
     //human example scene methods (gaspedal, brakepedal, and steerball)
