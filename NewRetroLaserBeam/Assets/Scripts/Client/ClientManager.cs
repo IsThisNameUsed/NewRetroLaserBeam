@@ -9,17 +9,18 @@ using UnityEngine.UI;
 
 public class ClientManager : MonoBehaviour {
 
-    public GameObject coinButton;
-    float time;
-    public Text debugText;
     public Text sellText2;
+    //Panel
     public GameObject spendCoinsPanel;
     public GameObject gamePanel;
 
+
+    //Sale
     public GameObject buyButton;
     private Image buyButtonImage;
     public Sprite[] itemSprite;
     private int itemForSaleID;
+
     public StringDataClientController testString;
 
     void Start () {
@@ -32,7 +33,7 @@ public class ClientManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        debugText.text = time.ToString();
+
     }
 
     void switchToGameInterface(BoolBackchannelType value)

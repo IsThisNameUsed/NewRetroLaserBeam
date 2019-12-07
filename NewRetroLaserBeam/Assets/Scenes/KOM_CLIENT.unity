@@ -296,7 +296,6 @@ GameObject:
   - component: {fileID: 171019679}
   - component: {fileID: 171019678}
   - component: {fileID: 171019677}
-  - component: {fileID: 171019675}
   - component: {fileID: 171019686}
   m_Layer: 0
   m_Name: ClientControlCanvas
@@ -305,19 +304,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &171019675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114868900432287506, guid: d136ac7a902df9343884ce018bb6784b,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 171019674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdedeefef4b55b341b178fbaa5757321, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlName: string
 --- !u!114 &171019677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,8 +373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ec804fc41e1174a8577471525c4941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinButton: {fileID: 0}
-  debugText: {fileID: 262330795}
   sellText2: {fileID: 1312583776}
   spendCoinsPanel: {fileID: 551306778}
   gamePanel: {fileID: 1598438153}
@@ -397,7 +381,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6fa8074c6cd085d49a3c81c613723622, type: 3}
   - {fileID: 21300000, guid: 80372c425b5c2284ea363259ecf51a49, type: 3}
   - {fileID: 21300000, guid: 9b1635589c91a9b4d8a7a49017e5a048, type: 3}
-  testString: {fileID: 171019675}
+  testString: {fileID: 0}
 --- !u!114 &171019682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -739,7 +723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &551306779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1959,7 +1943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1598438154
 RectTransform:
   m_ObjectHideFlags: 0

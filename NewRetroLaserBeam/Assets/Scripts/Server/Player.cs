@@ -13,7 +13,9 @@ public class Player : MonoBehaviour {
     public Animator animator;
     public GameObject body;
     public Item possesseditem;
+    public float numberOfRevive;
     [SerializeField] private int coins;
+    [SerializeField] private float damageMultiplier = 1;  //used by item burstDps
 
     [Header("Players Health")]//on peut vérifier la vie à chaque fois que celle ci est changé.
     [ReadOnly] [SerializeField] public int _playerCurrentHealth;
@@ -70,7 +72,13 @@ public class Player : MonoBehaviour {
         playerUsedItem++;
     }
 
-    #region Life
+    public void SetMultiplierDamage(float value)
+    {
+        damageMultiplier = value;
+    }
+
+
+#region Life
 
     public bool playerIsAlive
     {
@@ -188,7 +196,7 @@ public class Player : MonoBehaviour {
         return playerHitsOnHead++;
     }
     #endregion
-    #region coins
+#region coins
     public int GetCoins()
     {
         return coins;

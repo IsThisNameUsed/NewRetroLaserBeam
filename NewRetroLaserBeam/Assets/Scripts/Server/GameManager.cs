@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 {
     [Tooltip("Contrôl d'un laser à la souris")]
     public bool debugMode;
-
     public static GameManager instance;
     public Player[] players;
 
@@ -25,6 +24,8 @@ public class GameManager : MonoBehaviour
     [Tooltip("gameOverPanel should be in UICanvas children")]
     public GameObject gameOverPanel;
     public CustomStringDataServerController test;
+
+    private float totalCoinSPendingForScore;
 
     [Space(4)]
     [Tooltip("The number of coin spent on Score")]
@@ -91,6 +92,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SpendCoinForScore()
+    {
+        totalCoinSPendingForScore += 0.5f;
+    }
+
     #region player
     public void playerIsReady(ButtonControllerType button)
     {
@@ -150,6 +156,24 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    public void SpendCoinsForHealthP1()
+    {
+        players[0].numberOfRevive += 0.5f;
+    }
+    public void SpendCoinsForHealthP2()
+    {
+        players[1].numberOfRevive += 1;
+    }
+    public void SpendCoinsForHealthP3()
+    {
+        players[2].numberOfRevive += 1;
+    }
+    public void SpendCoinsForHealthP4()
+    {
+        players[3].numberOfRevive += 1;
+    }
+
     #endregion
 
     public void EndLevel()
@@ -160,6 +184,7 @@ public class GameManager : MonoBehaviour
             players[i].ResetCoin();
         }
     }
+
     public float AddScore(ref int _playerId, float _scoreValue = 0)
     {
 
@@ -167,6 +192,7 @@ public class GameManager : MonoBehaviour
     }
 
     #region get information
+
     public bool AllPlayerAreConnected()
     {
         return (numberOfConnectedPlayer == playingPlayers);
@@ -174,10 +200,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
     #region test
-    public void PrintString(StringBackchannelType value)
-    {
-        Debug.Log(value.STRING_VALUE);
-    }
+   
 
     #endregion
     //Forward channel example

@@ -7,9 +7,11 @@ public class BurstDamage : Item {
     public float damageMultiplier;
     public float timeOfUse;
 
-    IEnumerator BusrtDamageTimer()
+    IEnumerator BurstDamageTimer(Player player)
     {
-        yield return new WaitForSeconds(3);
+        player.SetMultiplierDamage(damageMultiplier);
+        yield return new WaitForSeconds(timeOfUse);
+        player.SetMultiplierDamage(1);
     }
 	// Use this for initialization
 	void Start () {
@@ -25,7 +27,7 @@ public class BurstDamage : Item {
     public override void UseItem(Player player)
     {
         Debug.Log("Utilisation de " + name+" par " + player.gameObject.name);
-        //player.dam
+        StartCoroutine(BurstDamageTimer(player));
 
     }
 }
