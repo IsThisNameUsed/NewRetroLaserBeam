@@ -251,6 +251,13 @@ MonoBehaviour:
   controlName: Shoot
   buttonPressedSprite: {fileID: 21300000, guid: c63c830e66cd4d145b6a7cff606b8d28,
     type: 3}
+  currentImage: {fileID: 0}
+  buttonRegularSprite: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &122539240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,12 +383,12 @@ MonoBehaviour:
   sellText2: {fileID: 1312583776}
   spendCoinsPanel: {fileID: 551306778}
   gamePanel: {fileID: 1598438153}
+  startingNumberOfCoin: 10
   buyButton: {fileID: 1284169089}
   itemSprite:
   - {fileID: 21300000, guid: 6fa8074c6cd085d49a3c81c613723622, type: 3}
   - {fileID: 21300000, guid: 80372c425b5c2284ea363259ecf51a49, type: 3}
   - {fileID: 21300000, guid: 9b1635589c91a9b4d8a7a49017e5a048, type: 3}
-  testString: {fileID: 0}
 --- !u!114 &171019682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,6 +724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 551306779}
+  - component: {fileID: 551306780}
   m_Layer: 0
   m_Name: SpendCoinPanel
   m_TagString: Untagged
@@ -734,6 +742,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1886474786}
+  - {fileID: 1889682733}
   - {fileID: 2137708507}
   - {fileID: 1787143618}
   - {fileID: 1888014328}
@@ -745,6 +755,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00053406, y: -0.0000076294}
   m_SizeDelta: {x: 869.39, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &551306780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 551306778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09b205f7317cfc4895c1baf4b0fc51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberfCoinText: {fileID: 1886474784}
+  clientManager: {fileID: 171019681}
+  healthButton: {fileID: 2137708509}
+  scoreButton: {fileID: 1787143620}
 --- !u!1 &726634351
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,9 +907,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d043ae6611b3f240b3ad4a1ab3b79e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlName: Shoot
+  controlName: Shoot2
   buttonPressedSprite: {fileID: 21300000, guid: c63c830e66cd4d145b6a7cff606b8d28,
     type: 3}
+  currentImage: {fileID: 0}
+  buttonRegularSprite: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &812548135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1357,6 +1389,13 @@ MonoBehaviour:
   controlName: buyButton
   buttonPressedSprite: {fileID: 21300000, guid: c63c830e66cd4d145b6a7cff606b8d28,
     type: 3}
+  currentImage: {fileID: 0}
+  buttonRegularSprite: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1284169092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1615,6 +1654,13 @@ MonoBehaviour:
   controlName: useItem
   buttonPressedSprite: {fileID: 21300000, guid: c63c830e66cd4d145b6a7cff606b8d28,
     type: 3}
+  currentImage: {fileID: 0}
+  buttonRegularSprite: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1336593166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2078,11 +2124,11 @@ RectTransform:
   m_Children:
   - {fileID: 1483284787}
   m_Father: {fileID: 551306779}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 24.971619, y: -190}
+  m_AnchoredPosition: {x: 150, y: -190}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1787143619
@@ -2108,6 +2154,24 @@ MonoBehaviour:
   controlName: spendCoinsForScore
   buttonPressedSprite: {fileID: 21300000, guid: c63c830e66cd4d145b6a7cff606b8d28,
     type: 3}
+  currentImage: {fileID: 0}
+  buttonRegularSprite: {fileID: 0}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 551306780}
+        m_MethodName: DecreaseNumberOfCoin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1787143621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2187,6 +2251,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1886474783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1886474786}
+  - component: {fileID: 1886474785}
+  - component: {fileID: 1886474784}
+  m_Layer: 0
+  m_Name: numberOfCoin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1886474784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886474783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &1886474785
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886474783}
+  m_CullTransparentMesh: 0
+--- !u!224 &1886474786
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1886474783}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 551306779}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -350}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1888014327
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,13 +2358,13 @@ RectTransform:
   m_Children:
   - {fileID: 1775580876}
   m_Father: {fileID: 551306779}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -130, y: -400}
+  m_AnchoredPosition: {x: 0, y: -400}
   m_SizeDelta: {x: 150, y: 100}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1888014329
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2277,6 +2416,75 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!1 &1889682732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1889682733}
+  - component: {fileID: 1889682735}
+  - component: {fileID: 1889682734}
+  m_Layer: 0
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1889682733
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1889682732}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 551306779}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -265}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1889682734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1889682732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 4bb73fa23b978ba4692a896a0a4f2e62, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1889682735
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1889682732}
+  m_CullTransparentMesh: 0
 --- !u!1 &2011748082
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,11 +2596,11 @@ RectTransform:
   m_Children:
   - {fileID: 2011748083}
   m_Father: {fileID: 551306779}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -290, y: -190}
+  m_AnchoredPosition: {x: -300, y: -190}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2137708508
@@ -2418,6 +2626,25 @@ MonoBehaviour:
   controlName: spendCoinsForHealth
   buttonPressedSprite: {fileID: 21300000, guid: c63c830e66cd4d145b6a7cff606b8d28,
     type: 3}
+  currentImage: {fileID: 0}
+  buttonRegularSprite: {fileID: 21300000, guid: ee2d3d25cfb09194b9268d8b9281bcb1,
+    type: 3}
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 551306780}
+        m_MethodName: DecreaseNumberOfCoin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &2137708510
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ public class ClientManager : MonoBehaviour {
     public GameObject spendCoinsPanel;
     public GameObject gamePanel;
 
+    //Spending coin
+    public int startingNumberOfCoin;
 
     //Sale
     public GameObject buyButton;
@@ -21,14 +23,12 @@ public class ClientManager : MonoBehaviour {
     public Sprite[] itemSprite;
     private int itemForSaleID;
 
-    public StringDataClientController testString;
 
     void Start () {
         buyButtonImage = buyButton.transform.GetChild(0).GetComponent<Image>();
         gamePanel.SetActive(false);
         spendCoinsPanel.SetActive(true);
         buyButton.SetActive(false);
-        testString.setValue("BUTTON 1");
     }
 	
 	// Update is called once per frame
@@ -60,16 +60,6 @@ public class ClientManager : MonoBehaviour {
             sellText2.text = "SellIsOver";
             buyButtonImage.color = new Vector4(255, 255, 255, 0);
         }  
-    }
-
-    public void setString1()
-    {
-        testString.setValue("BUTTON 1");
-    }
-
-    public void setString2()
-    {
-        testString.setValue("BUTTON 2");
     }
 
    /*

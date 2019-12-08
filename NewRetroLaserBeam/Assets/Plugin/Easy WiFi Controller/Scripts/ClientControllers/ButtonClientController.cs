@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using EasyWiFi.Core;
+using UnityEngine.Events;
 
 namespace EasyWiFi.ClientControls
 {
@@ -13,12 +14,16 @@ namespace EasyWiFi.ClientControls
         public Sprite buttonPressedSprite;
 
         ButtonControllerType button;
-        Image currentImage;
-        Sprite buttonRegularSprite;
+        public Image currentImage;
+        public Sprite buttonRegularSprite;
         string buttonKey;
         Rect screenPixelsRect;
         int touchCount;
         bool pressed;
+
+        public UnityEvent action;
+        private bool actionAlreadyInvoked;
+        private bool isDeactivated;
 
         // Use this for initialization
         void Awake()
@@ -28,7 +33,11 @@ namespace EasyWiFi.ClientControls
 
             currentImage = gameObject.GetComponent<Image>();
             buttonRegularSprite = currentImage.sprite;
-            
+
+            actionAlreadyInvoked = false;
+            isDeactivated = false;
+
+
         }
 
         void Start()
@@ -39,7 +48,14 @@ namespace EasyWiFi.ClientControls
         //here we grab the input and map it to the data list
         void Update()
         {
-            mapInputToDataStream();
+             mapInputToDataStream();
+        }
+
+        public void DeactivateButton()
+        {
+            isDeactivated = true;
+            Debug.Log("Desactivation!");
+            //currentImage.sprite = buttonRegularSprite;
         }
 
         public void mapInputToDataStream()
@@ -95,14 +111,20 @@ namespace EasyWiFi.ClientControls
             }
 
             //show the correct image
-            if (pressed)
+            if (pressed && !isDeactivated)
             {
                 button.BUTTON_STATE_IS_PRESSED = true;
+                if(actionAlreadyInvoked == false)
+                    action.Invoke();
+                actionAlreadyInvoked = true;
+                Debug.Log("ISPRESSED");
                 currentImage.sprite = buttonPressedSprite;
             }
             else
             {
                 button.BUTTON_STATE_IS_PRESSED = false;
+                Debug.Log("IS NOT PRESSED");
+                actionAlreadyInvoked = false;
                 currentImage.sprite = buttonRegularSprite;
 
             }

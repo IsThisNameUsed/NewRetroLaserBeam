@@ -92,11 +92,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SpendCoinForScore()
-    {
-        totalCoinSPendingForScore += 0.5f;
-    }
-
     #region player
     public void playerIsReady(ButtonControllerType button)
     {
@@ -163,15 +158,20 @@ public class GameManager : MonoBehaviour
     }
     public void SpendCoinsForHealthP2()
     {
-        players[1].numberOfRevive += 1;
+        players[1].numberOfRevive += 0.5f;
     }
     public void SpendCoinsForHealthP3()
     {
-        players[2].numberOfRevive += 1;
+        players[2].numberOfRevive += 0.5f;
     }
     public void SpendCoinsForHealthP4()
     {
-        players[3].numberOfRevive += 1;
+        players[3].numberOfRevive += 0.5f;
+    }
+
+    public void SpendCoinForScore()
+    {
+        totalCoinSPendingForScore += 0.5f;
     }
 
     #endregion

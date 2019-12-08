@@ -65,6 +65,13 @@ public class Player : MonoBehaviour {
 #endif
     }
 
+    private void Update()
+    {
+        if (playerHitCurrentCooldown > 0)
+        {
+            playerHitCurrentCooldown -= Time.deltaTime;
+        }
+    }
 
     public void UseItem()
     {
@@ -120,13 +127,7 @@ public class Player : MonoBehaviour {
         }
         return playerCurrentHealth -= _damage;
     }
-    private void Update()
-    {
-        if (playerHitCurrentCooldown > 0)
-        {
-            playerHitCurrentCooldown -= Time.deltaTime;
-        }
-    }
+   
     public void DebugTakeDamage()
     {
         int damage = 1;
