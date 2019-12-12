@@ -160,4 +160,22 @@ public class LaserBehaviour : MonoBehaviour
             laser.enabled = false;
         }
     }
+
+    public void SetLaser2(ButtonControllerType shootButton)
+    {
+        if (shootButton.BUTTON_STATE_IS_PRESSED && isShooting == false)
+        {
+            //Debug.Log("Switch IS PRESSED");
+            laserSound.Play();
+            isShooting = true;
+            laser.enabled = true;
+        }
+        else if (!shootButton.BUTTON_STATE_IS_PRESSED && isShooting == true)
+        {
+            //Debug.Log("switch IS NOT PRESSED");
+            laserSound.Stop();
+            isShooting = false;
+            laser.enabled = false;
+        }
+    }
 }

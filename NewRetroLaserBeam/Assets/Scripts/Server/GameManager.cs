@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     {
         if (!debugMode)
         {
-            numberOfConnectedPlayer = EasyWiFiUtilities.getHighestPlayerNumber() + 1;
+            numberOfConnectedPlayer = EasyWiFiUtilities.getHighestPlayerNumber()+1;
             if (numberOfConnectedPlayer == playingPlayers && allPlayersConnected == false && gameStart == false)
             {
                 allPlayersConnected = true;

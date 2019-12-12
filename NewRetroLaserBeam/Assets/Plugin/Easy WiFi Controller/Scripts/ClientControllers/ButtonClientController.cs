@@ -117,13 +117,11 @@ namespace EasyWiFi.ClientControls
                 if(actionAlreadyInvoked == false)
                     action.Invoke();
                 actionAlreadyInvoked = true;
-                Debug.Log("ISPRESSED");
                 currentImage.sprite = buttonPressedSprite;
             }
             else
             {
                 button.BUTTON_STATE_IS_PRESSED = false;
-                Debug.Log("IS NOT PRESSED");
                 actionAlreadyInvoked = false;
                 currentImage.sprite = buttonRegularSprite;
 

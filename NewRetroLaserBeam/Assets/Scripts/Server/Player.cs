@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     [Header("References")]
     [Tooltip("laser should be in Camera children")]
     public LaserBehaviour laser;
+    public GameObject targetingSprite;
     [Tooltip("healthBar should be in UICanvas children")]
     public Slider healthBar;
     public Animator animator;
@@ -105,7 +106,7 @@ public class Player : MonoBehaviour {
             {
                 case true://DEATH
                     if (_playerCurrentHealth <= 0){
-                        AddDeathScore();
+                        KillPlayer();
                     }
                     break;
                 case false://When player is alive
@@ -179,6 +180,15 @@ public class Player : MonoBehaviour {
             AddUniqueCoinScore();
         }
     }
+
+    private void KillPlayer()
+    {
+        playerIsAlive = false;
+        laser.gameObject.SetActive(false);
+        targetingSprite.SetActive(false);
+        AddDeathScore();
+    }
+
     public void AddDeathScore()
     {
         playerIsAlive = false;

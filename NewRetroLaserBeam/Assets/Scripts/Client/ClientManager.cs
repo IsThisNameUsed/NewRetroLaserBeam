@@ -26,7 +26,7 @@ public class ClientManager : MonoBehaviour {
 
     void Start () {
         buyButtonImage = buyButton.transform.GetChild(0).GetComponent<Image>();
-        gamePanel.SetActive(false);
+        gamePanel.SetActive(true);
         spendCoinsPanel.SetActive(true);
         buyButton.SetActive(false);
     }
@@ -38,7 +38,7 @@ public class ClientManager : MonoBehaviour {
 
     void switchToGameInterface(BoolBackchannelType value)
     {
-        gamePanel.SetActive(value.BOOL_VALUE);
+        //gamePanel.SetActive(value.BOOL_VALUE);
         spendCoinsPanel.SetActive(!value.BOOL_VALUE);
     }
 
