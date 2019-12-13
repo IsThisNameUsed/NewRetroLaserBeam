@@ -101,6 +101,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
             //we will give assist to anyone who touched it
             for(int i = 0; i < playersHit.Length; i++)
             {
+                GameManager.instance.players[i].playerTotalDamage = playersTotalDamage[i];
                 if(playersTotalDamage[i] == playersTotalDamage.Max())
                 {
                     GameManager.instance.players[i].AddKillScore();

@@ -29,8 +29,8 @@ public class Player : MonoBehaviour {
     [ReadOnly] [SerializeField] private int playerKill = 0;
     [ReadOnly] [SerializeField] private int playerAssist = 0;
     [ReadOnly] [SerializeField] public float playerDamage = 1;
-    [ReadOnly] [SerializeField] private float playerTotalDamage = 0;
-    [ReadOnly] [SerializeField] private float playerTotalDamageOnBoss = 0;
+    [ReadOnly] public float playerTotalDamage = 0;
+    [ReadOnly] public float playerTotalDamageOnBoss = 0;
     [ReadOnly] [SerializeField] private int playerHitsOnHead = 0;
     [ReadOnly] [SerializeField] private int playerRevivedTeammates = 0;
     [ReadOnly] [SerializeField] private int playerReviveSelf = 0;

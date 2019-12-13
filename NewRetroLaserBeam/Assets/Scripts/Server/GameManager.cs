@@ -66,21 +66,22 @@ public class GameManager : MonoBehaviour
     public GameObject dominator;
     public GameObject macGyver;
 
-    public float finalScore;
-    public string headPopperPlayer;
-    public int headPopperValue;
-    public string teamSpiritPlayer;
-    public int teamSpiritValue;
-    public string manDownPlayer;
-    public int manDownValue;
-    public string easyMoneyPlayer;
-    public int easyMoneyValue;
-    public string theSlayerPlayer;
-    public float theSlayerValue;
-    public string dominatorPlayer;
-    public float dominatorValue;
-    public string macGyverPlayer;
-    public int macGyverValue;
+    [ReadOnly] public float finalScore;
+    
+    [ReadOnly] [SerializeField]private string headPopperPlayer;
+    private int headPopperValue;
+    [ReadOnly] [SerializeField] private string teamSpiritPlayer;
+    private int teamSpiritValue;
+    [ReadOnly] [SerializeField] private string manDownPlayer;
+    private int manDownValue;
+    [ReadOnly] [SerializeField] private string easyMoneyPlayer;
+    private int easyMoneyValue;
+    [ReadOnly] [SerializeField] private string theSlayerPlayer;
+    private float theSlayerValue;
+    [ReadOnly] [SerializeField] private string dominatorPlayer;
+    private float dominatorValue;
+    [ReadOnly] [SerializeField] private string macGyverPlayer;
+    private int macGyverValue;
 
     public void GetResults()
     {
@@ -96,43 +97,43 @@ public class GameManager : MonoBehaviour
 
         finalScoreText.text = finalScore.ToString();
 
-        if(headPopperPlayer != "NULL")
+        if(headPopperPlayer != "Null")
         {
             headPopper.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = headPopperPlayer + " - " + headPopperValue;
             headPopper.SetActive(true);
         }
-        if (teamSpiritPlayer != "NULL")
+        if (teamSpiritPlayer != "Null")
         {
             teamSpirit.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = teamSpiritPlayer + " - " + teamSpiritValue;
             teamSpirit.SetActive(true);
         }
-        if (manDownPlayer != "NULL")
+        if (manDownPlayer != "Null")
         {
             manDown.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = manDownPlayer + " - " + manDownValue;
             manDown.SetActive(true);
         }
-        if (easyMoneyPlayer != "NULL")
+        if (easyMoneyPlayer != "Null")
         {
             easyMoney.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = easyMoneyPlayer + " - " + easyMoneyValue;
             easyMoney.SetActive(true);
         }
-        if (theSlayerPlayer != "NULL")
+        if (theSlayerPlayer != "Null")
         {
             theSlayer.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = theSlayerPlayer + " - " + theSlayerValue;
             theSlayer.SetActive(true);
         }
-        if (dominatorPlayer != "NULL")
+        if (dominatorPlayer != "Null")
         {
             dominator.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = dominatorPlayer + " - " + dominatorValue;
             dominator.SetActive(true);
         }
-        if (macGyverPlayer != "NULL")
+        if (macGyverPlayer != "Null")
         {
             macGyver.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = macGyverPlayer + " - " + macGyverValue;
             macGyver.SetActive(true);
         }
 }
-    public float GetFinalScore()
+    private float GetFinalScore()
     {
         foreach(Player player in players)
         {
@@ -140,7 +141,7 @@ public class GameManager : MonoBehaviour
         }
         return finalScore;
     }
-    public string GetHeadPopper()
+    private string GetHeadPopper()
     {
         int headPopperId = -1;
         for(int i = 0; i < playingPlayers; ++i)
@@ -166,7 +167,7 @@ public class GameManager : MonoBehaviour
         }
         return headPopperPlayer = ReturnPlayer(ref headPopperId);
     }
-    public string GetTeamSpirit()
+    private string GetTeamSpirit()
     {
         int teamSpiritId = -1;
         for (int i = 0; i < playingPlayers; ++i)
@@ -192,7 +193,7 @@ public class GameManager : MonoBehaviour
         }
         return teamSpiritPlayer = ReturnPlayer(ref teamSpiritId);
     }
-    public string GetManDown()
+    private string GetManDown()
     {
         int manDownId = -1;
         for (int i = 0; i < playingPlayers; ++i)
@@ -218,7 +219,7 @@ public class GameManager : MonoBehaviour
         }
         return manDownPlayer = ReturnPlayer(ref manDownId);
     }
-    public string GetEasyMoney()
+    private string GetEasyMoney()
     {
         int easyMoneyId = -1;
         for (int i = 0; i < playingPlayers; ++i)
@@ -244,7 +245,7 @@ public class GameManager : MonoBehaviour
         }
         return easyMoneyPlayer = ReturnPlayer(ref easyMoneyId);
     }
-    public string GetTheSlayer()
+    private string GetTheSlayer()
     {
         int theSlayerId = -1;
         for (int i = 0; i < playingPlayers; ++i)
@@ -270,7 +271,7 @@ public class GameManager : MonoBehaviour
         }
         return theSlayerPlayer = ReturnPlayer(ref theSlayerId);
     }
-    public string GetDominator()
+    private string GetDominator()
     {
         int dominatorId = -1;
         for (int i = 0; i < playingPlayers; ++i)
@@ -296,7 +297,7 @@ public class GameManager : MonoBehaviour
         }
         return dominatorPlayer = ReturnPlayer(ref dominatorId);
     }
-    public string GetMacGyver()
+    private string GetMacGyver()
     {
         int macGyverId = -1;
         for (int i = 0; i < playingPlayers; ++i)
@@ -322,7 +323,7 @@ public class GameManager : MonoBehaviour
         }
         return macGyverPlayer = ReturnPlayer(ref macGyverId);
     }
-    public string ReturnPlayer(ref int playerId)
+    private string ReturnPlayer(ref int playerId)
     {
         switch (playerId)
         {

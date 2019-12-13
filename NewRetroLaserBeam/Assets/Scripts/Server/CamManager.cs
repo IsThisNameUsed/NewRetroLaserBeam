@@ -19,7 +19,9 @@ public class CamManager : MonoBehaviour
     private bool stopCamera;
     public int waypointNb;
     public int currentWayPoint = 1;
-    
+
+    private bool endGame = false;
+
     public float[] times;
     public GameObject camChild;
 
@@ -66,6 +68,7 @@ public class CamManager : MonoBehaviour
             }
         }
         enemyToDie = numberOfenemiesPerWayPoint[0];
+        
     }
 
     // Update is called once per frame
@@ -98,7 +101,11 @@ public class CamManager : MonoBehaviour
                 }
             }
         }
-
+        if(numberOfenemiesPerWayPoint.Count == currentWayPoint && !endGame)
+        {
+            endGame = true;
+            GameManager.instance.GetResults();
+        }
         if (Input.GetKeyDown(KeyCode.A))
         {
             enemyToDie -= 1;

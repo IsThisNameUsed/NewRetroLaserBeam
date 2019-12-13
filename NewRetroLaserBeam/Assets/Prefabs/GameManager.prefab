@@ -488,11 +488,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 0}
+  targetingSprite: {fileID: 0}
   healthBar: {fileID: 0}
   animator: {fileID: 0}
   body: {fileID: 0}
   possesseditem: {fileID: 0}
+  numberOfRevive: 0
   coins: 0
+  damageMultiplier: 1
   _playerCurrentHealth: 0
   _playerIsAlive: 1
   playerCurrentMaxHealth: 0
@@ -503,10 +506,12 @@ MonoBehaviour:
   playerAssist: 0
   playerDamage: 1
   playerTotalDamage: 0
+  playerTotalDamageOnBoss: 0
   playerHitsOnHead: 0
   playerRevivedTeammates: 0
   playerReviveSelf: 0
   playerUsedItem: 0
+  playerCollectedCoins: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -580,11 +585,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 0}
+  targetingSprite: {fileID: 0}
   healthBar: {fileID: 0}
   animator: {fileID: 0}
   body: {fileID: 0}
   possesseditem: {fileID: 0}
+  numberOfRevive: 0
   coins: 5
+  damageMultiplier: 1
   _playerCurrentHealth: 0
   _playerIsAlive: 1
   playerCurrentMaxHealth: 0
@@ -595,10 +603,12 @@ MonoBehaviour:
   playerAssist: 0
   playerDamage: 1
   playerTotalDamage: 0
+  playerTotalDamageOnBoss: 0
   playerHitsOnHead: 0
   playerRevivedTeammates: 0
   playerReviveSelf: 0
   playerUsedItem: 0
+  playerCollectedCoins: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -715,11 +725,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 0}
+  targetingSprite: {fileID: 0}
   healthBar: {fileID: 0}
   animator: {fileID: 0}
   body: {fileID: 0}
   possesseditem: {fileID: 0}
+  numberOfRevive: 0
   coins: 4
+  damageMultiplier: 1
   _playerCurrentHealth: 0
   _playerIsAlive: 1
   playerCurrentMaxHealth: 0
@@ -730,10 +743,12 @@ MonoBehaviour:
   playerAssist: 0
   playerDamage: 1
   playerTotalDamage: 0
+  playerTotalDamageOnBoss: 0
   playerHitsOnHead: 0
   playerRevivedTeammates: 0
   playerReviveSelf: 0
   playerUsedItem: 0
+  playerCollectedCoins: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
@@ -991,6 +1006,23 @@ MonoBehaviour:
   death_ScoreValue: -1000
   damage_ScoreValue: 150
   damageHead_ScoreValue: 100
+  resultsPanel: {fileID: 0}
+  finalScoreText: {fileID: 0}
+  headPopper: {fileID: 0}
+  teamSpirit: {fileID: 0}
+  manDown: {fileID: 0}
+  easyMoney: {fileID: 0}
+  theSlayer: {fileID: 0}
+  dominator: {fileID: 0}
+  macGyver: {fileID: 0}
+  finalScore: 0
+  headPopperPlayer: 
+  teamSpiritPlayer: 
+  manDownPlayer: 
+  easyMoneyPlayer: 
+  theSlayerPlayer: 
+  dominatorPlayer: 
+  macGyverPlayer: 
 --- !u!114 &114904893684544532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1003,11 +1035,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 0}
+  targetingSprite: {fileID: 0}
   healthBar: {fileID: 0}
   animator: {fileID: 0}
   body: {fileID: 0}
   possesseditem: {fileID: 0}
+  numberOfRevive: 0
   coins: 0
+  damageMultiplier: 1
   _playerCurrentHealth: 0
   _playerIsAlive: 1
   playerCurrentMaxHealth: 0
@@ -1018,10 +1053,12 @@ MonoBehaviour:
   playerAssist: 0
   playerDamage: 1
   playerTotalDamage: 0
+  playerTotalDamageOnBoss: 0
   playerHitsOnHead: 0
   playerRevivedTeammates: 0
   playerReviveSelf: 0
   playerUsedItem: 0
+  playerCollectedCoins: 0
   playerScore: 0
   playerHitCurrentCooldown: 0
   laserType: 0
