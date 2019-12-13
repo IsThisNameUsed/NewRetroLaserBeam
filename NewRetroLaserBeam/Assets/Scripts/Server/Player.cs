@@ -30,10 +30,13 @@ public class Player : MonoBehaviour {
     [ReadOnly] [SerializeField] private int playerAssist = 0;
     [ReadOnly] [SerializeField] public float playerDamage = 1;
     [ReadOnly] [SerializeField] private float playerTotalDamage = 0;
+    [ReadOnly] [SerializeField] private float playerTotalDamageOnBoss = 0;
     [ReadOnly] [SerializeField] private int playerHitsOnHead = 0;
     [ReadOnly] [SerializeField] private int playerRevivedTeammates = 0;
     [ReadOnly] [SerializeField] private int playerReviveSelf = 0;
     [ReadOnly] [SerializeField] private int playerUsedItem = 0;
+    [ReadOnly] [SerializeField] private int playerCollectedCoins = 0;
+
     [Space(4)]
     [ReadOnly] public float playerScore = 0;
     [ReadOnly] public float playerHitCurrentCooldown = 0;
@@ -188,7 +191,23 @@ public class Player : MonoBehaviour {
         targetingSprite.SetActive(false);
         AddDeathScore();
     }
-
+    public void RevivePlayerSelf()
+    {
+        playerReviveSelf++;
+        RevivePlayer();
+    }
+    public void ReviveOtherPlayer(int playerIdToRevive)
+    {
+        playerRevivedTeammates++;
+        GameManager.instance.players[playerIdToRevive].RevivePlayer();
+    }
+    private void RevivePlayer()
+    {
+        playerCurrentHealth = playerCurrentMaxHealth;
+        playerIsAlive = true;
+        laser.gameObject.SetActive(true);
+        targetingSprite.SetActive(true);
+    }
     public void AddDeathScore()
     {
         playerIsAlive = false;
@@ -206,8 +225,36 @@ public class Player : MonoBehaviour {
     {
         return playerHitsOnHead++;
     }
+    public int GetPlayerHeadPopper()
+    {
+        return playerHitsOnHead;
+    }
+    public int GetPlayerTeamSpirit()
+    {
+        return playerRevivedTeammates;
+    }
+    public int GetPlayerManDown()
+    {
+        return playerReviveSelf;
+    }
+    public int GetPlayerEasyMoney()
+    {
+        return playerCollectedCoins;
+    }
+    public float GetPlayerTheSlayer()
+    {
+        return playerTotalDamage;
+    }
+    public float GetPlayerDominator()//Not developped yet 
+    {
+        return playerTotalDamageOnBoss;
+    }
+    public int GetPlayerMacGyver()
+    {
+        return playerUsedItem;
+    }
     #endregion
-#region coins
+    #region coins
     public int GetCoins()
     {
         return coins;
@@ -218,6 +265,7 @@ public class Player : MonoBehaviour {
     }
     public void AddCoins(int value)
     {
+        playerCollectedCoins += value;
         coins += value;
     }
 #endregion

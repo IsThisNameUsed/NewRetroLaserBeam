@@ -4,6 +4,7 @@ using EasyWiFi.ServerBackchannels;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -51,6 +52,292 @@ public class GameManager : MonoBehaviour
     public int death_ScoreValue = -1000;
     public int damage_ScoreValue = 50;
     public int damageHead_ScoreValue = 100;
+
+    [Space(4)]
+    [Header("ResultsObjects")]
+    public GameObject resultsPanel;
+    public Text finalScoreText;
+
+    public GameObject headPopper;
+    public GameObject teamSpirit;
+    public GameObject manDown;
+    public GameObject easyMoney;
+    public GameObject theSlayer;
+    public GameObject dominator;
+    public GameObject macGyver;
+
+    public float finalScore;
+    public string headPopperPlayer;
+    public int headPopperValue;
+    public string teamSpiritPlayer;
+    public int teamSpiritValue;
+    public string manDownPlayer;
+    public int manDownValue;
+    public string easyMoneyPlayer;
+    public int easyMoneyValue;
+    public string theSlayerPlayer;
+    public float theSlayerValue;
+    public string dominatorPlayer;
+    public float dominatorValue;
+    public string macGyverPlayer;
+    public int macGyverValue;
+
+    public void GetResults()
+    {
+        resultsPanel.SetActive(true);
+        GetFinalScore();
+        GetHeadPopper();
+        GetTeamSpirit();
+        GetManDown();
+        GetEasyMoney();
+        GetTheSlayer();
+        GetDominator();
+        GetMacGyver();
+
+        finalScoreText.text = finalScore.ToString();
+
+        if(headPopperPlayer != "NULL")
+        {
+            headPopper.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = headPopperPlayer + " - " + headPopperValue;
+            headPopper.SetActive(true);
+        }
+        if (teamSpiritPlayer != "NULL")
+        {
+            teamSpirit.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = teamSpiritPlayer + " - " + teamSpiritValue;
+            teamSpirit.SetActive(true);
+        }
+        if (manDownPlayer != "NULL")
+        {
+            manDown.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = manDownPlayer + " - " + manDownValue;
+            manDown.SetActive(true);
+        }
+        if (easyMoneyPlayer != "NULL")
+        {
+            easyMoney.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = easyMoneyPlayer + " - " + easyMoneyValue;
+            easyMoney.SetActive(true);
+        }
+        if (theSlayerPlayer != "NULL")
+        {
+            theSlayer.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = theSlayerPlayer + " - " + theSlayerValue;
+            theSlayer.SetActive(true);
+        }
+        if (dominatorPlayer != "NULL")
+        {
+            dominator.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = dominatorPlayer + " - " + dominatorValue;
+            dominator.SetActive(true);
+        }
+        if (macGyverPlayer != "NULL")
+        {
+            macGyver.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = macGyverPlayer + " - " + macGyverValue;
+            macGyver.SetActive(true);
+        }
+}
+    public float GetFinalScore()
+    {
+        foreach(Player player in players)
+        {
+            finalScore += player.playerScore;
+        }
+        return finalScore;
+    }
+    public string GetHeadPopper()
+    {
+        int headPopperId = -1;
+        for(int i = 0; i < playingPlayers; ++i)
+        {
+            if(players[i].GetPlayerHeadPopper() != 0)
+            {
+                if(headPopperId != -1)
+                {
+                    if (players[headPopperId].GetPlayerHeadPopper() < players[i].GetPlayerHeadPopper())
+                    {
+                        headPopperId = i;
+                    }
+                }
+                else
+                {
+                    headPopperId = i;
+                }
+            }
+        }
+        if(headPopperId != -1)
+        {
+            headPopperValue = players[headPopperId].GetPlayerHeadPopper();
+        }
+        return headPopperPlayer = ReturnPlayer(ref headPopperId);
+    }
+    public string GetTeamSpirit()
+    {
+        int teamSpiritId = -1;
+        for (int i = 0; i < playingPlayers; ++i)
+        {
+            if (players[i].GetPlayerTeamSpirit() != 0)
+            {
+                if (teamSpiritId != -1)
+                {
+                    if (players[teamSpiritId].GetPlayerTeamSpirit() < players[i].GetPlayerTeamSpirit())
+                    {
+                        teamSpiritId = i;
+                    }
+                }
+                else
+                {
+                    teamSpiritId = i;
+                }
+            }
+        }
+        if (teamSpiritId != -1)
+        {
+            teamSpiritValue = players[teamSpiritId].GetPlayerTeamSpirit();
+        }
+        return teamSpiritPlayer = ReturnPlayer(ref teamSpiritId);
+    }
+    public string GetManDown()
+    {
+        int manDownId = -1;
+        for (int i = 0; i < playingPlayers; ++i)
+        {
+            if (players[i].GetPlayerManDown() != 0)
+            {
+                if (manDownId != -1)
+                {
+                    if (players[manDownId].GetPlayerManDown() < players[i].GetPlayerManDown())
+                    {
+                        manDownId = i;
+                    }
+                }
+                else
+                {
+                    manDownId = i;
+                }
+            }
+        }
+        if (manDownId != -1)
+        {
+            manDownValue = players[manDownId].GetPlayerManDown();
+        }
+        return manDownPlayer = ReturnPlayer(ref manDownId);
+    }
+    public string GetEasyMoney()
+    {
+        int easyMoneyId = -1;
+        for (int i = 0; i < playingPlayers; ++i)
+        {
+            if (players[i].GetPlayerEasyMoney() != 0)
+            {
+                if (easyMoneyId != -1)
+                {
+                    if (players[easyMoneyId].GetPlayerEasyMoney() < players[i].GetPlayerEasyMoney())
+                    {
+                        easyMoneyId = i;
+                    }
+                }
+                else
+                {
+                    easyMoneyId = i;
+                }
+            }
+        }
+        if (easyMoneyId != -1)
+        {
+            easyMoneyValue = players[easyMoneyId].GetPlayerEasyMoney();
+        }
+        return easyMoneyPlayer = ReturnPlayer(ref easyMoneyId);
+    }
+    public string GetTheSlayer()
+    {
+        int theSlayerId = -1;
+        for (int i = 0; i < playingPlayers; ++i)
+        {
+            if (players[i].GetPlayerTheSlayer() != 0)
+            {
+                if (theSlayerId != -1)
+                {
+                    if (players[theSlayerId].GetPlayerTheSlayer() < players[i].GetPlayerTheSlayer())
+                    {
+                        theSlayerId = i;
+                    }
+                }
+                else
+                {
+                    theSlayerId = i;
+                }
+            }
+        }
+        if (theSlayerId != -1)
+        {
+            theSlayerValue = players[theSlayerId].GetPlayerTheSlayer();
+        }
+        return theSlayerPlayer = ReturnPlayer(ref theSlayerId);
+    }
+    public string GetDominator()
+    {
+        int dominatorId = -1;
+        for (int i = 0; i < playingPlayers; ++i)
+        {
+            if (players[i].GetPlayerDominator() != 0)
+            {
+                if (dominatorId != -1)
+                {
+                    if (players[dominatorId].GetPlayerDominator() < players[i].GetPlayerDominator())
+                    {
+                        dominatorId = i;
+                    }
+                }
+                else
+                {
+                    dominatorId = i;
+                }
+            }
+        }
+        if (dominatorId != -1)
+        {
+            dominatorValue = players[dominatorId].GetPlayerDominator();
+        }
+        return dominatorPlayer = ReturnPlayer(ref dominatorId);
+    }
+    public string GetMacGyver()
+    {
+        int macGyverId = -1;
+        for (int i = 0; i < playingPlayers; ++i)
+        {
+            if (players[i].GetPlayerMacGyver() != 0)
+            {
+                if (macGyverId != -1)
+                {
+                    if (players[macGyverId].GetPlayerMacGyver() < players[i].GetPlayerMacGyver())
+                    {
+                        macGyverId = i;
+                    }
+                }
+                else
+                {
+                    macGyverId = i;
+                }
+            }
+        }
+        if (macGyverId != -1)
+        {
+            macGyverValue = players[macGyverId].GetPlayerMacGyver();
+        }
+        return macGyverPlayer = ReturnPlayer(ref macGyverId);
+    }
+    public string ReturnPlayer(ref int playerId)
+    {
+        switch (playerId)
+        {
+            case 0:
+                return "Player 1";
+            case 1:
+                return "Player 2";
+            case 2:
+                return "Player 3";
+            case 3:
+                return "Player 4";
+            default:
+                return "Null";
+        }
+    }
     #endregion
 
     private void Awake()
