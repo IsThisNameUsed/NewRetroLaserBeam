@@ -27,7 +27,31 @@ public class LaserBehaviour : MonoBehaviour
 
     private bool shootRightPressed;
     private bool shootLeftPressed;
+    private float shootStartTime;
+    public float shootTimeBeforeOverheat = 3;
+    private bool isOverheat;
+    public float timeForCooling = 3;
+    public Image overheatGauge;
+    [Tooltip ("1 for no malus")]
+    public float coolingMalusMultiplicator;
 
+    IEnumerator Cooling(float time)
+    {
+        float timeElapsed = 0;
+        float step = time / 100;
+        Debug.Log("Colling starting");
+        while(overheatGauge.fillAmount > 0)
+        {
+            yield return new WaitForSeconds(step);
+            timeElapsed += step;
+            if(isOverheat)
+                overheatGauge.fillAmount -= (timeElapsed / time)/coolingMalusMultiplicator;
+            else overheatGauge.fillAmount -= (timeElapsed / time);
+        }
+        
+        Debug.Log("Colling ok");
+        isOverheat = false;
+    }
 
     void Awake()
     {
@@ -35,7 +59,6 @@ public class LaserBehaviour : MonoBehaviour
         audioSources = GetComponents(typeof(AudioSource));
         laserSound = audioSources[0] as AudioSource;
         laserHitSound = audioSources[1] as AudioSource;
-
     }
 
     private void Start()
@@ -50,7 +73,8 @@ public class LaserBehaviour : MonoBehaviour
     {
         UpdateLaserRootPosition();
         UpdateLaserPositions();
-        SetLaserState();
+        if (!GameManager.instance.debugMode)
+            SetLaserState();
 
         if (laserHit)
         {
@@ -147,18 +171,42 @@ public class LaserBehaviour : MonoBehaviour
         isShooting = _state;
         return laser.enabled = _state;
     }
+    private void BeginShoot()
+    {
+        shootStartTime = Time.time;
+        Debug.Log("start time = " + shootStartTime);
+    }
+
+    private void ContinueShoot()
+    {
+        Debug.Log(Time.time - shootStartTime + " compare to " + shootTimeBeforeOverheat);
+        float timeElapsed = Time.time - shootStartTime;
+        
+        if (overheatGauge.fillAmount >= 1)
+        {
+            isOverheat = true;
+            Debug.Log("Overheat");
+        }
+        overheatGauge.fillAmount += (1 / shootTimeBeforeOverheat)*Time.deltaTime;
+    }
 
     private void SetLaserState()
     {
-        if(shootRightPressed || shootLeftPressed)
+        if((shootRightPressed || shootLeftPressed) && !isOverheat)
         {
+            if (!isShooting)
+                BeginShoot();
+            else ContinueShoot();
+            StopAllCoroutines();
+            Debug.Log("Stop cooling");
             laserSound.Play();
             isShooting = true;
             laser.enabled = true;
         } 
-        else
+        else if(isShooting)
         {
             laserSound.Stop();
+            StartCoroutine(Cooling(timeForCooling));
             isShooting = false;
             laser.enabled = false;
         }   
