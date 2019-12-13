@@ -25,6 +25,9 @@ public class LaserBehaviour : MonoBehaviour
     public GameObject scope;
     public Player player;
 
+    private bool shootRightPressed;
+    private bool shootLeftPressed;
+
 
     void Awake()
     {
@@ -47,6 +50,7 @@ public class LaserBehaviour : MonoBehaviour
     {
         UpdateLaserRootPosition();
         UpdateLaserPositions();
+        SetLaserState();
 
         if (laserHit)
         {
@@ -67,7 +71,8 @@ public class LaserBehaviour : MonoBehaviour
             }
         }
 #endif
-    }
+    } 
+
     public Player SetPlayer(Player _player)
     {
         return player = _player;
@@ -143,39 +148,49 @@ public class LaserBehaviour : MonoBehaviour
         return laser.enabled = _state;
     }
 
-    public void SetLaser(ButtonControllerType shootButton)
+    private void SetLaserState()
     {
-        if (shootButton.BUTTON_STATE_IS_PRESSED && isShooting == false)
+        if(shootRightPressed || shootLeftPressed)
         {
-            //Debug.Log("Switch IS PRESSED");
             laserSound.Play();
             isShooting = true;
             laser.enabled = true;
-        }
-        else if (!shootButton.BUTTON_STATE_IS_PRESSED && isShooting == true)
+        } 
+        else
         {
-            //Debug.Log("switch IS NOT PRESSED");
             laserSound.Stop();
             isShooting = false;
             laser.enabled = false;
+        }   
+    }
+
+    public void ReceiveInputRightShoot(ButtonControllerType shootButton1)
+    {
+        if (shootButton1.BUTTON_STATE_IS_PRESSED && shootRightPressed == false)
+        {
+            Debug.Log("Shoot1 IS PRESSED");
+            shootRightPressed = true;
+
+
+        }
+        else if (!shootButton1.BUTTON_STATE_IS_PRESSED && isShooting == true)
+        {
+            shootRightPressed = false;
         }
     }
 
-    public void SetLaser2(ButtonControllerType shootButton)
+    public void ReceiveInputLeftShoot(ButtonControllerType shootButton2)
     {
-        if (shootButton.BUTTON_STATE_IS_PRESSED && isShooting == false)
+        if (shootButton2.BUTTON_STATE_IS_PRESSED && shootLeftPressed == false)
         {
-            //Debug.Log("Switch IS PRESSED");
-            laserSound.Play();
-            isShooting = true;
-            laser.enabled = true;
+            Debug.Log("Shoot2 IS PRESSED");
+            shootLeftPressed = true;
+
+
         }
-        else if (!shootButton.BUTTON_STATE_IS_PRESSED && isShooting == true)
+        else if (!shootButton2.BUTTON_STATE_IS_PRESSED && isShooting == true)
         {
-            //Debug.Log("switch IS NOT PRESSED");
-            laserSound.Stop();
-            isShooting = false;
-            laser.enabled = false;
+            shootLeftPressed = false;
         }
     }
 }
