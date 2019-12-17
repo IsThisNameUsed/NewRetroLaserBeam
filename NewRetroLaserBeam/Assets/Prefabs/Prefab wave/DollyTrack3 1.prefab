@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1746575415160722}
+  m_IsPrefabAsset: 1
+--- !u!1 &1746575415160722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4794097271866644}
+  - component: {fileID: 114927051387168926}
+  m_Layer: 0
+  m_Name: DollyTrack3 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4794097271866644
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746575415160722}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.94, y: 21.16, z: -77.64}
+  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000002}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114927051387168926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746575415160722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0.4528302, g: 0.40797436, b: 0.40797436, a: 1}
+    width: 3.68
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 0.0000015549277, y: 13.314026, z: -50.000004}
+    tangent: {x: 1.0000123, y: -0.5794382, z: 1.6038399}
+    roll: 0
+  - position: {x: 0.92354333, y: 46.118294, z: -7.2219133}
+    tangent: {x: -0.050724864, y: -0.08695984, z: 9.512663}
+    roll: 0
+  - position: {x: 1.4668957, y: 46.339985, z: 11.714152}
+    tangent: {x: 0.025050282, y: 0.06350708, z: 11.422211}
+    roll: 0
+  - position: {x: 1.6279848, y: 51.596607, z: 55.157494}
+    tangent: {x: -0.5390574, y: 1.3569145, z: 7.9002495}
+    roll: 0
+  - position: {x: 1.3646976, y: 52.149097, z: 68.40353}
+    tangent: {x: 0.22252297, y: -1.1023941, z: 8.961227}
+    roll: 0
+  - position: {x: -16.310469, y: 49.109535, z: 82.061806}
+    tangent: {x: -3.6712608, y: 0.13120651, z: 2.4864197}
+    roll: 0
+  - position: {x: -16.17767, y: 44.279568, z: 93.64617}
+    tangent: {x: -0.21863556, y: 1.9326096, z: 1.8768921}
+    roll: 0
+  - position: {x: -22.990372, y: 48.09441, z: 95.75983}
+    tangent: {x: -1.1848526, y: 0.6094551, z: -0.2114563}
+    roll: 0
+  - position: {x: -30.622932, y: 49.846268, z: 95.53434}
+    tangent: {x: -6.0131817, y: -0.22243118, z: 0.2994995}
+    roll: 0
+  - position: {x: -35.99252, y: 53.08735, z: 101.16828}
+    tangent: {x: 2.9992943, y: -2.4213219, z: 3.373497}
+    roll: 0
+  - position: {x: -21.732756, y: 57.814693, z: 103.80726}
+    tangent: {x: 0.108896255, y: 2.9179535, z: 5.3087997}
+    roll: 0
+  - position: {x: -23.484564, y: 59.790295, z: 126.39017}
+    tangent: {x: 0.021362305, y: -0.33195877, z: 5.7835846}
+    roll: 0
+  - position: {x: -23.134584, y: 30.831295, z: 134.45714}
+    tangent: {x: 0.7121334, y: -2.236, z: 4.695999}
+    roll: 0
+  - position: {x: -22.203367, y: 24.906147, z: 153.07172}
+    tangent: {x: 0.73999214, y: -2.471096, z: 5.8058167}
+    roll: 0
+  - position: {x: -12.941553, y: 26.66977, z: 174.52156}
+    tangent: {x: 0.64414144, y: 0.75577927, z: 3.8130646}
+    roll: 0
+  - position: {x: 5.3027716, y: 23.11369, z: 206.9072}
+    tangent: {x: 13.275235, y: -2.830288, z: 9.684998}
+    roll: 0
+  - position: {x: 40.528812, y: 25.320126, z: 261.99387}
+    tangent: {x: -0.5220299, y: 0.27001572, z: 4.739502}
+    roll: 0
+  - position: {x: 34.6072, y: 25.002844, z: 280.42685}
+    tangent: {x: -1.6233482, y: 0.42998505, z: 3.447754}
+    roll: 0
+  - position: {x: 28.082994, y: 27.026299, z: 312.17633}
+    tangent: {x: -1.4063492, y: 2.8200665, z: 4.510895}
+    roll: 0
+  - position: {x: 25.340181, y: 34.19706, z: 323.33743}
+    tangent: {x: -1.4063511, y: 2.8200493, z: 2.9417114}
+    roll: 0
+  - position: {x: 11.863403, y: 37.017185, z: 347.82245}
+    tangent: {x: 13.650042, y: 2.8201828, z: 11.337097}
+    roll: 0
