@@ -419,15 +419,24 @@ AnimationClip:
       - serializedVersion: 3
         time: 95.95
         value: {x: 4.05, y: -6.279999, z: 294.39}
-        inSlope: {x: -4.8208, y: 0, z: 13.292101}
-        outSlope: {x: -4.8208, y: 0, z: 13.292101}
+        inSlope: {x: -4.8208, y: 0, z: 12.725133}
+        outSlope: {x: -4.8208, y: 0, z: 12.725133}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 97.916664
-        value: {x: -0.7, y: 1.5, z: 320.9}
+        value: {x: -0.7, y: -4.0729294, z: 320.64514}
+        inSlope: {x: 0, y: 0, z: 3.3361316}
+        outSlope: {x: 0, y: 0, z: 3.3361316}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 98.066666
+        value: {x: -0.7, y: -4.0729294, z: 320.9}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -447,42 +456,14 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings:
-    - serializedVersion: 2
-      path: 0
-      attribute: 1
-      script: {fileID: 0}
-      typeID: 4
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 95
-      customType: 8
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 0
-      attribute: 1
-      script: {fileID: 0}
-      typeID: 95
-      customType: 8
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 0
-      attribute: 2
-      script: {fileID: 0}
-      typeID: 95
-      customType: 8
-      isPPtrCurve: 0
+    genericBindings: []
     pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 97.916664
+    m_StopTime: 98.066666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -1296,7 +1277,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 97.916664
-        value: 1.5
+        value: -4.0729294
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1694,14 +1675,14 @@ AnimationClip:
       - serializedVersion: 3
         time: 95.95
         value: 294.39
-        inSlope: 13.292101
-        outSlope: 13.292101
+        inSlope: 12.725133
+        outSlope: 12.725133
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 97.916664
+        time: 98.066666
         value: 320.9
         inSlope: 0
         outSlope: 0
