@@ -137,7 +137,16 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         int playerHitting = 0;
         for (int i = 0; i < playersHit.Length; i++)//the damages dealt by each players will be calculated individually before being merged in one value to decrement.
         {
-            switch (playersHit[i])
+            var main = particleSystem.main;
+            if (GameManager.instance.players[i].laserType == LaserType.TypeA)
+            {
+                main.startColor = Color.yellow;
+            }else if(GameManager.instance.players[i].laserType == LaserType.TypeB)
+            {
+                main.startColor = Color.blue;
+            }
+
+                switch (playersHit[i])
             {
                 case 1:
                     if (weakness == GameManager.instance.players[i].laserType)
@@ -180,6 +189,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         }
         if (totalDamage > 0)
         {
+         
             particleSystem.Play();
         }
         //Debug.Log(totalDamage + " => "+ playersHit[0] + ", " + playersHit[1] + ", " + playersHit[2] + ", " + playersHit[3]);
