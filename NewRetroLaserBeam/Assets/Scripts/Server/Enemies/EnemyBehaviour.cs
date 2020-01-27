@@ -84,11 +84,11 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         }
         switch (weakness)
         {
-            case LaserType.TypeA:
-                transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
+            case LaserType.TypeA :
+                //transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
                 break;
-            case LaserType.TypeB:
-                transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.blue;
+            case LaserType.TypeB :
+                //transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.blue;
                 break;
         }
     }
