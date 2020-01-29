@@ -122,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1118385129323814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -101.58788, y: 721.51, z: 35.6409}
+  m_LocalPosition: {x: -92.576836, y: 724.04, z: 33.972008}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4085081163461062}
@@ -334,7 +334,7 @@ MonoBehaviour:
   target: {fileID: 0}
   targetedPlayer: {fileID: 0}
   damage: 1
-  speed: 30
+  speed: 15
   isActiv: 1
 --- !u!198 &198031420424000924
 ParticleSystem:
