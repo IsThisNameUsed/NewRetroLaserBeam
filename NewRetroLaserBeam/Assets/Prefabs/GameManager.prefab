@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 4563794093290690}
   - component: {fileID: 114904893684544532}
   m_Layer: 0
-  m_Name: Player4
+  m_Name: player4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 114140109146967524}
   - component: {fileID: 114780035013916246}
   m_Layer: 0
-  m_Name: Player1
+  m_Name: player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,7 +158,11 @@ GameObject:
   - component: {fileID: 114231539928523784}
   - component: {fileID: 114260632172406030}
   - component: {fileID: 114295396001722162}
-  - component: {fileID: 114022582472355528}
+  - component: {fileID: 114176309688792364}
+  - component: {fileID: 114082869577816550}
+  - component: {fileID: 114598050486423286}
+  - component: {fileID: 114872017070922720}
+  - component: {fileID: 114726495448423406}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -176,7 +180,7 @@ GameObject:
   - component: {fileID: 4171452285501844}
   - component: {fileID: 114126051855194328}
   m_Layer: 0
-  m_Name: Player3
+  m_Name: player3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +196,7 @@ GameObject:
   - component: {fileID: 4104953778344132}
   - component: {fileID: 114281748348823008}
   m_Layer: 0
-  m_Name: Player2
+  m_Name: player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,21 +450,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114022582472355528
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1893250077976206}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6f8983642bb1474398547180940a989, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  control: string
-  player: 0
-  notifyMethod: PrintString
-  callType: 1
 --- !u!114 &114024938468662886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -476,6 +465,21 @@ MonoBehaviour:
   name: group heal
   amountOfLife: 0
   players: []
+--- !u!114 &114082869577816550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893250077976206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2610d61dfb3850d48a33ace0445018e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: spendCoinsForScore
+  player: 999
+  notifyMethod: SpendCoinsForScore
+  callType: 1
 --- !u!114 &114126051855194328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -670,6 +674,21 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+--- !u!114 &114176309688792364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893250077976206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2610d61dfb3850d48a33ace0445018e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: spendCoinsForHealth
+  player: 0
+  notifyMethod: SpendCoinsForHealthP1
+  callType: 1
 --- !u!114 &114231539928523784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -865,6 +884,21 @@ MonoBehaviour:
   price: 5
   name: personal heal
   amountOfLife: 0
+--- !u!114 &114598050486423286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893250077976206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2610d61dfb3850d48a33ace0445018e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: spendCoinsForHealth
+  player: 3
+  notifyMethod: SpendCoinsForHealthP4
+  callType: 1
 --- !u!114 &114665967524334358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -889,6 +923,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   control: sellIsActiv
   player: 999
+--- !u!114 &114726495448423406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893250077976206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2610d61dfb3850d48a33ace0445018e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: spendCoinsForHealth
+  player: 1
+  notifyMethod: SpendCoinsForHealthP2
+  callType: 1
 --- !u!114 &114751442385932294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -972,6 +1021,21 @@ MonoBehaviour:
   player: 999
   notifyMethod: BuyObject
   callType: 1
+--- !u!114 &114872017070922720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893250077976206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2610d61dfb3850d48a33ace0445018e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: spendCoinsForHealth
+  player: 2
+  notifyMethod: SpendCoinsForHealthP3
+  callType: 1
 --- !u!114 &114900095486457454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -983,7 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2dc55910113e04ebca844376fcd71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
+  debugMode: 1
   players:
   - {fileID: 114140109146967524}
   - {fileID: 114281748348823008}
@@ -992,7 +1056,7 @@ MonoBehaviour:
   _playingPlayers: 1
   numberOfConnectedPlayer: 4
   gameOverPanel: {fileID: 0}
-  test: {fileID: 114022582472355528}
+  test: {fileID: 0}
   playersGlobalScoreIncrementation: 1
   playersBaseHealth: 3
   playersBaseCoin: 5
