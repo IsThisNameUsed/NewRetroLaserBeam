@@ -3039,18 +3039,6 @@ Prefab:
       propertyPath: stopDistance
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 212686266885116198, guid: 73bbbac4b95a58d4d87f3bc5f438d789,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 508d7ff72095b4a43aa9bc53f0b359ef,
-        type: 3}
-    - target: {fileID: 212767840779730910, guid: 73bbbac4b95a58d4d87f3bc5f438d789,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 508d7ff72095b4a43aa9bc53f0b359ef,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73bbbac4b95a58d4d87f3bc5f438d789, type: 2}
   m_IsPrefabAsset: 0
@@ -10340,8 +10328,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 666759390}
-  m_LocalRotation: {x: -0.03534982, y: 0.81827426, z: 0.050613616, w: 0.5715033}
-  m_LocalPosition: {x: -109.25927, y: 718.07135, z: 34.069866}
+  m_LocalRotation: {x: -0.03534972, y: 0.8182756, z: 0.050613724, w: 0.5715014}
+  m_LocalPosition: {x: -109.25872, y: 718.0714, z: 34.06988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 313787488}
@@ -22254,7 +22242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 535113840}
-  m_PathPosition: 1.000845
+  m_PathPosition: 1.000864
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0
@@ -23443,7 +23431,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1737222686}
-  m_LocalRotation: {x: 0.042278312, y: 0.18474896, z: 0.028383754, w: 0.9814656}
+  m_LocalRotation: {x: 0.042278264, y: 0.18475123, z: 0.028384132, w: 0.98146516}
   m_LocalPosition: {x: -8.016845, y: 67.277626, z: -84.78665}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
