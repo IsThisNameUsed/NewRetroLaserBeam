@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Rewired;
 using DG.Tweening;
 
 public class Player : MonoBehaviour {

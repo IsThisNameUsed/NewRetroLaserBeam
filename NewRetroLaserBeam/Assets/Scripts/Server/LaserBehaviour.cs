@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using EasyWiFi.Core;
-using Rewired;
+
 
 public class LaserBehaviour : MonoBehaviour
 {
@@ -35,8 +35,6 @@ public class LaserBehaviour : MonoBehaviour
     [Tooltip ("1 for no malus")]
     public float coolingMalusMultiplicator;
 
-    public Rewired.Player playerInput;
-
     IEnumerator Cooling(float time)
     {
         float timeElapsed = 0;
@@ -66,10 +64,7 @@ public class LaserBehaviour : MonoBehaviour
     private void Start()
     {
         //SetLaserActive();
-        if(player != null)
-        {
-            playerInput = ReInput.players.GetPlayer(player.name);
-        }
+
 
     }
 
@@ -104,13 +99,9 @@ public class LaserBehaviour : MonoBehaviour
 
     public Player SetPlayer(Player _player)
     {
-        SetInput(_player);
         return player = _player;
     }
-    public Rewired.Player SetInput(Player _player)
-    {
-        return playerInput = ReInput.players.GetPlayer(_player.name);
-    }
+
     public void UpdateLaserRootPosition()
     {
         laser.SetPosition(0, emitter.transform.position);
