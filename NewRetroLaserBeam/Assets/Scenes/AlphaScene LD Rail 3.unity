@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13565686, g: 0.09520426, b: 0.12091147, a: 1}
+  m_IndirectSpecularColor: {r: 0.13540804, g: 0.09507831, b: 0.12089702, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -373,6 +373,7 @@ LineRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 65252b6102cc5ab499db6a4ef51ffc37, type: 2}
+  - {fileID: 2100000, guid: 02c458ed2eb477b418338f4a256769a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -474,7 +475,12 @@ MonoBehaviour:
     m_Bits: 1
   scope: {fileID: 789677128}
   player: {fileID: 0}
+  shootRightPressed: 0
+  shootLeftPressed: 0
   shootTimeBeforeOverheat: 3
+  overheatImagePrefab: {fileID: 1524706241675250, guid: c83f5826c45be2c4e818aa2be0b14529,
+    type: 2}
+  isOverheat: 0
   timeForCooling: 3
   overheatGauge: {fileID: 0}
   coolingMalusMultiplicator: 0
@@ -7081,6 +7087,7 @@ LineRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 65252b6102cc5ab499db6a4ef51ffc37, type: 2}
+  - {fileID: 2100000, guid: 02c458ed2eb477b418338f4a256769a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7153,7 +7160,7 @@ LineRenderer:
     numCornerVertices: 0
     numCapVertices: 10
     alignment: 0
-    textureMode: 2
+    textureMode: 1
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
@@ -7182,7 +7189,12 @@ MonoBehaviour:
     m_Bits: 1
   scope: {fileID: 1094995695}
   player: {fileID: 0}
+  shootRightPressed: 0
+  shootLeftPressed: 0
   shootTimeBeforeOverheat: 3
+  overheatImagePrefab: {fileID: 1524706241675250, guid: c83f5826c45be2c4e818aa2be0b14529,
+    type: 2}
+  isOverheat: 0
   timeForCooling: 3
   overheatGauge: {fileID: 0}
   coolingMalusMultiplicator: 0
@@ -7541,6 +7553,7 @@ LineRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 65252b6102cc5ab499db6a4ef51ffc37, type: 2}
+  - {fileID: 2100000, guid: 02c458ed2eb477b418338f4a256769a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7642,7 +7655,12 @@ MonoBehaviour:
     m_Bits: 1
   scope: {fileID: 1924276731}
   player: {fileID: 0}
+  shootRightPressed: 0
+  shootLeftPressed: 0
   shootTimeBeforeOverheat: 3
+  overheatImagePrefab: {fileID: 1524706241675250, guid: c83f5826c45be2c4e818aa2be0b14529,
+    type: 2}
+  isOverheat: 0
   timeForCooling: 3
   overheatGauge: {fileID: 0}
   coolingMalusMultiplicator: 0
@@ -9930,6 +9948,48 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4943870592999408, guid: d0129a27e457ca34daa588bd4c0ccdfe,
     type: 2}
   m_PrefabInternal: {fileID: 324009643}
+--- !u!1001 &325254815
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4252925888599626, guid: 481e2538af031ad47b7dbe9357c5d17a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252925888599626, guid: 481e2538af031ad47b7dbe9357c5d17a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252925888599626, guid: 481e2538af031ad47b7dbe9357c5d17a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252925888599626, guid: 481e2538af031ad47b7dbe9357c5d17a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252925888599626, guid: 481e2538af031ad47b7dbe9357c5d17a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252925888599626, guid: 481e2538af031ad47b7dbe9357c5d17a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252925888599626, guid: 481e2538af031ad47b7dbe9357c5d17a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252925888599626, guid: 481e2538af031ad47b7dbe9357c5d17a, type: 2}
+      propertyPath: m_RootOrder
+      value: 40
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 481e2538af031ad47b7dbe9357c5d17a, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &327657367
 Prefab:
   m_ObjectHideFlags: 0
@@ -17570,7 +17630,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ee2d3d25cfb09194b9268d8b9281bcb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7442eabe853020440a0492a9ca19feb6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20201,6 +20261,7 @@ LineRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 65252b6102cc5ab499db6a4ef51ffc37, type: 2}
+  - {fileID: 2100000, guid: 02c458ed2eb477b418338f4a256769a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20302,7 +20363,12 @@ MonoBehaviour:
     m_Bits: 1
   scope: {fileID: 1612373656}
   player: {fileID: 0}
+  shootRightPressed: 0
+  shootLeftPressed: 0
   shootTimeBeforeOverheat: 3
+  overheatImagePrefab: {fileID: 1524706241675250, guid: c83f5826c45be2c4e818aa2be0b14529,
+    type: 2}
+  isOverheat: 0
   timeForCooling: 3
   overheatGauge: {fileID: 0}
   coolingMalusMultiplicator: 0
@@ -21850,7 +21916,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ee2d3d25cfb09194b9268d8b9281bcb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 354a50b77b517d24db704203be756387, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -30425,7 +30491,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ee2d3d25cfb09194b9268d8b9281bcb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b41fc1517aec79841ad9c83fd4151bbf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -35030,7 +35096,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ee2d3d25cfb09194b9268d8b9281bcb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6508eca7914772b42802abd7dd8b97cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

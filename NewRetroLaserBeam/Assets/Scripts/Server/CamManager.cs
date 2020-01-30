@@ -78,7 +78,7 @@ public class CamManager : MonoBehaviour
  
     void Update()
     {
-        Debug.Log(cinemachineBrain.ActiveVirtualCamera.Name);
+        //Debug.Log(cinemachineBrain.ActiveVirtualCamera.Name);
  
         if (cinemachineBrain.ActiveVirtualCamera.Name != activVirtualCam.name)
         {

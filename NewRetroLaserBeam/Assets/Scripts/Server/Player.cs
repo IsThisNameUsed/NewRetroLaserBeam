@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
     public GameObject body;
     public Item possesseditem;
     public float numberOfRevive;
+    public float cursorSpeed = 20;
     [SerializeField] private int coins;
     [SerializeField] private float damageMultiplier = 1;  //used by item burstDps
 

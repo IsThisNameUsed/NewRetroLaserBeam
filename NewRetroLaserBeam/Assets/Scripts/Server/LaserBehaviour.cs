@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using EasyWiFi.Core;
-
+using Rewired;
 
 public class LaserBehaviour : MonoBehaviour
 {
@@ -24,11 +24,16 @@ public class LaserBehaviour : MonoBehaviour
     public LayerMask layerMask;
     public GameObject scope;
     public Player player;
+    public Rewired.Player playerInput;
 
+    [ReadOnly][SerializeField]
     private bool shootRightPressed;
+    [ReadOnly][SerializeField]
     private bool shootLeftPressed;
     private float shootStartTime;
     public float shootTimeBeforeOverheat = 3;
+    public GameObject overheatImagePrefab;
+    [ReadOnly][SerializeField]
     private bool isOverheat;
     public float timeForCooling = 3;
     public Image overheatGauge;
@@ -64,6 +69,15 @@ public class LaserBehaviour : MonoBehaviour
     private void Start()
     {
         //SetLaserActive();
+        if(player != null)
+        {
+            playerInput = ReInput.players.GetPlayer(player.name);
+        }
+        if(overheatGauge == null)
+        {
+            GameObject gauge = Instantiate(overheatImagePrefab, scope.transform);
+            overheatGauge = gauge.GetComponent<Image>();
+        }
 
 
     }
@@ -73,7 +87,17 @@ public class LaserBehaviour : MonoBehaviour
     {
         UpdateLaserRootPosition();
         UpdateLaserPositions();
-        if (!GameManager.instance.debugMode)
+        if (playerInput.GetButton("Shoot"))
+        {
+            shootRightPressed = true;
+            shootLeftPressed = true;
+        }
+        else
+        {
+            shootLeftPressed = false;
+            shootRightPressed = false;
+        }
+      // if (!GameManager.instance.debugMode)
             SetLaserState();
 
         if (laserHit)
@@ -87,13 +111,13 @@ public class LaserBehaviour : MonoBehaviour
         }
 
 #if UNITY_EDITOR//Commande de debug à la souris DEBUG MODE
-        if (GameManager.instance.debugMode)
+        /*if (GameManager.instance.debugMode)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 SetLaserDebugMode(!isShooting);
             }
-        }
+        }*/
 #endif
     } 
 
@@ -129,8 +153,8 @@ public class LaserBehaviour : MonoBehaviour
                 {
                     Vector3 pos =hits[i].point;
                     pos = Camera.main.WorldToScreenPoint(pos);
-                    pos = new Vector3(pos.x, pos.y, pos.z);
-                    scope.transform.position = pos;
+                    //pos = new Vector3(pos.x, pos.y, pos.z);
+                    //scope.transform.position = pos;
                     laser.SetPosition(1, hits[i].point);
                     break;
                 }
@@ -144,8 +168,8 @@ public class LaserBehaviour : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(scope.transform.position);
             Debug.DrawRay(ray.origin, ray.direction*100, Color.yellow,0.5f);
             RaycastHit hit;
-            if(!(!player.playerIsAlive && !GameManager.instance.debugMode))
-            if (Physics.Raycast(ray, out hit,500f,layerMask))
+            if( (player.playerIsAlive || GameManager.instance.debugMode) && 
+                     Physics.Raycast(ray, out hit,500f,layerMask))
             {
                 Transform transformHit = hit.transform;
                 if (transformHit.gameObject.tag == "Pickable")
@@ -173,13 +197,14 @@ public class LaserBehaviour : MonoBehaviour
     }
     private void BeginShoot()
     {
+        isShooting = true;
         shootStartTime = Time.time;
-        Debug.Log("start time = " + shootStartTime);
+        //Debug.Log("start time = " + shootStartTime);
     }
 
     private void ContinueShoot()
     {
-        Debug.Log(Time.time - shootStartTime + " compare to " + shootTimeBeforeOverheat);
+        //Debug.Log(Time.time - shootStartTime + " compare to " + shootTimeBeforeOverheat);
         float timeElapsed = Time.time - shootStartTime;
         
         if (overheatGauge.fillAmount >= 1)
@@ -195,13 +220,18 @@ public class LaserBehaviour : MonoBehaviour
         if((shootRightPressed || shootLeftPressed) && !isOverheat)
         {
             if (!isShooting)
+            {
                 BeginShoot();
-            else ContinueShoot();
-            StopAllCoroutines();
-            Debug.Log("Stop cooling");
-            laserSound.Play();
-            isShooting = true;
-            laser.enabled = true;
+            }
+            else
+            {
+                ContinueShoot();
+                StopAllCoroutines();
+                Debug.Log("Stop cooling");
+                laserSound.Play();
+                isShooting = true;
+                laser.enabled = true;
+            }
         } 
         else if(isShooting)
         {
