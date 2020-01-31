@@ -54,7 +54,7 @@ public class CamManager : MonoBehaviour
         GameObject vcam1 = gameObject.transform.Find("CM vcam1").gameObject;
         activVirtualCam = vcam1.GetComponent<CinemachineVirtualCamera>();
         dollyTrack = activVirtualCam.GetCinemachineComponent<CinemachineTrackedDolly>();
-
+        dollyTrack.m_PathPosition = 0;
         foreach (List<EnemyBehaviour> list in wavesList)
         {
             if(list.Count == 0)

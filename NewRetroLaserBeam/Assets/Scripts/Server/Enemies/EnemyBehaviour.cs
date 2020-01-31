@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 [RequireComponent(typeof(Animator))]
 abstract public class EnemyBehaviour : MonoBehaviour {
@@ -45,6 +47,8 @@ abstract public class EnemyBehaviour : MonoBehaviour {
     [Range(1, 10)] public int enemyHeadDamageMultiplier = 2;
     [Range(1, 10)] public int multiLaserDamageMultiplier = 2;
 
+    public GameObject textPrefabs;
+    public GameObject text;
     protected virtual void Start()
     {
         Instanciation();
@@ -189,7 +193,7 @@ abstract public class EnemyBehaviour : MonoBehaviour {
         }
         if (totalDamage > 0)
         {
-         
+            
             particleSystem.Play();
         }
         //Debug.Log(totalDamage + " => "+ playersHit[0] + ", " + playersHit[1] + ", " + playersHit[2] + ", " + playersHit[3]);

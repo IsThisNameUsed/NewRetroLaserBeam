@@ -351,7 +351,7 @@ public class GameManager : MonoBehaviour
         if (debugMode)
         {
             CamManager.instance.SetGameActiv(true);
-            playingPlayers = 0;
+            playingPlayers = _playingPlayers;
             numberOfConnectedPlayer = playingPlayers;
         }
     }
@@ -373,7 +373,7 @@ public class GameManager : MonoBehaviour
         {
             if(gameStart == false)
             {
-                playingPlayers = 1;
+                //playingPlayers = 1;
                 ActivePlayers(ref _playingPlayers);
                 gameStart = true;
             }

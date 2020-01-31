@@ -128,7 +128,12 @@ public class LaserBehaviour : MonoBehaviour
 
     public void UpdateLaserRootPosition()
     {
+      /*  if(GameManager.instance.playingPlayers > 1)
+        {
+             transform.position = Camera.main.ScreenPointToRay(new Vector3(Screen.width*playerId/GameManager.instance.playingPlayers, -1, 0)).origin;
+        }*/
         laser.SetPosition(0, emitter.transform.position);
+
     }
 
     public void UpdateLaserPositions()
