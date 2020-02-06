@@ -43,7 +43,7 @@ public class CamManager : MonoBehaviour
         else instance = this;
         //Attention!! Doit être appelé avant le awake du game manager -> régler la priorité d'exécution des scripts
         playableDirector.Pause();
-        
+
     }
 
 
@@ -79,20 +79,23 @@ public class CamManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(cinemachineBrain.ActiveVirtualCamera.Name);
- 
-        if (cinemachineBrain.ActiveVirtualCamera.Name != activVirtualCam.name)
+        if(cinemachineBrain.ActiveVirtualCamera != null)
         {
-            string newCam = cinemachineBrain.ActiveVirtualCamera.Name;
-            for (int i=0; i< virtualCams.Length; i++)
+            if (cinemachineBrain.ActiveVirtualCamera.Name != activVirtualCam.name)
             {
-                if(newCam == virtualCams[i].name)
+                string newCam = cinemachineBrain.ActiveVirtualCamera.Name;
+                for (int i=0; i< virtualCams.Length; i++)
                 {
-                    activVirtualCam = virtualCams[i].GetComponent<CinemachineVirtualCamera>();
-                    dollyTrack = activVirtualCam.GetCinemachineComponent<CinemachineTrackedDolly>();
-                    break;
+                    if(newCam == virtualCams[i].name)
+                    {
+                        activVirtualCam = virtualCams[i].GetComponent<CinemachineVirtualCamera>();
+                        dollyTrack = activVirtualCam.GetCinemachineComponent<CinemachineTrackedDolly>();
+                        break;
+                    }
                 }
             }
         }
+
 
         if (!GameIsActiv)
             return;

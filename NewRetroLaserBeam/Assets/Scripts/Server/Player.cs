@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
     [ReadOnly] [SerializeField] private int playerCombo = 0;
     [ReadOnly] [SerializeField] private int playerKill = 0;
     [ReadOnly] [SerializeField] private int playerAssist = 0;
-    [ReadOnly] [SerializeField] public float playerDamage = 1;
+    [ReadOnly] [SerializeField] public float playerDamage = 2;
     [ReadOnly] public float playerTotalDamage = 0;
     [ReadOnly] public float playerTotalDamageOnBoss = 0;
     [ReadOnly] [SerializeField] private int playerHitsOnHead = 0;
@@ -49,6 +49,8 @@ public class Player : MonoBehaviour {
         playerCurrentMaxHealth = GameManager.instance.playersBaseHealth + playerBonusOnHealth;
         playerCurrentHealth = playerCurrentMaxHealth;
         coins = GameManager.instance.playersBaseCoin;
+        targetingSprite.SetActive(true);
+        playerDamage = 2;
         if (laser != null)
         {
             laser.UpdateLaserRootPosition();

@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
     [ReadOnly] [SerializeField] private string macGyverPlayer;
     private int macGyverValue;
 
+    bool canRestart;
     public void GetResults()
     {
         resultsPanel.SetActive(true);
@@ -378,6 +380,13 @@ public class GameManager : MonoBehaviour
                 gameStart = true;
             }
         }
+        if (canRestart)
+        {
+            if (Rewired.ReInput.players.SystemPlayer.GetButtonDown("Shoot"))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
     }
 
     #region player
@@ -413,10 +422,16 @@ public class GameManager : MonoBehaviour
         if (playerRemaining == 0)
         {
             gameOverPanel.SetActive(true);
+            GetResults();
             Debug.Log("Game Over");
+            StartCoroutine(DelayToRestart(2.5f));
         }
     }
-
+    IEnumerator DelayToRestart(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        canRestart = true;
+    }
     public void ActivePlayers(ref int _number)
     {
         int i;

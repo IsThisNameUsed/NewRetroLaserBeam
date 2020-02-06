@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/KOM_CLIENT.unity
-    guid: e19c16ff347219447a00c0892a6246a9
-  - enabled: 0
-    path: Assets/Scenes/KOM_SERVER.unity
-    guid: 3b01a8dbd594f7f49ba6a585ad4fdb25
+    path: Assets/Scenes/AlphaScene LD Rail 3.unity
+    guid: d3a464bb17a074d4d987d98db0d7b71c
   m_configObjects: {}
