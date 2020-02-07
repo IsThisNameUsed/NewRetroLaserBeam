@@ -67,6 +67,9 @@ public class GameManager : MonoBehaviour
     public GameObject dominator;
     public GameObject macGyver;
 
+    public GameObject blackScreen;
+    public GameObject playerStatusO;
+    public Animator playerStatusA;
     [ReadOnly] public float finalScore;
     
     [ReadOnly] [SerializeField]private string headPopperPlayer;
@@ -380,11 +383,20 @@ public class GameManager : MonoBehaviour
                 gameStart = true;
             }
         }
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            canRestart = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         if (canRestart)
         {
             if (Rewired.ReInput.players.SystemPlayer.GetButtonDown("Shoot"))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                
             }
         }
     }
@@ -425,6 +437,17 @@ public class GameManager : MonoBehaviour
             GetResults();
             Debug.Log("Game Over");
             StartCoroutine(DelayToRestart(2.5f));
+        }
+    }
+    public IEnumerator GetGameOver(float delay)
+    {
+        playerStatusA.SetBool("T", true);
+        gameOverPanel.GetComponentInChildren<Text>().text = "LEVEL COMPLETED";
+        yield return new WaitForSeconds(delay);
+        blackScreen.SetActive(true);
+        for(int i = 0; i < playingPlayers; ++i)
+        {
+            players[i].playerCurrentHealth = 0;
         }
     }
     IEnumerator DelayToRestart(float delay)

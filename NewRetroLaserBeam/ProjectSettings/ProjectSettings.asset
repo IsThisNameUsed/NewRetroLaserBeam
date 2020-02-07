@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: NewRetroLaserBeam
-  defaultCursor: {fileID: 2800000, guid: 8f074558a0d80874984ff71650594d39, type: 3}
+  defaultCursor: {fileID: 10916, guid: 0000000000000000f000000000000000, type: 0}
   cursorHotspot: {x: 50, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
